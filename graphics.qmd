@@ -1,0 +1,166 @@
+# Graphics {#sec-graphics}
+
+```{mermaid}
+flowchart LR
+gg[ggplot2] --> ggp[ggplotly]
+pl[plotly]
+sp[Frequency Scatterplots for Large Datasets]
+sp --> gghex[ggplot2 Hexagonal Binning]
+sp --> hs[Hmisc::ggfreqScatter]
+md[Annotating Plots With<br>Labels and Units<br>From Metadata]
+```
+
+Cleveland's [The Elements of Graphing Data](https://www.amazon.com/Elements-Graphing-Data-William-Cleveland/dp/0963488414) and [Graphics in Scientific Publications](https://www.tandfonline.com/doi/abs/10.1080/00031305.1984.10483223)
+are two of the best sources of how-to information on making scientific graphs.  Much information may be
+found at [hbiostat.org/bbr/descript.html](https://hbiostat.org/bbr/descript.html#sec-descript-graphics) and [hbiostat.org/R/hreport](https://hbiostat.org/R/hreport)
+especially these notes: [hbiostat.org/doc/graphscourse.pdf](https://hbiostat.org/doc/graphscourse.pdf).
+John Rauser has an [exceptional video](https://www.youtube.com/watch?v=fSgEeI2Xpdc) about principles of good graphics.
+See [datamethods.org/t/journal-graphics](https://discourse.datamethods.org/t/journal-graphics) for graphical methods for journal articles.
+
+Paul Murrell has an excellent [summary of recommendations](https://www.tandfonline.com/doi/abs/10.1080/10618600.2012.751875):
+
+> * Display data values using position or length.
+> * Use horizontal lengths in preference to vertical lengths.
+> * Watch your data--ink ratio.
+> * Think very carefully before using color to represent data values.
+> * Do not use areas to represent data values.
+> * _Please_ do not use angles or slopes to represent data values.
+>  _Please, please_ do not use volumes to represent data values.
+
+
+On the fifth point above, avoid the use of _bars_ when
+representing a single number.  Bar widths contain no information and
+get in the way of important information.  This is addressed below.
+
+`R` has superior graphics implemented in multiple models, including
+
+* Base graphics such as `plot(), hist(), lines(), points()` which give the user maximum control and are best used when not stratifying by additional variables other than the ones being summarized
+* The `lattice` package which is fast but not quite as good as `ggplot2` when one needs to vary more than one of color, symbol, size, or line type due to having more than one categorizing variable.  `ggplot2` is now largely used in place of `lattice`.
+* The `ggplot2` package which is very flexible and has the nicest defaults especially for constructing keys (legends/guides)
+* For semi-interactive graphics inserted into html reports, the `R` `plotly` package, which uses the `plotly` system (which uses the Javascript `D3` library) is extremely powerful.  See [plot.ly/r/getting-started](https://plot.ly/r/getting-started).
+* Fully interactive graphics can be built using `RShiny` but this requires a server to be running while the graph is viewed.
+
+For `ggplot2`, [www.cookbook-r.com/Graphs](http://www.cookbook-r.com/Graphs) contains a
+nice cookbook.  See also [learnr.wordpress.com](http://learnr.wordpress.com).  To get
+excellent documentation with examples for any
+`ggplot2` function, google `ggplot2 _functionname_`.
+`ggplot2` graphs can be converted into `plotly` graphics using
+the `ggplotly` function.  But you will have more control using
+`R` `plotly` directly.
+
+The older non-interactive graphics models which are useful for
+producing printed and `pdf` output are starting to be superseded
+with interactive graphics.  One of the biggest advantages of the
+latter is the ability to present the most important graphic
+information front-and-center but to allow the user to easily hover the
+mouse over areas in the graphic to see tabular details.
+
+I make heavy use of [ggplot2](https://ggplot2.tidyverse.org), [plotly](https://plotly.com/r) and [R base graphics](https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html).  `plotly` is used for interactive graphics, and the [R plotly](https://cran.r-project.org/web/packages/plotly/index.html) package provides an amazing function `ggplotly` to convert a static `ggplot2` graphics object to an interactive `plotly` one.  If the user goes to the trouble of adding labels for graphics entities (usually points, lines, curves, rectangles, and circles) those labels can become hover text in `plotly` without disturbing anything in static graphics.[With `ggplotly` extra text appears in front of labels, but the result of `ggplotly` can be run through `Hmisc::ggplotlyr` to remove this as shown in the example.]{.aside}  As shown [here](https://hbiostat.org/R/simMarkov/sim.html) you can sense whether an `html` or `pdf` report is being produced, and for `html` all `ggplot2` objects can be automatically transformed to `plotly`.
+
+Many types of graphs can be created with base graphics, e.g. `hist(age, nclass=50)` or `Ecdf(age)` but using `ggplot2` for even simple graphics makes it easy to add handle multiple groups on one graph or to create multiple panels for strata using faceting.  `ggplot2` has excellent default font sizes and axis labeling that works for most sizes of plots.
+
+Here is a prototypical `ggplot2` example illustrating many of the features I most often use.  Ignore the `ggplot2` `label` attribute if not using `plotly`.  Options are given to the `Hmisc` `label` function so that it will retrieve the variable `label` and `units` (if present) and format them for axis labels or tables.  The formatting takes into account whether html output is being created and `plotly` is being used.
+
+```{r setup}
+require(Hmisc)
+require(data.table)
+getRs('reptools.r')
+ishtml <- knitr::is_html_output()
+hookaddcap()   # make knitr call a function at the end of each chunk
+               # to try to automatically add to list of figure
+```
+
+```{r ggplot2ex}
+#| label: fig-ggplot2ex
+#| fig-cap: "`plotly` translation of a `ggplot2` graph making use of variable labels from a data table that are translated to use within-string html font changes"
+# Create a vector of formatted labels for all variables in data
+# For variables without labels or units use the variable name
+# as the label.  If html and plotly are not in effect use R's
+# regular plotmath notation to typeset labels/units
+
+getHdata(stressEcho)
+d <- stressEcho
+setDT(d)
+nam   <- names(d)
+nv    <- length(nam)
+vlabs <- structure(character(nv), names=nam)
+for(n in nam)
+  vlabs[n] <- label(d[[n]], plot=TRUE, html=ishtml, default=n)
+
+# Define substitutes for xlab and ylab that look up our
+# constructed labels.
+# Could instead directly use xlab(vlabs['age'])
+labx <- function(v) xlab(vlabs[[as.character(substitute(v))]])
+laby <- function(v) ylab(vlabs[[as.character(substitute(v))]])
+g <-
+  ggplot(d, aes(x=age, y=bhr, color=gender, label=paste0('dose:', dose))) +
+         geom_point() + geom_smooth() +
+         guides(color=guide_legend(title='')) +
+         theme(legend.position='bottom') +  # not respected by ggplotly
+         labs(caption='Scatterplot of age by basal heart rate stratified by sex') +
+         labx(age) + laby(bhr)
+# or just xlab('Age in years') + ylab('Basal heart rate')
+# To put the caption in a different font or size use e.g.
+#   theme(plot.caption=element_text(family='mono', size=7))
+# Likewise for the legend
+#   theme(legend.text=element_text(family='mono', size=9))
+
+ggplotlyr(g, remove='.*): ')  # removes paste0("dose:", dose): 
+# dose is in hover text for each point
+```
+
+::: {.callout-note collapse="true"}
+# `ggplot2` Tricks
+
+## Formatting Columns in Legends
+
+If the text for the legend contains columns that you want to have lined up, build the columns so that they are of equal length and use `mono` font, e.g.
+
+```{r eval=FALSE}
+pad <- function(x, n)  # pad x to n characters
+  substring(paste(x, '                       '), 1, n)
+d$z   <- paste(pad(a), b)
+ggplot(d, aes(x, y, color=z)) + geom_line() +
+  theme(legend.text = element_text(family='mono'))
+```
+
+## Plot Annotation
+
+* See [this](https://www.r-bloggers.com/2018/11/adding-different-annotation-to-each-facet-in-ggplot) by Mine Çetinkaya-Rundel.  Note that when annotating a facet or a whole plot, when the annotation does not use an aesthetic (such as colors to represent different curves on one facet), make sure that aesthetic does not appear in `ggplot()` but rather only in the `geom`s, e.g. `geom_line(aes(col=region))`.
+
+:::
+
+For large datasets the `Hmisc` package has a function `ggfreqScatter` that makes it easy to see overlapping points by color coding the frequency of points in each small bin.  That way scatterplots scale to very large datasets.  Here is an example:[`html=TRUE` was needed because otherwise axis labels are formatted using R's `plotmath` and `plotly` doesn't like that.]{.aside}
+
+```{r ggfreq}
+#| label: fig-ggfreq
+#| fig-cap: "`ggfreqScatter` example, making use of color coded frequencies of points that will work for any size dataset and any number of coincident points"
+#| fig-scap: "`ggfreqScatter` example"
+set.seed(1)
+x <- round(rnorm(2000), 1)
+y <- 2 * (x > 1.5) + round(rnorm(2000), 1)
+z <- sample(c('a', 'b'), 2000, replace=TRUE)
+label(x) <- 'X Variable'   # could use xlab() &
+label(y) <- 'Y Variable'   # ylab() in ggfreqScatter()
+g <- ggfreqScatter(x, y, by=z, html=ishtml)
+# If variables were inside a data table use
+# g <- d[, ggfreqScatter(x, y, by=z, html=ishtml)]
+g
+```
+
+Now convert the graphic to `plotly` if html is in effect otherwise stay with `ggplot2` output.
+
+```{r ggfreqp}
+#| label: fig-ggfreqp
+#| fig-cap: "`plotly` version of @fig-ggfreq"
+ggplotlyr(g)
+```
+
+When you hover the mouse over a point, its frequency pops up.
+
+Many functions in the `Hmisc` and `rms` packages produce `plotly` graphics directly.  [One of the most unique pure `plotly` functions in `Hmisc` is [dotchartpl](https://www.rdocumentation.org/packages/Hmisc/versions/4.6-0/topics/dotchartpl).]{.aside}  These two package's functions using `plotly` try to compute optimal figure heights and widths, but it is usually better to let `plotly` auto-size the plots.  Putting `options(plotlyauto=TRUE)` will override these dimensions and force `plotly` to auto-size.  Putting this command in your `.Rprofile` file in the home directory makes this easy.
+
+
+```{r echo=FALSE}
+saveCap('14')
+```

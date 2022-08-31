@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.12">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Relational inequality in a network perspective - 5&nbsp; Analysis File Creation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./rformat.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-......"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-......', { 'anonymize_ip': true});
+</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false,
+  "enableExperimentalNewNoteButton": true
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="mermaidf.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-xl navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Relational inequality in a network perspective</span>
+  </a>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analysis File Creation</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./casestudy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Case Study: The <em>Titanic</em></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rbasics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rformat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Report Formatting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fcreate.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analysis File Creation</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#note-on-file-directory-structure" id="toc-note-on-file-directory-structure" class="nav-link active" data-scroll-target="#note-on-file-directory-structure"> <span class="header-section-number">5.1</span> Note on File Directory Structure</a></li>
+  <li><a href="#sec-fcreate-import" id="toc-sec-fcreate-import" class="nav-link" data-scroll-target="#sec-fcreate-import"> <span class="header-section-number">5.2</span> Importing and Creating Annotated Analysis Files</a></li>
+  <li><a href="#variable-naming" id="toc-variable-naming" class="nav-link" data-scroll-target="#variable-naming"> <span class="header-section-number">5.3</span> Variable Naming</a></li>
+  <li><a href="#sec-fcreate-dd" id="toc-sec-fcreate-dd" class="nav-link" data-scroll-target="#sec-fcreate-dd"> <span class="header-section-number">5.4</span> Data Dictionary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-fcreate" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analysis File Creation</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+Im[Import] --&gt; vn[Manageable<br>Variable<br>Names] --&gt; An[Annotate<br>Add Metadata]
+An --&gt; Int["Internal<br>(imported labels)"] &amp; Ext[External]
+An --&gt; lu[Labels<br>Units]
+An --&gt; V["View Data Dictionary<br>(metadata)"]
+Im --&gt; csv[CSV] &amp; bin[Binary]
+Im --&gt; mf[Multiple Files<br>Looping]
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<section id="note-on-file-directory-structure" class="level2 page-columns page-full" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="note-on-file-directory-structure"><span class="header-section-number">5.1</span> Note on File Directory Structure</h2>
+<div class="page-columns page-full"><p>I have a directory for each major project, and put everything in that directory (including data files) except for graphics files for figures, which are placed in their own subdirectory underneath the project folder. The directory name for the project includes key identifying information, and files within that directory do not contain project information in their names, nor do they contain dates, unless I want to freeze an old version of an analysis script.</p><div class="no-row-height column-margin column-container"><span class="aside">With <code>Quarto</code> I specify that <code>html</code> files are to be self-contained, so there are no separate graphics files.</span></div></div>
+<p>For multi-analyst projects or ones in which you want to capture the entire code history, having the project on <code>github</code> is worthwhile.</p>
+</section>
+<section id="sec-fcreate-import" class="level2 page-columns page-full" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-fcreate-import"><span class="header-section-number">5.2</span> Importing and Creating Annotated Analysis Files</h2>
+<div class="page-columns page-full"><p>I typically create a compact analysis file in a separate R script called <code>create.r</code> and have it produce compressed R binary <code>data.frame</code> or <code>data.table</code> <code>.rds</code> files using <code>saveRDS(name, 'name.rds', compress='xz')</code>. Then I have an analysis script named for example <code>a.qmd</code> (for <a href="https://quarto.org">Quarto</a> reports) or <code>a.Rmd</code> (for RMarkdown reports) that starts with <code>d &lt;- readRDS('name.rds')</code>.  This process is especially helpful with analysis file creation takes multiple steps or files are large. <code>readRDS</code> is very fast for loading binary R objects. </p><div class="no-row-height column-margin column-container"><span class="aside">Templates for analysis reports are <a href="http://hbiostat.org/rr/index.html#template">here</a>, and a comprehensive report example may be found <a href="https://hbiostat.org/R/Hmisc/markov">here</a>.</span><span class="aside">There is an older way to read/write binary R objects using R <code>load</code> and <code>save</code> and <code>Hmisc</code> frontends for them <code>Load</code> and <code>Save</code>. Files using these formats typically have suffixes of <code>.rda</code>, <code>.RData</code>, or <code>.sav</code>, and using <code>load</code> stores the object under its original name, which might not be clear until you check your R <code>.global</code> environment by looking in the upper right <code>RStudio</code> panel.</span></div></div>
+<div class="page-columns page-full"><p>When variables need to be recoded, have labels added or changed, or have units of measurement added, I specify those using the <code>Hmisc</code> package <a href="https://www.rdocumentation.org/packages/Hmisc/versions/4.7-0/topics/upData"><code>upData</code> function</a>.</p><div class="no-row-height column-margin column-container"><span class="aside">Variable labels and units of measurement are used in special ways in my R packages. This will show up in the <code>describe</code> and <code>contents</code> function outputs below and in axis labels for graphics.</span></div></div>
+<p>To facilitate some operations requiring variable names to be quoted, define a function <code>.q</code> to quote them automatically. <code>.q</code> is like the <code>Hmisc</code> function <code>Cs</code> but also allows elements to be named. It will be in <code>Hmisc</code> 4.7-1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>.q <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sys.call</span>()[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  w <span class="ot">&lt;-</span> <span class="fu">as.character</span>(s)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">names</span>(s)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(n)) <span class="fu">names</span>(w) <span class="ot">&lt;-</span> n</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  w</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.q</span>(a, b, c, <span class="st">'this and that'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a"             "b"             "c"             "this and that"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.q</span>(<span class="at">dog=</span>a, <span class="at">giraffe=</span>b, <span class="at">cat=</span>c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    dog giraffe     cat 
+    "a"     "b"     "c" </code></pre>
+</div>
+</div>
+<p>Here is an <code>upData</code> example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to recode from atypical coding for yes/no in raw data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>yn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">factor</span>(x, <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="fu">c</span>(<span class="st">'yes'</span>, <span class="st">'no'</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">upData</span>(d,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">rename =</span> <span class="fu">.q</span>(<span class="at">gender=</span>sex, <span class="at">any.event=</span>anyEvent),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">posSE    =</span> <span class="fu">yn</span>(posSE),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">newMI    =</span> <span class="fu">yn</span>(newMI),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">newPTCA  =</span> <span class="fu">yn</span>(newPTCA),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">newCABG  =</span> <span class="fu">yn</span>(newCABG),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">death    =</span> <span class="fu">yn</span>(death),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofHT   =</span> <span class="fu">yn</span>(hxofHT),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofDM   =</span> <span class="fu">yn</span>(hxofDM),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofCig  =</span> <span class="fu">factor</span>(hxofCig, <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">c</span>(<span class="st">'heavy'</span>, <span class="st">'moderate'</span>, <span class="st">'non-smoker'</span>)), </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofMI   =</span> <span class="fu">yn</span>(hxofMI),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofPTCA =</span> <span class="fu">yn</span>(hxofPTCA),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofCABG =</span> <span class="fu">yn</span>(hxofCABG),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">chestpain=</span> <span class="fu">yn</span>(chestpain),</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">anyEvent =</span> <span class="fu">yn</span>(anyEvent),</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">drop=</span><span class="fu">.q</span>(event.no, phat, mics, deltaEF,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                 newpkmphr, gdpkmphr, gdmaxmphr, gddpeakdp, gdmaxdp,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                 hardness),</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">labels=</span><span class="fu">c</span>(</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">bhr       =</span> <span class="st">'Basal heart rate'</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">basebp    =</span> <span class="st">'Basal blood pressure'</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>           <span class="at">basedp    =</span> <span class="st">'Basal Double Product bhr*basebp'</span>,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">age       =</span> <span class="st">'Age'</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>           <span class="at">pkhr      =</span> <span class="st">'Peak heart rate'</span>,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>           <span class="at">sbp       =</span> <span class="st">'Systolic blood pressure'</span>,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">dp        =</span> <span class="st">'Double product pkhr*sbp'</span>,</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">dose      =</span> <span class="st">'Dose of dobutamine given'</span>,</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>           <span class="at">maxhr     =</span> <span class="st">'Maximum heart rate'</span>,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>           <span class="at">pctMphr   =</span> <span class="st">'Percent maximum predicted heart rate achieved'</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>           <span class="at">mbp       =</span> <span class="st">'Maximum blood pressure'</span>,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>           <span class="at">dpmaxdo   =</span> <span class="st">'Double product on max dobutamine dose'</span>,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">dobdose   =</span> <span class="st">'Dobutamine dose at max double product'</span>,</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>           <span class="at">baseEF    =</span> <span class="st">'Baseline cardiac ejection fraction'</span>,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">dobEF     =</span> <span class="st">'Ejection fraction on dobutamine'</span>, </span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>           <span class="at">chestpain =</span> <span class="st">'Chest pain'</span>, </span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>           <span class="at">ecg       =</span> <span class="st">'Baseline electrocardiogram diagnosis'</span>,</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>           <span class="at">restwma   =</span> <span class="st">'Resting wall motion abnormality on echocardiogram'</span>, </span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>           <span class="at">posSE     =</span> <span class="st">'Positive stress echocardiogram'</span>,</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>           <span class="at">newMI     =</span> <span class="st">'New myocardial infarction'</span>,</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>           <span class="at">newPTCA   =</span> <span class="st">'Recent angioplasty'</span>,</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>           <span class="at">newCABG   =</span> <span class="st">'Recent bypass surgery'</span>, </span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofHT    =</span> <span class="st">'History of hypertension'</span>, </span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofDM    =</span> <span class="st">'History of diabetes'</span>,</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofMI    =</span> <span class="st">'History of myocardial infarction'</span>,</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofCig   =</span> <span class="st">'History of smoking'</span>,</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofPTCA  =</span> <span class="st">'History of angioplasty'</span>,</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofCABG  =</span> <span class="st">'History of coronary artery bypass surgery'</span>,</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>           <span class="at">anyEvent  =</span> <span class="st">'Death, newMI, newPTCA, or newCABG'</span>),</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>         <span class="at">units=</span><span class="fu">.q</span>(<span class="at">age=</span>years, <span class="at">bhr=</span>bpm, <span class="at">basebp=</span>mmHg, <span class="at">basedp=</span><span class="st">'bpm*mmHg'</span>,</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>           <span class="at">pkhr=</span>mmHg, <span class="at">sbp=</span>mmHg, <span class="at">dp=</span><span class="st">'bpm*mmHg'</span>, <span class="at">maxhr=</span>bpm,</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>           <span class="at">mbp=</span>mmHg, <span class="at">dpmaxdo=</span><span class="st">'bpm*mmHg'</span>, <span class="at">baseEF=</span><span class="st">'%'</span>, <span class="at">dobEF=</span><span class="st">'%'</span>,</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>           <span class="at">pctMphr=</span><span class="st">'%'</span>, <span class="at">dose=</span>mg, <span class="at">dobdose=</span>mg)</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(d, <span class="st">'stressEcho.rds'</span>, <span class="at">compress=</span><span class="st">'xz'</span>)</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we could have automatically recoded all 0:1 variables</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="co"># if they were all to be treated identically:</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="fu">names</span>(d)) </span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">all</span>(d[[x]] <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))) d[[x]] <span class="ot">&lt;-</span> <span class="fu">yn</span>(d[[x]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">External Metadata</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">CSV</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">REDCap</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">SAS, Stata, SPSS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">Excel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false">Multiple Files</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-8" role="tab" aria-controls="tabset-1-8" aria-selected="false">Importing the Latest File</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-9-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-9" role="tab" aria-controls="tabset-1-9" aria-selected="false">Post Import</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+
+</div>
+<div id="tabset-1-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Sometimes metadata comes from a separate source. Suppose you imported a data frame <code>d</code> but have also imported a data frame <code>m</code> containing metadata: the same variable names in <code>d</code> (variable <code>name</code>) plus fields <code>label</code>, <code>units</code>, and <code>comment</code>. Dataset <code>m</code> can contain variables not currently being used. To add the labels and units into <code>d</code> and to store comments separately, use the following example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">names</span>(d)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> n <span class="sc">%nin%</span> m<span class="sc">$</span>name</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(i)) <span class="fu">cat</span>(<span class="st">'The following variables have no metadata:'</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">paste</span>(n[i], <span class="at">collapse=</span><span class="st">', '</span>), <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>vcomment        <span class="ot">&lt;-</span> m<span class="sc">$</span>comment</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(vcomment) <span class="ot">&lt;-</span> m<span class="sc">$</span>name</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>mn              <span class="ot">&lt;-</span> <span class="fu">subset</span>(m, name <span class="sc">%in%</span> n)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>labs            <span class="ot">&lt;-</span> mn<span class="sc">$</span>label</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>un              <span class="ot">&lt;-</span> mn<span class="sc">$</span>units</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(labs)     <span class="ot">&lt;-</span> <span class="fu">names</span>(un) <span class="ot">&lt;-</span> mn<span class="sc">$</span>name</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">upData</span>(d, <span class="at">labels=</span>labs, <span class="at">units=</span>un)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To look up the <code>comment</code> for a variable at any time use e.g.&nbsp;<code>vcomment['height']</code>. All comments were saved in vector <code>vcomment</code> in case the metadata dictionary <code>m</code> defined variables that are not in <code>d</code> but were to be imported later in the script. Comments for multiple variables can be looked up using e.g.&nbsp;<code>vcomment[.q(height, weight, age)]</code>.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>If you want to look up a variable’s comment without having to quote its name use the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vcom <span class="ot">&lt;-</span> <span class="cf">function</span>(...)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  vcomment[<span class="fu">as.character</span>(<span class="fu">sys.call</span>()[<span class="sc">-</span><span class="dv">1</span>])]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage: vcom(age,sbp,dbp)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div></div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>The built-in function in R for reading <code>.csv</code> files is <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table"><code>read.csv</code></a>. The <code>Hmisc</code> package has a function <a href="https://www.rdocumentation.org/packages/Hmisc/versions/4.7-0/topics/csv.get"><code>csv.get</code></a> which calls <code>read.csv</code> but offers some enhancements in variable naming, date handling, and reading variable labels from a specified row number. Illegal characters in variable names are changed to periods, and by default underscores are also changed to periods. If any variable names are changed and the <code>labels</code> argument is not given, original variable names are stored in the variable <code>label</code> attributes.</p>
+<p>The <a href="https://www.rdocumentation.org/packages/data.table/versions/1.14.2/topics/fread"><code>fread</code></a> function in the <code>data.table</code> package is blazing fast for reading large files and offers a number of options. <code>csv.get</code> uses it if <code>data.table</code> is installed on the system.</p>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p>If reading data exported from <a href="https://www.project-redcap.org"><code>REDCap</code></a> that are placed into the project directory I run the following to get rid of duplicate (<code>factor</code> and non-<code>factor</code> versions of variables <code>REDCap</code> produces) variables and automatically convert dates to <code>Date</code> variables:</p>
+<pre><code>require(Hmisc)
+getRs('importREDCap.r', put='source')  # source() code to define function
+mydata &lt;- importREDCap()  # by default operates on last downloaded export
+saveRDS(mydata, 'mydata.rds', compress='xz')</code></pre>
+<p>When file names are not given to <code>importREDCap</code> the function looks for the latest created <code>.csv</code> file and <code>.R</code> file with same prefix and uses those. See <a href="http://hbiostat.org/bbr/md/r.html">this</a> for more information.</p>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<p>SAS, Stata, and SPSS binary files are converted to R <code>data.frame</code>s using the R <a href="https://haven.tidyverse.org">haven package</a>. Here’s an example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(haven)   <span class="co"># after you've installed the package</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_sas</span>(<span class="st">'mydata.sas7bdat'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_xpt</span>(<span class="st">'mydata.xpt'</span>)        <span class="co"># SAS transport files</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">'mydata.dta'</span>)        <span class="co"># Stata</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">'mydata.sav'</span>)        <span class="co"># SPSS</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_por</span>(<span class="st">'mydata.por'</span>)        <span class="co"># Older SPSS files</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These import functions carry variable labels into the data frame and convert dates and times appropriately. Character vectors are not converted to factors.</p>
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<p>The <code>readxl</code> package that comes with R reads binary Excel spreadsheet <code>.xls</code> and <code>.xlsx</code> files to produce something that is almost a data frame. Here is an example where the imported dataset is converted into a plain <code>data.frame</code> and the variable names are changed to all lower case. <code>read_excel</code> does not handle variable labels. You can specify which sheet or which cell range to import if desired.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">'my.xlsx'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use require(readxl) then d &lt;- read_excel(...)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(d)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or better: make it a data table: setDT(d)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">names</span>(d))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
+<p>One of the most important principles to following in programming data analyses is to not do the same thing more than once. Repetitive code wastes time and is harder to maintain. One example of avoiding repetition is in reading a large number of files in R. If the files are stored in one directory and have a consistent file naming scheme (or you want to import every <code>.csv</code> file in the directory), one can avoid naming the individual files. The results may be stored in an R <code>list</code> that has named elements, and there are many processing tasks that can be automated by looping over this list.</p>
+<p>In the following example assume that all the data files are <code>.csv</code> files in the current working directory, and they all have names of the form <code>xz*.csv</code>. Let’s read all of them and put each file into a data frame named by the characters in front of <code>.csv</code>. These data frames are stuffed into a <code>list</code> named <code>X</code>. The <code>Hmisc</code> <code>csv.get</code> function is used to read the files, automatically translating dates to <code>Date</code> variables, and because <code>lowernames=TRUE</code> is specified, variable names are translated to lower case. There is an option to fetch variable labels from a certain row of each <code>.csv</code> file but we are not using that.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">pattern=</span><span class="st">'xz.*.csv'</span>)  <span class="co"># vector of qualifying file names</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Get base part of *.csv</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dnames <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">'.csv'</span>, <span class="st">''</span>, files)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(f <span class="cf">in</span> files) {</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">'Reading file'</span>, f, <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">csv.get</span>(f, <span class="at">lowernames=</span><span class="cn">TRUE</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># To read SAS, Stata, SPSS binary files use a haven function instead</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># To convert to data.table do setDT(d) here</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  X[[dnames[i]]] <span class="ot">&lt;-</span> d</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(X, <span class="st">'X.rds'</span>, <span class="at">compress=</span><span class="st">'xz'</span>)  <span class="co"># Efficiently store all datasets together</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To process one of the datasets one can do things like <code>summary(X[[3]])</code> or <code>summary(X$baseline)</code> where the third dataset stored was named <code>baseline</code> because it was imported from <code>baseline.csv</code>.</p>
+<p>Now there are many possibilities for processing all the datasets at once such as the following.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>k   <span class="ot">&lt;-</span> <span class="fu">length</span>(X)          <span class="co"># number of datasets</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>nam <span class="ot">&lt;-</span> <span class="fu">lapply</span>(X, names)   <span class="co"># list with k elements, each is a vector of names</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the union of all variable names used in any dataset</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(<span class="fu">unlist</span>(nam))) <span class="co"># all the variables appearing in any dataset</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get variable names contained in all datasets</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>common <span class="ot">&lt;-</span> <span class="fu">names</span>(X[[<span class="dv">1</span>]])</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span> <span class="sc">:</span> k) {</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  common <span class="ot">&lt;-</span> <span class="fu">intersect</span>(common, <span class="fu">names</span>(X[[i]]))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span> <span class="fu">length</span>(common)) <span class="cf">break</span>  <span class="co"># intersection already empty</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(common)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute number of variables across datasets</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>nvar <span class="ot">&lt;-</span> <span class="fu">sapply</span>(X, length)  <span class="co"># or ncol</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of observations per dataset</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(X, nrow)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># For each variable name count the number of datasets containing it</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">dsname=</span><span class="fu">rep</span>(<span class="fu">names</span>(X), nvar), <span class="at">vname=</span><span class="fu">unlist</span>(nam))</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>w[, .N, keyby<span class="ot">=</span>vname]</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># For each variable create a comma-separated list of datasets</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># containing it</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>w[, .(<span class="at">datasets=</span><span class="fu">paste</span>(<span class="fu">sort</span>(dsname), <span class="at">collapse=</span><span class="st">', '</span>)), keyby<span class="ot">=</span>vname]</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># For datasets having a subject ID variable named id compute</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co"># the number of unique ids</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>uid <span class="ot">&lt;-</span> <span class="cf">function</span>(d) <span class="cf">if</span>(<span class="st">'id'</span> <span class="sc">%in%</span> <span class="fu">names</span>(d)) <span class="fu">length</span>(<span class="fu">unique</span>(d<span class="sc">$</span>id)) <span class="cf">else</span> <span class="cn">NA</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(X, uid)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="co"># To repeatedly analyze one of the datasets, extract it to a single data frame</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> X<span class="sc">$</span>baseline</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-8-tab">
+<p>Sometimes one keeps multiple versions of the raw data to be imported inside the project folder. If you want to import the file that was last modified you can use the <code>reptools</code> <code>latestFile</code> function. You give it a pattern of file names to match. For example a pattern of <code>.csv$</code> means “ending with <code>.csv</code>” and a pattern of <code>^baseline</code> means “starting with <code>baseline</code>”. A pattern of <code>foo</code> means that <code>foo</code> is contained anywhere in the file name. Here is an example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look for file names starting with base, followed by any number of</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># characters, and ending with .csv</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">latestFile</span>(<span class="st">'^base.*csv$'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">csv.get</span>(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-9" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-9-tab">
+<p>The <code>Hmisc</code> package <code>cleanup.import</code> function improves imported data storage in a number of ways including converting double precision variables to <code>integer</code> when originally <code>double</code> but not containing fractional values (this halves the storage requirement). <code>Hmisc::upData</code> is the go-to function for annotating data frames/tables, renaming variables, and dropping variables. <code>Hmisc::dataframeReduced</code> removes problematic variables, e.g., those with a high fraction of missing values or that are binary with very small prevalence.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-naming" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="variable-naming"><span class="header-section-number">5.3</span> Variable Naming</h2>
+<p>I prefer short but descriptive variable names. As exemplified above, I use variable <code>label</code>s and <code>units</code> to provide more information. For example I wouldn’t name the age variable <code>age.at.enrollment.yrs</code> but would name it <code>age</code> with a label of <code>Age at Enrollment</code> and with <code>units</code> of <code>years</code>. Short, clear names unclutter code, especially formulas in statistical models. One can always fetch a variable label while writing a program (e.g., typing <code>label(d$age)</code> at the console) to check that you have the right variable (or put the data dictionary in a window for easy reference, as shown below). <code>Hmisc</code> package graphics and table making functions such as <code>summaryM</code> and <code>summary.formula</code> specially typeset <code>units</code> in a smaller font.</p>
+</section>
+<section id="sec-fcreate-dd" class="level2 page-columns page-full" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="sec-fcreate-dd"><span class="header-section-number">5.4</span> Data Dictionary</h2>
+<p>The <code>Hmisc</code> package <code>contents</code> function will provide a concise data dictionary. Here is an example using the permanent version (which coded binary variables as 0/1 instead of N/Y) of the dataset created above, which can be accessed with the <code>Hmisc</code> <code>getHdata</code> function. The top of the <code>contents</code> output has the number of levels for <code>factor</code> variables hyperlinked. Click on the number to go directly to the list of levels for that variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(Hmisc)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getHdata</span>(stressEcho)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> stressEcho</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Data Dictionary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span>(<span class="fu">contents</span>(d), <span class="at">levelType=</span><span class="st">'table'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<title>d Contents</title>
+ <hr><h4 class="anchored">Data frame:d</h4>558 observations and 31 variables, maximum # NAs:0  
+ <hr>
+ <style>
+ .hmisctable823384 {
+ border: 1px solid gray;
+ border-collapse: collapse;
+ font-size: 100%;
+ }
+ .hmisctable823384 td {
+ text-align: right;
+ padding: 0 1ex 0 1ex;
+ }
+ .hmisctable823384 th {
+ color: Black;
+ text-align: center;
+ padding: 0 1ex 0 1ex;
+ font-weight: bold;
+ }
+ </style>
+ <table class="hmisctable823384" border="1">
+ <tbody><tr><th>Name</th><th>Labels</th><th>Units</th><th>Levels</th><th>Storage</th></tr>
+ <tr><td>bhr</td><td>Basal heart rate</td><td>bpm</td><td></td><td>integer</td></tr>
+ <tr><td>basebp</td><td>Basal blood pressure</td><td>mmHg</td><td></td><td>integer</td></tr>
+ <tr><td>basedp</td><td>Basal Double Product bhr*basebp</td><td>bpm*mmHg</td><td></td><td>integer</td></tr>
+ <tr><td>pkhr</td><td>Peak heart rate</td><td>mmHg</td><td></td><td>integer</td></tr>
+ <tr><td>sbp</td><td>Systolic blood pressure</td><td>mmHg</td><td></td><td>integer</td></tr>
+ <tr><td>dp</td><td>Double product pkhr*sbp</td><td>bpm*mmHg</td><td></td><td>integer</td></tr>
+ <tr><td>dose</td><td>Dose of dobutamine given</td><td>mg</td><td></td><td>integer</td></tr>
+ <tr><td>maxhr</td><td>Maximum heart rate</td><td>bpm</td><td></td><td>integer</td></tr>
+ <tr><td>pctMphr</td><td>Percent maximum predicted heart rate achieved</td><td>%</td><td></td><td>integer</td></tr>
+ <tr><td>mbp</td><td>Maximum blood pressure</td><td>mmHg</td><td></td><td>integer</td></tr>
+ <tr><td>dpmaxdo</td><td>Double product on max dobutamine dose</td><td>bpm*mmHg</td><td></td><td>integer</td></tr>
+ <tr><td>dobdose</td><td>Dobutamine dose at max double product</td><td>mg</td><td></td><td>integer</td></tr>
+ <tr><td>age</td><td>Age</td><td>years</td><td></td><td>integer</td></tr>
+ <tr><td>gender</td><td></td><td></td><td><a href="#levels.gender">2</a></td><td>integer</td></tr>
+ <tr><td>baseEF</td><td>Baseline cardiac ejection fraction</td><td>%</td><td></td><td>integer</td></tr>
+ <tr><td>dobEF</td><td>Ejection fraction on dobutamine</td><td>%</td><td></td><td>integer</td></tr>
+ <tr><td>chestpain</td><td>Chest pain</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>restwma</td><td>Resting wall motion abnormality on echocardiogram</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>posSE</td><td>Positive stress echocardiogram</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>newMI</td><td>New myocardial infarction</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>newPTCA</td><td>Recent angioplasty</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>newCABG</td><td>Recent bypass surgery</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>death</td><td></td><td></td><td></td><td>integer</td></tr>
+ <tr><td>hxofHT</td><td>History of hypertension</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>hxofDM</td><td>History of diabetes</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>hxofCig</td><td>History of smoking</td><td></td><td><a href="#levels.hxofCig">3</a></td><td>integer</td></tr>
+ <tr><td>hxofMI</td><td>History of myocardial infarction</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>hxofPTCA</td><td>History of angioplasty</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>hxofCABG</td><td>History of coronary artery bypass surgery</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>any.event</td><td>Death, newMI, newPTCA, or newCABG</td><td></td><td></td><td>integer</td></tr>
+ <tr><td>ecg</td><td>Baseline electrocardiogram diagnosis</td><td></td><td><a href="#levels.ecg">3</a></td><td>integer</td></tr>
+ </tbody></table>
+
+ <hr>
+ <style>
+ .hmisctable513097 {
+ border: 1px solid gray;
+ border-collapse: collapse;
+ font-size: 100%;
+ }
+ .hmisctable513097 td {
+ text-align: right;
+ padding: 0 1ex 0 1ex;
+ }
+ .hmisctable513097 th {
+ color: Black;
+ text-align: center;
+ padding: 0 1ex 0 1ex;
+ font-weight: bold;
+ }
+ </style>
+ <table class="hmisctable513097" border="1">
+ <tbody><tr><th>Variable</th><th>Levels</th></tr>
+ <tr><td><a name="levels.gender">gender</a></td><td>male</td></tr>
+ <tr><td></td><td>female</td></tr>
+ <tr><td><a name="levels.ecg">hxofCig</a></td><td>heavy</td></tr>
+ <tr><td></td><td>moderate</td></tr>
+ <tr><td></td><td>non-smoker</td></tr>
+ <tr><td><a name="levels.ecg">ecg</a></td><td>normal</td></tr>
+ <tr><td></td><td>equivocal</td></tr>
+ <tr><td></td><td>MI</td></tr>
+ </tbody></table>
+
+ <hr>
+
+</div>
+</div>
+</div>
+</div>
+<div class="page-columns page-full"><p>You can write the text output of <code>contents</code> into a text file in your current working directory, and click on that file in the <code>RStudio</code> <code>Files</code> window to create a new tab in the editor panel where you can view the data dictionary at any time. This is especially helpful if you need a reminder of variable definitions that are stored in the variable labels. Here is an example where the formatted data dictionary is saved. </p><div class="no-row-height column-margin column-container"><span class="aside">Users having the <code>xless</code> system command installed can pop up a <code>contents</code> window at any time by typing <code>xless(contents(d))</code> in the console. <code>xless</code> is in <code>Hmisc</code>.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">capture.output</span>(<span class="fu">contents</span>(d), <span class="at">file=</span><span class="st">'contents.txt'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Or put the html version of the data dictionary into a small browser window to which you can refer at any point in analysis coding.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">html</span>(<span class="fu">contents</span>(d)), <span class="at">file=</span><span class="st">'contents.html'</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">browseURL</span>(<span class="st">'contents.html'</span>, <span class="at">browser=</span><span class="st">'vivaldi -new-window'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="page-columns page-full"><p><code>RStudio</code> provides a nice way to do this, facilitated by the <code>htmlView</code> helper function in <code>reptools</code>. <code>htmlView</code> takes any number of objects for which an <code>html</code> method exists to render them. They are rendered in the <code>RStudio</code> <code>Viewer</code> pane. If you are running outside <code>RStudio</code>, your default browser will be launched instead.</p><div class="no-row-height column-margin column-container"><span class="aside">Occasionally <code>RStudio Viewer</code> will drop its arrow button making it impossible to navigate back and forth to different <code>html</code> outputs.<br>Code for <code>htmlView</code> and <code>htmlViewx</code> may be viewed in <a href="https://github.com/harrelfe/rscripts/blob/master/reptools.r"><code>reptools.r</code></a>.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getRs</span>(<span class="st">'reptools.r'</span>, <span class="at">put=</span><span class="st">'source'</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># reptools.r defines htmlView, htmlViewx, kabl, maketabs, dataChk, ...</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlView</span>(<span class="fu">contents</span>(d))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="page-columns page-full"><p>In some cases it is best to have a browser window open to the full descriptive statistics for a data table/frame (see below; the <code>describe</code> function also shows labels, units, and levels). </p><div class="no-row-height column-margin column-container"><span class="aside">For either approach it would be easy to have multiple tabs open, one tab for each of a series of data tables, or use <code>htmlView</code>.</span></div></div>
+<div class="page-columns page-full"><p>To be able to have multiple windows open to see information about datasets it is advantageous to open an external browser window. The <code>htmlViewx</code> function will by default open a Vivaldi browser window with the first output put in a new window and all subsequent objects displayed as tabs within that same window. This behavior can be controlled with the <code>tab</code> argument, and you can use a different browser by issuing for example <code>options(vbrowser='firefox')</code>. As an example suppose that two datasets were read from the <code>hbiostat.org/data</code> data repository, and the data dictionary and descriptive statistics for both datasets were to be converted to <code>html</code> and placed in an external browser window for the duration of the R session.</p><div class="no-row-height column-margin column-container"><span class="aside">In Windows you may have to specify a full path and <code>firefox.exe</code>. The tab names will not be correct until <code>Hmisc</code> 4.7-1 appears.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getHdata</span>(support)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getHdata</span>(support2)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlViewx</span>(<span class="fu">contents</span>(support ), <span class="fu">describe</span>(support ),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">contents</span>(support2), <span class="fu">describe</span>(support2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A screenshot of the result is <a href="https://hbiostat.org/img/htmlViewx.png">here</a>.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    toggleBodyColorMode(window.document.querySelector("link#quarto-bootstrap"));
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./rformat.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Report Formatting</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb20" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analysis File Creation {#sec-fcreate}</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>Im[Import] --&gt; vn[Manageable&lt;br&gt;Variable&lt;br&gt;Names] --&gt; An[Annotate&lt;br&gt;Add Metadata]</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>An --&gt; Int[<span class="ot">"</span><span class="st">Internal&lt;br&gt;(imported labels)</span><span class="ot">"</span>] &amp; Ext[External]</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>An --&gt; lu[Labels&lt;br&gt;Units]</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>An --&gt; V[<span class="ot">"</span><span class="st">View Data Dictionary&lt;br&gt;(metadata)</span><span class="ot">"</span>]</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>Im --&gt; csv[CSV] &amp; bin[Binary]</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>Im --&gt; mf[Multiple Files&lt;br&gt;Looping]</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Note on File Directory Structure</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>I have a directory for each major project, and put everything in that</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>directory (including data files) except for graphics files for</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>figures, which are placed in their own subdirectory underneath the</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>project folder.<span class="co">[</span><span class="ot">With `Quarto` I specify that `html` files are to be self-contained, so there are no separate graphics files.</span><span class="co">]</span>{.aside}  The directory name for the project includes key</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>identifying information, and files within that directory do not</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>contain project information in their names, nor do they contain dates,</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>unless I want to freeze an old version of an analysis script.</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>For multi-analyst projects or ones in which you want to capture the entire code history, having the project on <span class="in">`github`</span> is worthwhile.</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Importing and Creating Annotated Analysis Files {#sec-fcreate-import}</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>I typically create a compact analysis file in a separate R script</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>called <span class="in">`create.r`</span> and have it produce compressed R binary <span class="in">`data.frame`</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>or <span class="in">`data.table`</span> <span class="in">`.rds`</span> files using <span class="in">`saveRDS(name, 'name.rds', compress='xz')`</span>.  Then I have an analysis script named for example <span class="in">`a.qmd`</span> (for <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org)</span> reports) or <span class="in">`a.Rmd`</span> (for RMarkdown reports) that starts with <span class="in">`d &lt;- readRDS('name.rds')`</span>.  <span class="co">[</span><span class="ot">Templates for analysis reports are [here](http://hbiostat.org/rr/index.html#template), and a comprehensive report example may be found [here](https://hbiostat.org/R/Hmisc/markov).</span><span class="co">]</span>{.aside} This process is especially helpful with analysis file creation takes multiple steps or files are large.  <span class="in">`readRDS`</span> is very fast for loading binary R objects.  <span class="co">[</span><span class="ot">There is an older way to read/write binary R objects using R `load` and `save` and `Hmisc` frontends for them `Load` and `Save`.  Files using these formats typically have suffixes of `.rda`, `.RData`, or `.sav`, and using `load` stores the object under its original name, which might not be clear until you check your R `.global` environment by looking in the upper right `RStudio` panel.</span><span class="co">]</span>{.aside}</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>When variables need to be recoded, have labels added or changed, or</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>have units of </span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>measurement added<span class="co">[</span><span class="ot">Variable labels and units of measurement are used in special ways in my R packages.  This will show up in the `describe` and `contents` function outputs below and in axis labels for graphics.</span><span class="co">]</span>{.aside}, I specify those using the <span class="in">`Hmisc`</span> package [<span class="in">`upData`</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>function](https://www.rdocumentation.org/packages/Hmisc/versions/4.7-0/topics/upData).</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>To facilitate some operations requiring variable names to be quoted, define a function <span class="in">`.q`</span> to quote them automatically. <span class="in">`.q`</span> is like the <span class="in">`Hmisc`</span> function <span class="in">`Cs`</span> but also allows elements to be named.  It will be in <span class="in">`Hmisc`</span> 4.7-1.</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r quote}</span></span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>.q <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sys.call</span>()[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>  w <span class="ot">&lt;-</span> <span class="fu">as.character</span>(s)</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">names</span>(s)</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(n)) <span class="fu">names</span>(w) <span class="ot">&lt;-</span> n</span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>  w</span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a><span class="fu">.q</span>(a, b, c, <span class="st">'this and that'</span>)</span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a><span class="fu">.q</span>(<span class="at">dog=</span>a, <span class="at">giraffe=</span>b, <span class="at">cat=</span>c)</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>Here is an <span class="in">`upData`</span> example:</span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to recode from atypical coding for yes/no in raw data</span></span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>yn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">factor</span>(x, <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="fu">c</span>(<span class="st">'yes'</span>, <span class="st">'no'</span>))</span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span></span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">upData</span>(d,</span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>         <span class="at">rename =</span> <span class="fu">.q</span>(<span class="at">gender=</span>sex, <span class="at">any.event=</span>anyEvent),</span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>         <span class="at">posSE    =</span> <span class="fu">yn</span>(posSE),</span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>         <span class="at">newMI    =</span> <span class="fu">yn</span>(newMI),</span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>         <span class="at">newPTCA  =</span> <span class="fu">yn</span>(newPTCA),</span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a>         <span class="at">newCABG  =</span> <span class="fu">yn</span>(newCABG),</span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a>         <span class="at">death    =</span> <span class="fu">yn</span>(death),</span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofHT   =</span> <span class="fu">yn</span>(hxofHT),</span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofDM   =</span> <span class="fu">yn</span>(hxofDM),</span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofCig  =</span> <span class="fu">factor</span>(hxofCig, <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>),</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">c</span>(<span class="st">'heavy'</span>, <span class="st">'moderate'</span>, <span class="st">'non-smoker'</span>)), </span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofMI   =</span> <span class="fu">yn</span>(hxofMI),</span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofPTCA =</span> <span class="fu">yn</span>(hxofPTCA),</span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>         <span class="at">hxofCABG =</span> <span class="fu">yn</span>(hxofCABG),</span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>         <span class="at">chestpain=</span> <span class="fu">yn</span>(chestpain),</span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>         <span class="at">anyEvent =</span> <span class="fu">yn</span>(anyEvent),</span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>         <span class="at">drop=</span><span class="fu">.q</span>(event.no, phat, mics, deltaEF,</span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a>                 newpkmphr, gdpkmphr, gdmaxmphr, gddpeakdp, gdmaxdp,</span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>                 hardness),</span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a>         <span class="at">labels=</span><span class="fu">c</span>(</span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>           <span class="at">bhr       =</span> <span class="st">'Basal heart rate'</span>,</span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>           <span class="at">basebp    =</span> <span class="st">'Basal blood pressure'</span>,</span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>           <span class="at">basedp    =</span> <span class="st">'Basal Double Product bhr*basebp'</span>,</span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a>           <span class="at">age       =</span> <span class="st">'Age'</span>,</span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>           <span class="at">pkhr      =</span> <span class="st">'Peak heart rate'</span>,</span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a>           <span class="at">sbp       =</span> <span class="st">'Systolic blood pressure'</span>,</span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a>           <span class="at">dp        =</span> <span class="st">'Double product pkhr*sbp'</span>,</span>
+<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a>           <span class="at">dose      =</span> <span class="st">'Dose of dobutamine given'</span>,</span>
+<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a>           <span class="at">maxhr     =</span> <span class="st">'Maximum heart rate'</span>,</span>
+<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>           <span class="at">pctMphr   =</span> <span class="st">'Percent maximum predicted heart rate achieved'</span>,</span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a>           <span class="at">mbp       =</span> <span class="st">'Maximum blood pressure'</span>,</span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a>           <span class="at">dpmaxdo   =</span> <span class="st">'Double product on max dobutamine dose'</span>,</span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a>           <span class="at">dobdose   =</span> <span class="st">'Dobutamine dose at max double product'</span>,</span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a>           <span class="at">baseEF    =</span> <span class="st">'Baseline cardiac ejection fraction'</span>,</span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a>           <span class="at">dobEF     =</span> <span class="st">'Ejection fraction on dobutamine'</span>, </span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a>           <span class="at">chestpain =</span> <span class="st">'Chest pain'</span>, </span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a>           <span class="at">ecg       =</span> <span class="st">'Baseline electrocardiogram diagnosis'</span>,</span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a>           <span class="at">restwma   =</span> <span class="st">'Resting wall motion abnormality on echocardiogram'</span>, </span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a>           <span class="at">posSE     =</span> <span class="st">'Positive stress echocardiogram'</span>,</span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a>           <span class="at">newMI     =</span> <span class="st">'New myocardial infarction'</span>,</span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a>           <span class="at">newPTCA   =</span> <span class="st">'Recent angioplasty'</span>,</span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a>           <span class="at">newCABG   =</span> <span class="st">'Recent bypass surgery'</span>, </span>
+<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofHT    =</span> <span class="st">'History of hypertension'</span>, </span>
+<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofDM    =</span> <span class="st">'History of diabetes'</span>,</span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofMI    =</span> <span class="st">'History of myocardial infarction'</span>,</span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofCig   =</span> <span class="st">'History of smoking'</span>,</span>
+<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofPTCA  =</span> <span class="st">'History of angioplasty'</span>,</span>
+<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a>           <span class="at">hxofCABG  =</span> <span class="st">'History of coronary artery bypass surgery'</span>,</span>
+<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a>           <span class="at">anyEvent  =</span> <span class="st">'Death, newMI, newPTCA, or newCABG'</span>),</span>
+<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a>         <span class="at">units=</span><span class="fu">.q</span>(<span class="at">age=</span>years, <span class="at">bhr=</span>bpm, <span class="at">basebp=</span>mmHg, <span class="at">basedp=</span><span class="st">'bpm*mmHg'</span>,</span>
+<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a>           <span class="at">pkhr=</span>mmHg, <span class="at">sbp=</span>mmHg, <span class="at">dp=</span><span class="st">'bpm*mmHg'</span>, <span class="at">maxhr=</span>bpm,</span>
+<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a>           <span class="at">mbp=</span>mmHg, <span class="at">dpmaxdo=</span><span class="st">'bpm*mmHg'</span>, <span class="at">baseEF=</span><span class="st">'%'</span>, <span class="at">dobEF=</span><span class="st">'%'</span>,</span>
+<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a>           <span class="at">pctMphr=</span><span class="st">'%'</span>, <span class="at">dose=</span>mg, <span class="at">dobdose=</span>mg)</span>
+<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(d, <span class="st">'stressEcho.rds'</span>, <span class="at">compress=</span><span class="st">'xz'</span>)</span>
+<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we could have automatically recoded all 0:1 variables</span></span>
+<span id="cb20-117"><a href="#cb20-117" aria-hidden="true" tabindex="-1"></a><span class="co"># if they were all to be treated identically:</span></span>
+<span id="cb20-118"><a href="#cb20-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-119"><a href="#cb20-119" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="fu">names</span>(d)) </span>
+<span id="cb20-120"><a href="#cb20-120" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">all</span>(d[[x]] <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))) d[[x]] <span class="ot">&lt;-</span> <span class="fu">yn</span>(d[[x]])</span>
+<span id="cb20-121"><a href="#cb20-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
+<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-125"><a href="#cb20-125" aria-hidden="true" tabindex="-1"></a><span class="fu">##  </span></span>
+<span id="cb20-126"><a href="#cb20-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-127"><a href="#cb20-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-128"><a href="#cb20-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-129"><a href="#cb20-129" aria-hidden="true" tabindex="-1"></a><span class="fu">## External Metadata</span></span>
+<span id="cb20-130"><a href="#cb20-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a>Sometimes metadata comes from a separate source.  Suppose you imported a data frame <span class="in">`d`</span> but have also imported a data frame <span class="in">`m`</span> containing metadata: the same variable names in <span class="in">`d`</span> (variable <span class="in">`name`</span>) plus fields <span class="in">`label`</span>, <span class="in">`units`</span>, and <span class="in">`comment`</span>.  Dataset <span class="in">`m`</span> can contain variables not currently being used.  To add the labels and units into <span class="in">`d`</span> and to store comments separately, use the following example.</span>
+<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">names</span>(d)</span>
+<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> n <span class="sc">%nin%</span> m<span class="sc">$</span>name</span>
+<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(i)) <span class="fu">cat</span>(<span class="st">'The following variables have no metadata:'</span>,</span>
+<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a>               <span class="fu">paste</span>(n[i], <span class="at">collapse=</span><span class="st">', '</span>), <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span>
+<span id="cb20-138"><a href="#cb20-138" aria-hidden="true" tabindex="-1"></a>vcomment        <span class="ot">&lt;-</span> m<span class="sc">$</span>comment</span>
+<span id="cb20-139"><a href="#cb20-139" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(vcomment) <span class="ot">&lt;-</span> m<span class="sc">$</span>name</span>
+<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a>mn              <span class="ot">&lt;-</span> <span class="fu">subset</span>(m, name <span class="sc">%in%</span> n)</span>
+<span id="cb20-141"><a href="#cb20-141" aria-hidden="true" tabindex="-1"></a>labs            <span class="ot">&lt;-</span> mn<span class="sc">$</span>label</span>
+<span id="cb20-142"><a href="#cb20-142" aria-hidden="true" tabindex="-1"></a>un              <span class="ot">&lt;-</span> mn<span class="sc">$</span>units</span>
+<span id="cb20-143"><a href="#cb20-143" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(labs)     <span class="ot">&lt;-</span> <span class="fu">names</span>(un) <span class="ot">&lt;-</span> mn<span class="sc">$</span>name</span>
+<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">upData</span>(d, <span class="at">labels=</span>labs, <span class="at">units=</span>un)</span>
+<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-146"><a href="#cb20-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-147"><a href="#cb20-147" aria-hidden="true" tabindex="-1"></a>To look up the <span class="in">`comment`</span> for a variable at any time use e.g. <span class="in">`vcomment['height']`</span>.  All comments were saved in vector <span class="in">`vcomment`</span> in case the metadata dictionary <span class="in">`m`</span> defined variables that are not in <span class="in">`d`</span> but were to be imported later in the script.  Comments for multiple variables can be looked up using e.g. <span class="in">`vcomment[.q(height, weight, age)]`</span>.</span>
+<span id="cb20-148"><a href="#cb20-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-149"><a href="#cb20-149" aria-hidden="true" tabindex="-1"></a>::: {.column-margin}</span>
+<span id="cb20-150"><a href="#cb20-150" aria-hidden="true" tabindex="-1"></a>If you want to look up a variable's comment without having to quote its name use the following:</span>
+<span id="cb20-151"><a href="#cb20-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-152"><a href="#cb20-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r vcom,eval=FALSE}</span></span>
+<span id="cb20-153"><a href="#cb20-153" aria-hidden="true" tabindex="-1"></a>vcom <span class="ot">&lt;-</span> <span class="cf">function</span>(...)</span>
+<span id="cb20-154"><a href="#cb20-154" aria-hidden="true" tabindex="-1"></a>  vcomment[<span class="fu">as.character</span>(<span class="fu">sys.call</span>()[<span class="sc">-</span><span class="dv">1</span>])]</span>
+<span id="cb20-155"><a href="#cb20-155" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage: vcom(age,sbp,dbp)</span></span>
+<span id="cb20-156"><a href="#cb20-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-157"><a href="#cb20-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-158"><a href="#cb20-158" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-159"><a href="#cb20-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-160"><a href="#cb20-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## CSV</span></span>
+<span id="cb20-161"><a href="#cb20-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-162"><a href="#cb20-162" aria-hidden="true" tabindex="-1"></a>The built-in function in R for reading <span class="in">`.csv`</span> files is <span class="co">[</span><span class="ot">`read.csv`</span><span class="co">](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table)</span>.  The <span class="in">`Hmisc`</span> package has a function <span class="co">[</span><span class="ot">`csv.get`</span><span class="co">](https://www.rdocumentation.org/packages/Hmisc/versions/4.7-0/topics/csv.get)</span> which calls <span class="in">`read.csv`</span> but offers some enhancements in variable naming, date handling, and reading variable labels from a specified row number.  Illegal characters in variable names are changed to periods, and by default underscores are also changed to periods.  If any variable names are changed and the <span class="in">`labels`</span> argument is not given, original variable names are stored in the variable <span class="in">`label`</span> attributes.</span>
+<span id="cb20-163"><a href="#cb20-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-164"><a href="#cb20-164" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">`fread`</span><span class="co">](https://www.rdocumentation.org/packages/data.table/versions/1.14.2/topics/fread)</span> function in the <span class="in">`data.table`</span> package is blazing fast for reading large files and offers a number of options.  <span class="in">`csv.get`</span> uses it if <span class="in">`data.table`</span> is installed on the system.</span>
+<span id="cb20-165"><a href="#cb20-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-166"><a href="#cb20-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## REDCap</span></span>
+<span id="cb20-167"><a href="#cb20-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-168"><a href="#cb20-168" aria-hidden="true" tabindex="-1"></a>If reading data exported from <span class="co">[</span><span class="ot">`REDCap`</span><span class="co">](https://www.project-redcap.org)</span>  that are placed into the</span>
+<span id="cb20-169"><a href="#cb20-169" aria-hidden="true" tabindex="-1"></a>project directory I run the following to get rid of duplicate</span>
+<span id="cb20-170"><a href="#cb20-170" aria-hidden="true" tabindex="-1"></a>(<span class="in">`factor`</span> and non-<span class="in">`factor`</span> versions of variables <span class="in">`REDCap`</span> produces)</span>
+<span id="cb20-171"><a href="#cb20-171" aria-hidden="true" tabindex="-1"></a>variables and automatically convert dates to <span class="in">`Date`</span> variables:</span>
+<span id="cb20-172"><a href="#cb20-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-173"><a href="#cb20-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-174"><a href="#cb20-174" aria-hidden="true" tabindex="-1"></a><span class="in">require(Hmisc)</span></span>
+<span id="cb20-175"><a href="#cb20-175" aria-hidden="true" tabindex="-1"></a><span class="in">getRs('importREDCap.r', put='source')  # source() code to define function</span></span>
+<span id="cb20-176"><a href="#cb20-176" aria-hidden="true" tabindex="-1"></a><span class="in">mydata &lt;- importREDCap()  # by default operates on last downloaded export</span></span>
+<span id="cb20-177"><a href="#cb20-177" aria-hidden="true" tabindex="-1"></a><span class="in">saveRDS(mydata, 'mydata.rds', compress='xz')</span></span>
+<span id="cb20-178"><a href="#cb20-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-179"><a href="#cb20-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-180"><a href="#cb20-180" aria-hidden="true" tabindex="-1"></a>When file names are not given to <span class="in">`importREDCap`</span> the function looks for</span>
+<span id="cb20-181"><a href="#cb20-181" aria-hidden="true" tabindex="-1"></a>the latest created <span class="in">`.csv`</span> file and <span class="in">`.R`</span> file with same prefix and uses those.</span>
+<span id="cb20-182"><a href="#cb20-182" aria-hidden="true" tabindex="-1"></a>See <span class="co">[</span><span class="ot">this</span><span class="co">](http://hbiostat.org/bbr/md/r.html)</span> for more information.</span>
+<span id="cb20-183"><a href="#cb20-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-184"><a href="#cb20-184" aria-hidden="true" tabindex="-1"></a><span class="fu">## SAS, Stata, SPSS</span></span>
+<span id="cb20-185"><a href="#cb20-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-186"><a href="#cb20-186" aria-hidden="true" tabindex="-1"></a>SAS, Stata, and SPSS binary files are converted to R <span class="in">`data.frame`</span>s using the R <span class="co">[</span><span class="ot">haven package</span><span class="co">](https://haven.tidyverse.org)</span>.  Here's an example:</span>
+<span id="cb20-187"><a href="#cb20-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-188"><a href="#cb20-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r haven, eval=FALSE}</span></span>
+<span id="cb20-189"><a href="#cb20-189" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(haven)   <span class="co"># after you've installed the package</span></span>
+<span id="cb20-190"><a href="#cb20-190" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_sas</span>(<span class="st">'mydata.sas7bdat'</span>)</span>
+<span id="cb20-191"><a href="#cb20-191" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_xpt</span>(<span class="st">'mydata.xpt'</span>)        <span class="co"># SAS transport files</span></span>
+<span id="cb20-192"><a href="#cb20-192" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">'mydata.dta'</span>)        <span class="co"># Stata</span></span>
+<span id="cb20-193"><a href="#cb20-193" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">'mydata.sav'</span>)        <span class="co"># SPSS</span></span>
+<span id="cb20-194"><a href="#cb20-194" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_por</span>(<span class="st">'mydata.por'</span>)        <span class="co"># Older SPSS files</span></span>
+<span id="cb20-195"><a href="#cb20-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-196"><a href="#cb20-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-197"><a href="#cb20-197" aria-hidden="true" tabindex="-1"></a>These import functions carry variable labels into the data frame and convert dates and times appropriately.  Character vectors are not converted to factors.</span>
+<span id="cb20-198"><a href="#cb20-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-199"><a href="#cb20-199" aria-hidden="true" tabindex="-1"></a><span class="fu">## Excel</span></span>
+<span id="cb20-200"><a href="#cb20-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-201"><a href="#cb20-201" aria-hidden="true" tabindex="-1"></a>The <span class="in">`readxl`</span> package that comes with R reads binary Excel spreadsheet <span class="in">`.xls`</span> and <span class="in">`.xlsx`</span> files to produce something that is almost a data frame.  Here is an example where the imported dataset is converted into a plain <span class="in">`data.frame`</span> and the variable names are changed to all lower case.  <span class="in">`read_excel`</span> does not handle variable labels.  You can specify which sheet or which cell range to import if desired.</span>
+<span id="cb20-202"><a href="#cb20-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-203"><a href="#cb20-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r excel, eval=FALSE}</span></span>
+<span id="cb20-204"><a href="#cb20-204" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">'my.xlsx'</span>)</span>
+<span id="cb20-205"><a href="#cb20-205" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use require(readxl) then d &lt;- read_excel(...)</span></span>
+<span id="cb20-206"><a href="#cb20-206" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(d)</span>
+<span id="cb20-207"><a href="#cb20-207" aria-hidden="true" tabindex="-1"></a><span class="co"># Or better: make it a data table: setDT(d)</span></span>
+<span id="cb20-208"><a href="#cb20-208" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">names</span>(d))</span>
+<span id="cb20-209"><a href="#cb20-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-210"><a href="#cb20-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-211"><a href="#cb20-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-212"><a href="#cb20-212" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple Files</span></span>
+<span id="cb20-213"><a href="#cb20-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-214"><a href="#cb20-214" aria-hidden="true" tabindex="-1"></a>One of the most important principles to following in programming data analyses is to not do the same thing more than once.  Repetitive code wastes time and is harder to maintain.  One example of avoiding repetition is in reading a large number of files in R.  If the files are stored in one directory and have a consistent file naming scheme (or you want to import every <span class="in">`.csv`</span> file in the directory), one can avoid naming the individual files.  The results may be stored in an R <span class="in">`list`</span> that has named elements, and there are many processing tasks that can be automated by looping over this list.</span>
+<span id="cb20-215"><a href="#cb20-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-216"><a href="#cb20-216" aria-hidden="true" tabindex="-1"></a>In the following example assume that all the data files are <span class="in">`.csv`</span> files in the current working directory, and they all have names of the form <span class="in">`xz*.csv`</span>.  Let's read all of them and put each file into a data frame named by the characters in front of <span class="in">`.csv`</span>.  These data frames are stuffed into a <span class="in">`list`</span> named <span class="in">`X`</span>.  The <span class="in">`Hmisc`</span> <span class="in">`csv.get`</span> function is used to read the files, automatically translating dates to <span class="in">`Date`</span> variables, and because <span class="in">`lowernames=TRUE`</span> is specified, variable names are translated to lower case.  There is an option to fetch variable labels from a certain row of each <span class="in">`.csv`</span> file but we are not using that.</span>
+<span id="cb20-217"><a href="#cb20-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-218"><a href="#cb20-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb20-219"><a href="#cb20-219" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">pattern=</span><span class="st">'xz.*.csv'</span>)  <span class="co"># vector of qualifying file names</span></span>
+<span id="cb20-220"><a href="#cb20-220" aria-hidden="true" tabindex="-1"></a><span class="co"># Get base part of *.csv</span></span>
+<span id="cb20-221"><a href="#cb20-221" aria-hidden="true" tabindex="-1"></a>dnames <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">'.csv'</span>, <span class="st">''</span>, files)</span>
+<span id="cb20-222"><a href="#cb20-222" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb20-224"><a href="#cb20-224" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(f <span class="cf">in</span> files) {</span>
+<span id="cb20-225"><a href="#cb20-225" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">'Reading file'</span>, f, <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span>
+<span id="cb20-226"><a href="#cb20-226" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb20-227"><a href="#cb20-227" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">csv.get</span>(f, <span class="at">lowernames=</span><span class="cn">TRUE</span>)</span>
+<span id="cb20-228"><a href="#cb20-228" aria-hidden="true" tabindex="-1"></a>  <span class="co"># To read SAS, Stata, SPSS binary files use a haven function instead</span></span>
+<span id="cb20-229"><a href="#cb20-229" aria-hidden="true" tabindex="-1"></a>  <span class="co"># To convert to data.table do setDT(d) here</span></span>
+<span id="cb20-230"><a href="#cb20-230" aria-hidden="true" tabindex="-1"></a>  X[[dnames[i]]] <span class="ot">&lt;-</span> d</span>
+<span id="cb20-231"><a href="#cb20-231" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-232"><a href="#cb20-232" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(X, <span class="st">'X.rds'</span>, <span class="at">compress=</span><span class="st">'xz'</span>)  <span class="co"># Efficiently store all datasets together</span></span>
+<span id="cb20-233"><a href="#cb20-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-235"><a href="#cb20-235" aria-hidden="true" tabindex="-1"></a>To process one of the datasets one can do things like <span class="in">`summary(X[[3]])`</span> or <span class="in">`summary(X$baseline)`</span> where the third dataset stored was named <span class="in">`baseline`</span> because it was imported from <span class="in">`baseline.csv`</span>.</span>
+<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a>Now there are many possibilities for processing all the datasets at once such as the following.</span>
+<span id="cb20-238"><a href="#cb20-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-239"><a href="#cb20-239" aria-hidden="true" tabindex="-1"></a><span class="in">```{r processmany,eval=FALSE}</span></span>
+<span id="cb20-240"><a href="#cb20-240" aria-hidden="true" tabindex="-1"></a>k   <span class="ot">&lt;-</span> <span class="fu">length</span>(X)          <span class="co"># number of datasets</span></span>
+<span id="cb20-241"><a href="#cb20-241" aria-hidden="true" tabindex="-1"></a>nam <span class="ot">&lt;-</span> <span class="fu">lapply</span>(X, names)   <span class="co"># list with k elements, each is a vector of names</span></span>
+<span id="cb20-242"><a href="#cb20-242" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the union of all variable names used in any dataset</span></span>
+<span id="cb20-243"><a href="#cb20-243" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(<span class="fu">unlist</span>(nam))) <span class="co"># all the variables appearing in any dataset</span></span>
+<span id="cb20-244"><a href="#cb20-244" aria-hidden="true" tabindex="-1"></a><span class="co"># Get variable names contained in all datasets</span></span>
+<span id="cb20-245"><a href="#cb20-245" aria-hidden="true" tabindex="-1"></a>common <span class="ot">&lt;-</span> <span class="fu">names</span>(X[[<span class="dv">1</span>]])</span>
+<span id="cb20-246"><a href="#cb20-246" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span> <span class="sc">:</span> k) {</span>
+<span id="cb20-247"><a href="#cb20-247" aria-hidden="true" tabindex="-1"></a>  common <span class="ot">&lt;-</span> <span class="fu">intersect</span>(common, <span class="fu">names</span>(X[[i]]))</span>
+<span id="cb20-248"><a href="#cb20-248" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span> <span class="fu">length</span>(common)) <span class="cf">break</span>  <span class="co"># intersection already empty</span></span>
+<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-250"><a href="#cb20-250" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(common)</span>
+<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute number of variables across datasets</span></span>
+<span id="cb20-252"><a href="#cb20-252" aria-hidden="true" tabindex="-1"></a>nvar <span class="ot">&lt;-</span> <span class="fu">sapply</span>(X, length)  <span class="co"># or ncol</span></span>
+<span id="cb20-253"><a href="#cb20-253" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of observations per dataset</span></span>
+<span id="cb20-254"><a href="#cb20-254" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(X, nrow)</span>
+<span id="cb20-255"><a href="#cb20-255" aria-hidden="true" tabindex="-1"></a><span class="co"># For each variable name count the number of datasets containing it</span></span>
+<span id="cb20-256"><a href="#cb20-256" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">dsname=</span><span class="fu">rep</span>(<span class="fu">names</span>(X), nvar), <span class="at">vname=</span><span class="fu">unlist</span>(nam))</span>
+<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a>w[, .N, keyby<span class="ot">=</span>vname]</span>
+<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a><span class="co"># For each variable create a comma-separated list of datasets</span></span>
+<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a><span class="co"># containing it</span></span>
+<span id="cb20-260"><a href="#cb20-260" aria-hidden="true" tabindex="-1"></a>w[, .(<span class="at">datasets=</span><span class="fu">paste</span>(<span class="fu">sort</span>(dsname), <span class="at">collapse=</span><span class="st">', '</span>)), keyby<span class="ot">=</span>vname]</span>
+<span id="cb20-261"><a href="#cb20-261" aria-hidden="true" tabindex="-1"></a><span class="co"># For datasets having a subject ID variable named id compute</span></span>
+<span id="cb20-262"><a href="#cb20-262" aria-hidden="true" tabindex="-1"></a><span class="co"># the number of unique ids</span></span>
+<span id="cb20-263"><a href="#cb20-263" aria-hidden="true" tabindex="-1"></a>uid <span class="ot">&lt;-</span> <span class="cf">function</span>(d) <span class="cf">if</span>(<span class="st">'id'</span> <span class="sc">%in%</span> <span class="fu">names</span>(d)) <span class="fu">length</span>(<span class="fu">unique</span>(d<span class="sc">$</span>id)) <span class="cf">else</span> <span class="cn">NA</span></span>
+<span id="cb20-264"><a href="#cb20-264" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(X, uid)</span>
+<span id="cb20-265"><a href="#cb20-265" aria-hidden="true" tabindex="-1"></a><span class="co"># To repeatedly analyze one of the datasets, extract it to a single data frame</span></span>
+<span id="cb20-266"><a href="#cb20-266" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> X<span class="sc">$</span>baseline</span>
+<span id="cb20-267"><a href="#cb20-267" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(d)</span>
+<span id="cb20-268"><a href="#cb20-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-269"><a href="#cb20-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-270"><a href="#cb20-270" aria-hidden="true" tabindex="-1"></a><span class="fu">## Importing the Latest File</span></span>
+<span id="cb20-271"><a href="#cb20-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-272"><a href="#cb20-272" aria-hidden="true" tabindex="-1"></a>Sometimes one keeps multiple versions of the raw data to be imported inside the project folder.  If you want to import the file that was last modified you can use the <span class="in">`reptools`</span> <span class="in">`latestFile`</span> function.  You give it a pattern of file names to match.  For example a pattern of <span class="in">`.csv$`</span> means "ending with <span class="in">`.csv`</span>" and a pattern of <span class="in">`^baseline`</span> means "starting with <span class="in">`baseline`</span>".  A pattern of <span class="in">`foo`</span> means that <span class="in">`foo`</span> is contained anywhere in the file name.  Here is an example.</span>
+<span id="cb20-273"><a href="#cb20-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-274"><a href="#cb20-274" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb20-275"><a href="#cb20-275" aria-hidden="true" tabindex="-1"></a><span class="co"># Look for file names starting with base, followed by any number of</span></span>
+<span id="cb20-276"><a href="#cb20-276" aria-hidden="true" tabindex="-1"></a><span class="co"># characters, and ending with .csv</span></span>
+<span id="cb20-277"><a href="#cb20-277" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">latestFile</span>(<span class="st">'^base.*csv$'</span>)</span>
+<span id="cb20-278"><a href="#cb20-278" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">csv.get</span>(f)</span>
+<span id="cb20-279"><a href="#cb20-279" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-280"><a href="#cb20-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-281"><a href="#cb20-281" aria-hidden="true" tabindex="-1"></a><span class="fu">## Post Import</span></span>
+<span id="cb20-282"><a href="#cb20-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-283"><a href="#cb20-283" aria-hidden="true" tabindex="-1"></a>The <span class="in">`Hmisc`</span> package <span class="in">`cleanup.import`</span> function improves imported data storage in a number of ways including converting double precision variables to <span class="in">`integer`</span> when originally <span class="in">`double`</span> but not containing fractional values (this halves the storage requirement).  <span class="in">`Hmisc::upData`</span> is the go-to function for annotating data frames/tables, renaming variables, and dropping variables.  <span class="in">`Hmisc::dataframeReduced`</span> removes problematic variables, e.g., those with a high fraction of missing values or that are binary with very small prevalence.</span>
+<span id="cb20-284"><a href="#cb20-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-285"><a href="#cb20-285" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-286"><a href="#cb20-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-287"><a href="#cb20-287" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variable Naming</span></span>
+<span id="cb20-288"><a href="#cb20-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-289"><a href="#cb20-289" aria-hidden="true" tabindex="-1"></a>I prefer short but descriptive variable names.  As exemplified above, I use variable <span class="in">`label`</span>s and <span class="in">`units`</span> to provide more information.  For example I wouldn't name the age variable <span class="in">`age.at.enrollment.yrs`</span> but would name it <span class="in">`age`</span> with a label of <span class="in">`Age at Enrollment`</span> and with <span class="in">`units`</span> of <span class="in">`years`</span>.  Short, clear names unclutter code, especially formulas in statistical models.  One can always fetch a variable label while writing a program (e.g., typing <span class="in">`label(d$age)`</span> at the console) to check that you have the right variable (or put the data dictionary in a window for easy reference, as shown below).  <span class="in">`Hmisc`</span> package graphics and table making functions such as <span class="in">`summaryM`</span> and <span class="in">`summary.formula`</span> specially typeset <span class="in">`units`</span> in a smaller font.</span>
+<span id="cb20-290"><a href="#cb20-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-291"><a href="#cb20-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-292"><a href="#cb20-292" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Dictionary {#sec-fcreate-dd}</span></span>
+<span id="cb20-293"><a href="#cb20-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-294"><a href="#cb20-294" aria-hidden="true" tabindex="-1"></a>The <span class="in">`Hmisc`</span> package <span class="in">`contents`</span> function will provide a concise data dictionary.    Here is an example using the permanent version (which coded binary variables as 0/1 instead of N/Y) of the dataset created above, which can be accessed with the <span class="in">`Hmisc`</span> <span class="in">`getHdata`</span> function.  The top of the <span class="in">`contents`</span> output has the number of levels for <span class="in">`factor`</span> variables hyperlinked.  Click on the number to go directly to the list of levels for that variable.</span>
+<span id="cb20-295"><a href="#cb20-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-296"><a href="#cb20-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{r getdat}</span></span>
+<span id="cb20-297"><a href="#cb20-297" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(Hmisc)</span>
+<span id="cb20-298"><a href="#cb20-298" aria-hidden="true" tabindex="-1"></a><span class="fu">getHdata</span>(stressEcho)</span>
+<span id="cb20-299"><a href="#cb20-299" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> stressEcho</span>
+<span id="cb20-300"><a href="#cb20-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-301"><a href="#cb20-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-302"><a href="#cb20-302" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true"}</span>
+<span id="cb20-303"><a href="#cb20-303" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Dictionary</span></span>
+<span id="cb20-304"><a href="#cb20-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-305"><a href="#cb20-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r ddict2,results='asis'}</span></span>
+<span id="cb20-306"><a href="#cb20-306" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span>(<span class="fu">contents</span>(d), <span class="at">levelType=</span><span class="st">'table'</span>)</span>
+<span id="cb20-307"><a href="#cb20-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-308"><a href="#cb20-308" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-309"><a href="#cb20-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-310"><a href="#cb20-310" aria-hidden="true" tabindex="-1"></a>You can write the text output of <span class="in">`contents`</span> into a text file in your current working directory, and click on that file in the <span class="in">`RStudio`</span> <span class="in">`Files`</span> window to create a new tab in the editor panel where you can view the data dictionary at any time.  This is especially helpful if you need a reminder of variable definitions that are stored in the variable labels.  Here is an example where the formatted data dictionary is saved.  <span class="co">[</span><span class="ot">Users having the `xless` system command installed can pop up a `contents` window at any time by typing `xless(contents(d))` in the console. `xless` is in `Hmisc`.</span><span class="co">]</span>{.aside}</span>
+<span id="cb20-311"><a href="#cb20-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-312"><a href="#cb20-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,eval=FALSE}</span></span>
+<span id="cb20-313"><a href="#cb20-313" aria-hidden="true" tabindex="-1"></a><span class="fu">capture.output</span>(<span class="fu">contents</span>(d), <span class="at">file=</span><span class="st">'contents.txt'</span>)</span>
+<span id="cb20-314"><a href="#cb20-314" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-315"><a href="#cb20-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-316"><a href="#cb20-316" aria-hidden="true" tabindex="-1"></a>Or put the html version of the data dictionary into a small browser window to which you can refer at any point in analysis coding.</span>
+<span id="cb20-317"><a href="#cb20-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-318"><a href="#cb20-318" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb20-319"><a href="#cb20-319" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">html</span>(<span class="fu">contents</span>(d)), <span class="at">file=</span><span class="st">'contents.html'</span>)</span>
+<span id="cb20-320"><a href="#cb20-320" aria-hidden="true" tabindex="-1"></a><span class="fu">browseURL</span>(<span class="st">'contents.html'</span>, <span class="at">browser=</span><span class="st">'vivaldi -new-window'</span>)</span>
+<span id="cb20-321"><a href="#cb20-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-322"><a href="#cb20-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-323"><a href="#cb20-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-324"><a href="#cb20-324" aria-hidden="true" tabindex="-1"></a><span class="in">`RStudio`</span> provides a nice way to do this, facilitated by the <span class="in">`htmlView`</span> helper function in <span class="in">`reptools`</span>.  <span class="in">`htmlView`</span> takes any number of objects for which an <span class="in">`html`</span> method exists to render them.  They are rendered in the <span class="in">`RStudio`</span> <span class="in">`Viewer`</span> pane.  If you are running outside <span class="in">`RStudio`</span>, your default browser will be launched instead.<span class="co">[</span><span class="ot">Occasionally `RStudio Viewer` will drop its arrow button making it impossible to navigate back and forth to different `html` outputs.&lt;br&gt;Code for `htmlView` and `htmlViewx` may be viewed in [`reptools.r`](https://github.com/harrelfe/rscripts/blob/master/reptools.r).</span><span class="co">]</span>{.aside}</span>
+<span id="cb20-325"><a href="#cb20-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-326"><a href="#cb20-326" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb20-327"><a href="#cb20-327" aria-hidden="true" tabindex="-1"></a><span class="fu">getRs</span>(<span class="st">'reptools.r'</span>, <span class="at">put=</span><span class="st">'source'</span>)</span>
+<span id="cb20-328"><a href="#cb20-328" aria-hidden="true" tabindex="-1"></a><span class="co"># reptools.r defines htmlView, htmlViewx, kabl, maketabs, dataChk, ...</span></span>
+<span id="cb20-329"><a href="#cb20-329" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlView</span>(<span class="fu">contents</span>(d))</span>
+<span id="cb20-330"><a href="#cb20-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-331"><a href="#cb20-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-332"><a href="#cb20-332" aria-hidden="true" tabindex="-1"></a>In some cases it is best to have a browser window open to the full descriptive statistics for a data table/frame (see below; the <span class="in">`describe`</span> function also shows labels, units, and levels).  <span class="co">[</span><span class="ot">For either approach it would be easy to have multiple tabs open, one tab for each of a series of data tables, or use `htmlView`.</span><span class="co">]</span>{.aside}</span>
+<span id="cb20-333"><a href="#cb20-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-334"><a href="#cb20-334" aria-hidden="true" tabindex="-1"></a>To be able to have multiple windows open to see information about datasets it is advantageous to open an external browser window.  The <span class="in">`htmlViewx`</span> function will by default open a Vivaldi browser window with the first output put in a new window and all subsequent objects displayed as tabs within that same window.  This behavior can be controlled with the <span class="in">`tab`</span> argument, and you can use a different browser by issuing for example <span class="in">`options(vbrowser='firefox')`</span>.<span class="co">[</span><span class="ot">In Windows you may have to specify a full path and `firefox.exe`.  The tab names will not be correct until `Hmisc` 4.7-1 appears.</span><span class="co">]</span>{.aside}  As an example suppose that two datasets were read from the <span class="in">`hbiostat.org/data`</span> data repository, and the data dictionary and descriptive statistics for both datasets were to be converted to <span class="in">`html`</span> and placed in an external browser window for the duration of the R session.</span>
+<span id="cb20-335"><a href="#cb20-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-336"><a href="#cb20-336" aria-hidden="true" tabindex="-1"></a><span class="in">```{r vbrowse,eval=FALSE}</span></span>
+<span id="cb20-337"><a href="#cb20-337" aria-hidden="true" tabindex="-1"></a><span class="fu">getHdata</span>(support)</span>
+<span id="cb20-338"><a href="#cb20-338" aria-hidden="true" tabindex="-1"></a><span class="fu">getHdata</span>(support2)</span>
+<span id="cb20-339"><a href="#cb20-339" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlViewx</span>(<span class="fu">contents</span>(support ), <span class="fu">describe</span>(support ),</span>
+<span id="cb20-340"><a href="#cb20-340" aria-hidden="true" tabindex="-1"></a>          <span class="fu">contents</span>(support2), <span class="fu">describe</span>(support2))</span>
+<span id="cb20-341"><a href="#cb20-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-342"><a href="#cb20-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-343"><a href="#cb20-343" aria-hidden="true" tabindex="-1"></a>A screenshot of the result is <span class="co">[</span><span class="ot">here</span><span class="co">](https://hbiostat.org/img/htmlViewx.png)</span>.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2022, Frank E Harrell Jr
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.gnu.org/licenses/gpl-3.0.en.html">License</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

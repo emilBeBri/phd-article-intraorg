@@ -1,0 +1,222 @@
+# Manipulation of Longitudinal Data {#sec-long}
+
+```{mermaid}
+flowchart LR
+sf[Storage Formats]
+sf1[Tree]
+sf2[Short and Wide]
+sf3[Tall and Thin]
+sf3a[Uniform Number<br>of Rows,<br>With NAs]
+sf3b[Variable Number<br>of Rows,<br>With Few NAs]
+sf --> sf1 & sf2 & sf3
+sf3 --> sf3a & sf3b
+locf[Last<br>Observation<br>Carried<br>Forward]
+crr[Carry<br>Forward<br>by Adding<br>Rows]
+fi[Find First<br>Observation<br>Meeting Criteria]
+cf[Using Functions<br>That Count<br>Criteria Met]
+im[Inexact<br>Matching]
+sf3a --> locf
+sf3b --> crr & fi & cf & im
+```
+
+The `data.table` package provides exceptional capabilities for manipulating longitudinal data, especially when performing operations by subject.  Before showing a variety of examples that typify common tasks, consider that there are many ways to store longitudinal data, including
+
+* as an R `list` hierarchical tree with one branch per subject (not considered here)
+* "short and wide" with one column per time point (not considered here because this setup requires much more metadata setup, more storage space, and more coding)
+* "tall and thin" with one row per subject per time point _observed_ (the primary format considered in this chapter; typically there are few `NA`s unless many response variables are collected at a single time and some of them are `NA`)
+* "tall and thin" with one row per subject per time point _potentially observed_, with missing values (`NA`) for unobserved measurements (considered in the first example)
+
+## Uniform Number of Rows
+
+Consider first the case where most of the subjects have the same number of rows and `NA` is used as a placeholder with a certain measurement is not made on a given time.  Though highly questionable statistically[LOCF is a form of missing value imputation where imputed values are treated the same as real measurements, resulting in highly deflated estimates of standard errors and much higher than nominal $\alpha$ in frequentist statistical testing.]{.aside}, last observation carried forward (LOCF) is sometimes used to fill in `NA`s so that simple analyses can be performed.
+
+`data.table` has an efficient built-in functions for LOCF (and for last observation carried backward and fill-in using a constant value): [`nafill` and `setnafill`](https://www.rdocumentation.org/packages/data.table/versions/1.14.2/topics/nafill).  Consider a longitudinal data table `L` with 5 observations per each of two subjects.
+
+```{r}
+require(Hmisc)
+require(data.table)
+L <- data.table(id  = c(1, 1, 1, 1, 1, 2, 2, 2, 2, 2),
+                day = c(1, 2, 3, 4, 5, 1, 2, 3, 4, 5),
+                y1  = 1:10,
+                y2  = c(NA, 1, NA, NA, 2, 1, 2, 3, 4, NA),
+                key = .q(id, day))
+# .q(id, day) is the Hmisc version of c('id', 'day')
+L
+setnafill(L, "locf", cols=.q(y1, y2))
+L
+```
+
+`setnafill` changed the data table in place.  Note that `y1` is unchanged since it contained no `NA`s.
+
+## Variable Number of Rows
+
+Consider the somewhat more frequently occuring situation where there is one row per subject per time at which a measurement is made.  Consider a different data table `L`, and create records to fill out the observations, carrying forward to 4 days the subject's last observation on `y` if it was assessed earlier than day 4.
+
+```{r}
+L <- data.table(id  = c(2, 2, 2, 3, 3, 3, 3, 4, 4, 5, 5, 5),
+                day = c(1, 2, 3, 1, 2, 3, 4, 1, 2, 1, 2, 3),
+                y    =  1 : 12, key='id')
+w <- copy(L)   # fresh start with no propagation of changes back to L
+# Only needed if will be using := to compute variables in-place and
+# you don't want the new variables also added to L
+# This is related to data.table doing things by reference instead of 
+# making copies.  w <- L does not create new memory for w.
+# Compute each day's within-subject record number and last record number
+# Feed this directly into a data.table operation to save last records 
+# when the last is on a day < 4
+u <- w[, .q(seq, maxseq) := .(1 : .N, .N), by=id][seq == maxseq & day < 4,]
+# Extra observations to fill out to day 4
+u <- u[, .(day = (day + 1) : 4, y = y), by=id]
+u
+w <- rbind(L, u, fill=TRUE)
+setkey(w, id, day)  # sort and index
+w
+```
+
+Find the first time at which y >= 3 and at which y >= 7.  [`day[y >= 3]` is read as "the value of `day` when `y >= 3`".  It is a standard subscripting operation in R for two parallel vectors `day` and `y`.  Taking the minimum value of `day` satisfying the condition gives us the first qualifying day.]{.aside}
+
+```{r firstt}
+L[, .(first3 = min(day[y >= 3]),
+      first7 = min(day[y >= 7])), by=id]
+```
+
+Same but instead of resulting in an infinite value if no observations for a subject meet the condition, make the result `NA`.
+
+```{r firstna}
+mn <- function(x) if(length(x)) min(x) else as.double(NA)
+# as.double needed because day is stored as double precision
+# (type contents(L) to see this) and data.table requires
+# consistent storage types
+L[, .(first3 = mn(day[y >= 3]),
+      first7 = mn(day[y >= 7])), by=id]
+```
+
+Add a new variable `z` and compute the first day at which `z` is above 0.5 for two days in a row for the subject.  Note that the logic below looks for consecutive days _for which records exist for a subject_.  To also require the days to be one day apart add the clause `day == shift(day) + 1` after `shift(z) > 0.5`.
+
+```{r}
+set.seed(1)
+w <- copy(L)
+w[, z := round(runif(.N), 3)]
+u <- copy(w)
+u
+mn <- function(x)
+  if(! length(x) || all(is.na(x))) as.double(NA) else min(x, na.rm=TRUE)
+u[, consecutive := z > 0.5 & shift(z) > 0.5, by=id][, 
+    firstday    := mn(day[consecutive]),     by=id]
+u
+```
+
+In general, using methods that involve counters makes logic more clear, easier to incrementally debug, and easier to extend the condition to any number of consecutive times.  Create a function that computes the number of consecutive `TRUE` values or ones such that whenever the sequence is interrupted by `FALSE` or 0 the counting starts over.
+As before we compute the first `day` at which two consecutive `z` values exceed 0.5. [`nconsec` is modified from code found [here](https://stackoverflow.com/questions/19998836).]{.aside}
+
+
+```{r nconsec}
+nconsec <- function(x) x * sequence(rle(x)$lengths)
+# rle in base R: run length encoding
+# Example:
+x <- c(0,0,1,1,0,1,1,0,1,1,1,1)
+nconsec(x)
+# To require that the time gap between measurements must be <= 2 time
+# units use the following example
+t <- c(1:9, 11, 14, 15)
+rbind(t=t, x=x)
+nconsec(x & t <= shift(t) + 2)
+
+u <- copy(w)
+# nconsec(z > 0.5) = number of consecutive days (counting current
+# day) for which the subject had z > 0.5
+u[, firstday := mn(day[nconsec(z > 0.5) == 2]), by=id] 
+#               |  |  |                    |
+#         minimum  |  |                    |
+#                day  |                    |
+#             such that                    |
+#  it's the 2nd consecutive day with z > 0.5
+u
+```
+
+## Overlap Joins and Non-equi Merges {#sec-long-overlap}
+
+The `foverlaps` function in `data.table` provides an amazingly fast way to do complex overlap joins.  Our first example is modified from an example in the help file for `foverlaps`.  An annotation column is added to describe what happened.
+
+```{r overlap}
+d1 <- data.table(w     =.q(a, a, b, b, b),
+                 start = c( 5, 10, 1, 25, 50),
+                 end   = c(11, 20, 4, 52, 60))
+d2 <- data.table(w     =.q(a, a, b),
+                 start = c(1, 15,  1),
+                 end   = c(4, 18, 55),
+                 name  = .q(dog, cat, giraffe),
+                 key   = .q(w, start, end))
+f <- foverlaps(d1, d2, type="any")
+ann <- c('no a overlap with d1 5-11 & d2 interval',
+         'a 10-20 overlaps with a 16-18',
+         'b 1-4 overlaps with b 1-55',
+         'b 25-62 overlaps with b 1-55',
+         'b 50-60 overlaps with b 1-55')
+f[, annotation := ann]
+f
+# Don't include record for non-match
+foverlaps(d1, d2, type='any', nomatch=NULL)
+# Require the d1 interval to be within the d2 interval
+foverlaps(d1, d2, type="within")
+# Require the intervals to have the same starting point
+foverlaps(d1, d2, type="start")
+```
+
+Now consider an example where there is an "events" dataset `e` with 0 or more rows per
+subject containing start (`s`) and end (`e`) times and a measurement `x`
+representing a daily dose of something given to the subject from `s` to `e`.
+The base dataset `b` has one record per subject with times `c` and `d`.  Compute the total dose of drug received between `c` and `d` for the
+subject.  This is done by finding all records in `e` for the subject
+such that the interval `[c,d]` has any overlap with the interval `[s,e]`.
+For each match compute the number of days in the interval `[s,e]` that are
+also in `[c,d]`.  This is given by `min(e,d) + 1 - max(c,s)`.  Multiply this
+duration by `x` to get the total dose given in `[c,d]`.  For multiple records
+with intervals touching `[c,d]` add these products.
+
+```{r totaldose}
+base   <- data.table(id    = .q(a,b,c), low=10, hi=20)
+events <- data.table(id    = .q(a,b,b,b,k),
+                     start = c( 8,  7, 12, 19, 99),
+                     end   = c( 9,  8, 14, 88, 99),
+                     dose  = c(13, 17, 19, 23, 29))
+setkey(base,   id, low,   hi)
+setkey(events, id, start, end)
+w <- foverlaps(base, events,
+               by.x = .q(id, low,   hi),
+               by.y = .q(id, start, end ),
+               type = 'any', mult='all', nomatch=NA)
+
+w[, elapsed := pmin(end, hi) + 1 - pmax(start, low)]
+w[, .(total.dose = sum(dose * elapsed, na.rm=TRUE)), by=id]
+```
+
+Similar things are can be done with _non-equi merges_.  For those you can require exact subject matches but allow inexact matches on other variables.  The following example is modified from [here](https://www.scitilab.com/post_data/non_equi_joins/2020_11_17_non_equi_merge). A `medication` dataset holds the start and end dates for a patient being on a treatment, and a second dataset `visit` has one record per subject ID per doctor visit.  For each visit look up the drug in effect if there was one.
+
+```{r noneq}
+medication <-
+  data.table(ID         = c( 1, 1, 2, 3, 3),
+             medication = .q(a, b, a, a, b),
+             start      = as.Date(c("2003-03-25","2006-04-27","2008-12-05",
+                                    "2004-01-03","2005-09-18")),
+             stop       = as.Date(c("2006-04-02","2012-02-03","2011-05-03",
+                                    "2005-06-30","2010-07-12")),
+             key        = 'ID')
+medication
+set.seed(123)
+visit <- data.table(
+  ID   = rep(1:3, 4),
+  date = sample(seq(as.Date('2003-01-01'), as.Date('2013-01-01'), 1), 12),
+  sbp  = round(rnorm(12, 120, 15)),
+  key  = c('ID', 'date'))
+visit
+# Variables named in inequalities need to have variables in
+# medication listed first
+m <- medication[visit, on = .(ID, start <= date, stop > date)]
+m
+# start and stop dates are replaced with actual date of visit
+# drop one of them and rename the other
+m[, stop := NULL]
+setnames(m, 'start', 'date')
+m
+```

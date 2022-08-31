@@ -1,0 +1,64 @@
+
+# How to use the online version of this article {.unnumbered}
+
+This article is rendered using [quarto](https://quarto.org/). The source code can be seen by clicking the `code` button at the topright. 
+
+
+It is possible  **to highlighte and annotate** parts of the text, which requires a signup to the academic annotation tool [hypothesis](https://quarto.org/), which is a nonprofit NGO. 
+
+It is encouraged to use this annotation and highlight-tool, as an experiment in how a 'social' reading of an article before a presentation could look like, since other readers will be able to see your highlights and comments. 
+
+```{r }
+
+
+
+setwd('..'); getwd()
+library('readxl')
+library('plotly')
+
+
+```
+
+
+
+Example 1
+
+```{mermaid}
+
+%%| fig-width: 5
+flowchart LR
+R[R Workflow] --> Rformat[Report formatting]
+Rformat --> Quarto[Quarto setup<br><br>Using metadata in<br>report output<br><br>Table and graph formatting]
+R --> DI[Data import] --> Annot[Annotate data<br><br>View data dictionary<br>to assist coding]
+R --> Do[Data overview] --> F[Observation filtration<br>Missing data patterns<br>Data about data]
+R --> P[Data processing] --> DP[Recode<br>Transform<br>Reshape<br>Merge<br>Aggregate<br>Manipulate]
+R --> Des[Descriptive statistics<br>Univariate or simple<br>stratification]
+R --> An[Analysis<br>Stay close to data] --> DA[Descriptive<br><br>Avoid tables by using<br>nonparametric smoothers] & FA[Formal]
+R --> CP[Caching<br>Parallel computing<br>Simulation]
+```
+
+Example 2
+
+```{dot}
+//| label: fig-dot
+//| fig-width: 3
+//| fig-cap: |
+//|   How Quarto orchestrates rendering of documents: start with 
+//|   a qmd file, use the Knitr or Jupyter engine to perform the 
+//|   computations and convert it to an md file, then use Pandoc 
+//|   to convert to various file formats including HTML, PDF, 
+//|   and Word.
+
+graph G {
+  layout=neato
+  qmd -- Knitr;
+  qmd -- Jupyter;
+  Knitr -- md;
+  Jupyter -- md;
+  md -- pandoc;
+  pandoc -- HTML;
+  pandoc -- PDF;
+  pandoc -- Word;
+  pandoc -- more;
+}
+```

@@ -1,0 +1,266 @@
+# R Basics {#sec-rbasics}
+
+```{mermaid}
+flowchart LR
+O[Objects] --> N[Numeric] --> Nt[integer<br>floating point]
+O --> NN[Non-Numeric] --> log[logical] & ch[character] & F[function]
+O --> Sh[Shape] --> Shs[scalar<br>vector<br>matrix<br>array]
+Sh --> Li[list]
+Li --> df[data.frame] & dt[data.table] & it[irregular tree]
+O --> Ad["Addressing<br>(subscripts)"] --> sub[integer<br>logical<br>names]
+O --> SV[Special Values] --> na[NA]
+F --> cf[Common Functions<br>Write Your Own]
+Dec[Decisions] --> btypes[if<br>ifelse<br>switch]
+```
+
+## Assignment Operator
+
+You assign an R object to a value using the assignment operator `<-` or the equal sign.  `<-` is read as "gets".
+
+```{r eval=FALSE}
+x <- y
+d <- read.csv('mydata.csv')
+x = y
+```
+
+## Object Types {#sec-rbasics-objects}
+
+Everything in R is an object.  Some primitive types of objects in R are below.
+
+| Type | Meaning |
+|------|---------|
+| integer | whole numbers |
+| logical | values of `TRUE` or `FALSE` |
+| double  | floating point non-whole numbers |
+| character | character strings |
+| function| code defining a function |
+
+In the table below, objects of different shapes are described.
+`rows` and `cols` refers to vectors of integers or logicals, or if the elements of the object are named, character strings.
+
+| Type | Example |Values Retrieved By|
+|------|---------|--------------------|
+| scalar |  `x <- 3` | `x` |
+| vector | `y <- c(1, 2, 5)` | `y[2]` (2), `y[2:3]` (2, 5), `y[-1]` (2, 5), `y[c(TRUE,FALSE,TRUE)]` (1, 5) |
+| named vector | `y <- c(a=1, b=2, d=5)` | `y[2]` (2), `y['b']` (2), `y[c('a','b')]` (1, 2) |
+| matrix | `y <- cbind(1:3, 4:5)` | `y[rows,cols]`, `y[rows,]` (all cols), `y[,cols]` (all rows) |
+| array  | `y <- array(1:30, dim=c(2,3,5))` | `y[1,1,1]` (1), `y[2,3,5]` (30) |
+| list | `x <- list(a='cat', b=c(1,3,7))` | `x$a` ('cat'), `x[[1]]` ('cat'), `x[['a']]` ('cat') |
+
+Named vectors provide an extremely quick table lookup and recoding capability.
+
+`list` objects are arbitrary trees and can have elements nested to any level.  You can have lists of lists or lists of data frames/tables.
+
+Vectors can be of many different types when a `class` is added to them.  Two of the most common are `Date`s and `factor`s.  Character strings are handled very efficiently in R so there is not always a need to store categorical variables as `factor`s.  But there is one reason: to order levels, i.e., distinct variable values, so that tabular and graphical output will list values in a more logical order than alphabetic.  A factor variable has a `levels` _attribute_ added to it to accomplish this.  An example is `x <- factor(x, 1:3, c('cat', 'dog', 'fox'))` where the second argument `1:3` is the vector of possible numeric values `x` currently takes on (in order) and the three character strings are the corresponding `levels`.  Internally `factors` are coded as integers, but they print as character strings.
+
+Rectangular data objects, i.e., when the number of rows is the same for every column (variable), can be represented by matrices, arrays, `data.frame`s, and `data.table`s.  In a matrix or array, every value is of the same type.  A `data.frame` or a `data.table` is an R `list` that can have mixtures of numeric, character, factor, dates, and other object types.  A `data.table` is also a `data.frame` but the converse isn't true.  `data.table`s are handled by the R `data.table` package and don't have row names but can be indexed, are much faster to process, and have a host of methods implemented for aggregation and other operations.  `data.frame`s are handled by base R.[See @sec-sim-array for an example of using arrays with named elements]{.aside}
+
+Data frames are best managed by converting them to data tables and using the `data.table` package.  When `data.table` is not used there are three indispensable functions for operating on data frames:
+
+* `with` for analyzing variables within a data frame without constantly prefixing variable names with `dataframename$`
+* `transform` for adding or changing variables within a data frame
+* `Hmisc` `upData` function for doing the same as `transform` but also allowing metadata to be added to the data, e.g., variable labels and units (to be discussed later)
+
+Here are some examples of `with` and `transform`.
+
+```{r with,eval=FALSE}
+# Better than mean(mydata$systolic.bp - mydata$diastolic.bp) :
+with(mydata, mean(systolic.bp - diastolic.bp))
+# Better than mydata$pulse.pressure <- mydata$systolic.bp - mydata$diastolic.bp:
+mydata <- transform(mydata,
+                    pulse.pressure = systolic.bp - diastolic.bp,
+                    bmi            = wt / ht ^ 2)
+# Perform several operations on the same data frame
+with(mydata, {
+               x3 <- x1 / sqrt(x2)
+               ols(y ~ x3)
+             }  )
+```
+
+## Missing Values {#sec-rbasics-na}
+
+R objects of any type can have elements whose values are missing.  The symbol R uses for a missing value is `NA`.  The `is.na` function returns `TRUE/FALSE` according to whether an element is missing.  The following examples illustrate operations on `NA`s.
+
+```{r na}
+x <- c(1, 2, NA, 4, 5, NA)
+mean(x)              # mean of all x
+mean(x, na.rm=TRUE)  # mean of non-missing x
+is.na(x)             # vector corresponding to x
+sum(is.na(x))        # count # NAs
+table(is.na(x))      # count # NAs and non-NAs
+x[! is.na(x)]        # get the non-missing x's
+x[1] <- NA           # make x[1] missing
+x
+y <- letters[1:6]    # first 6 lower case letters of alphabet
+y[is.na(x)]          # get y for which x is NA
+```
+
+As seen in the examples, most simple statistical summarization functions such as `mean` will result in `NA` if any element is `NA`, and you have to specify an optional argument `na.rm=TRUE` to remove `NA`s before computing so that the result will be, for example, the mean of the non-missing values.
+
+## Subscripting
+
+Examples of subscripting are given above. 
+Subscripting via placement of `[]` after an object name is used for subsetting, and occasionally for using some elements more than once:
+
+```{r subsc}
+x <- c('cat', 'dog', 'fox')
+x[2:3]
+x[c(1, 1, 3, 3, 2)]
+```
+
+Subscripting a variable or a data frame/table by a vector of `TRUE/FALSE` values is a very powerful feature of R.  This is used to obtain elements satisfying one or more conditions:
+
+```{r subcond}
+x <- c(1, 2, 3, 2, 1, 4, 7)
+y <- c(1, 8, 2, 3, 8, 9, 2)
+x[y > 7]
+```
+
+The last line of code can be read as "values of `x` such that `y > 7`".
+
+## Branching and If/Then
+
+### Decisions Based on One Scalar Value
+
+Common approaches to this problem are `if` and `switch`.
+
+```{r ifs,eval=FALSE}
+type <- 'semiparametric'
+f <- switch(type,
+            parametric     = ols(y ~ x),
+            semiparametric = orm(y ~ x),
+            nonparametric  = rcorr(x, y, type='spearman'),
+            { z <- y / x
+              c(median=median(z), gmean=exp(mean(log(z)))) } )
+# The last 2 lines are executed for any type other than the 3 listed
+f <- if(type == 'parametric')    ols(y ~ x)
+  else
+    if(type == 'semiparametric') orm(y ~ x)
+  else
+    if(type == 'nonparametric')  rcorr(x, y, type='spearman')
+  else {
+    z <- y / z
+    c(median=median(z), gmean=exp(mean(log(z)))
+  }
+```
+
+What is inside `if( )` must be a single scalar element that is evaluated to whether it's `TRUE` or `FALSE`.
+
+### Series of Separate Decisions Over a Vector of Values
+
+The `ifelse` or `data.table::fifelse` functions are most often used for this, but `data.table::fcase` is a little better.  Here's an example.
+
+```{r ifelse}
+x <- c('cat', 'dog', 'giraffe', 'elephant')
+type <- ifelse(x %in% c('cat', 'dog'), 'domestic', 'wild')
+type
+require(data.table)
+fcase(x %in% c('cat', 'dog'), 'domestic', default='wild')
+```
+
+### `if` Trick
+
+Sometimes when constructing variable-length vectors and other objects, elements are to be included in the newly constructed object only when certain conditions apply.  When a condition does not apply, no element is to be inserted.  We can capitalize on the fact that the result of `if(...)` is `NULL` when `...` is not `TRUE`, and concatenating `NULL` results in ignoring it.  Here are two examples.  In the first the resulting vector will have length 2, 3, or 4 depending on `sex` and `height`.  In the second example the new vector will have the appropriate element `names` preserved.
+
+```{r iftrick}
+y <- 23; z <- 46; sex <- 'female'; height <- 71; u <- pi; w <- 7
+c(y, z, if(sex == 'male') u, if(height > 70) w)
+c(x1=3, if(sex == 'male') c(x2=4), if(height > 70) c(x3=height))
+# reduce clutter in case of variable name conflicts:
+rm(y, z, sex, height, u, w)
+```
+
+## Functions {#sec-rbasics-functions}
+
+There are so many functions in R that it may be better to use the [stackoverflow.com](https://stackoverflow.com/questions/tagged/r) Q&A to find the ones you need (as of 2022-05-26 there are 450,000 R questions there).  Here are just a few of the multitude of handy R functions.  The first functions listed below return the R missing value `NA` if any element is missing.  You can specify `na.rm=TRUE` to remove `NA`s from consideration first, so they will not cause the result to be `NA`.  Most functions get their arguments (inputs) in () after the function name.  Some functions like `%in%` are binary operators whose two arguments are given on the left and right of `%in%`.
+
+* `mean`, `median`, `quantile`, `var`, `sd`: Compute statistical summaries on one vector
+* `min, max`: Minimum or maximum of values in a vector or of multiple variables, resulting in one number
+* `pmin, pmax`: Parallel minimum and maximum for vectors, resulting in a vector.  Example: `pmin(x, 3)` returns a vector of the same length as `x`.  Each element is the minimum of the original value or 3.
+* `range`: Returns a vector of length two with the minimum and maximum
+* `plot`, `points`, `lines`, `text`: Basic ploting functions
+* `table`: Frequency tabulation and multi-way tabulations of any type of vector variables
+* `unique`: Return vector of distinct values, in same order as original values
+* `union`, `intersect`, `setdiff`, `setequal`: Set operations on two vectors (see below)
+* `a %in% b`, `a %nin% b`: Set membership functions that determine whether each element in `a` is in `b` (for `%in%`) or is not in `b` (for `%nin%`, which is in the `Hmisc` package)
+
+Set operators are amazingly helpful.  Here are some examples.
+
+```{r setup,eval=FALSE}
+unique(x)       # vector of distinct values of x, including NA if occurred
+sort(unique(x)) # distinct values in ascending order
+setdiff(unique(x), NA)  # distinct values excluding NA if it occurred
+duplicated(x)   # returns TRUE for elements that are duplicated by
+                # values occurring EARLIER in the list
+union(x, y)     # find all distinct values in the union of x & y
+intersect(x, y) # find all distinct values in both x & y
+setdiff(x, y)   # find all distinct x that are not in y
+setequal(x, y)  # returns TRUE or FALSE depending on whether the distinct
+                # values of x and y are identical, ignoring how they
+                # are ordered
+```
+
+Find a list of subject ids that are found in baseline but not in follow-up datasets:
+
+```{r eval=FALSE}
+idn <- setdiff(baseline$id, followup$id)
+```
+
+Avoid repetition: Don't say `if(animal == 'cat' | animal == 'dog') ....`; use `%in%` instead:
+
+```{r eval=FALSE}
+if(animal %in% c('cat', 'dog')) ...
+# or if(animal %in% .q(cat, dog)) ... using Hmisc's .q
+```
+
+Likewise don't say `if(animal != 'cat' & animal != 'dog')` but use `if(animal %nin% c('cat', 'dog')) ...`
+
+To get documentation on a function type the following in the R console: `?functionname` or `?packagename::functionname`.
+
+Even new R users can benefit from writing functions to reduce repetitive coding.  A function has _arguments_ and these can have default values for when the argument is not specified by the user when the function is called.  Here are some examples.  One line functions do not need to have their bodies enclosed in `{}`.
+
+```{r runex}
+cuberoot <- function(x) x ^ (1/3)
+cuberoot(8)
+g <- function(x, power=2) {
+  u <- abs(x - 0.5)
+  u / (1. + u ^ power)
+}
+g(3, power=2)
+g(3)
+```
+
+Write a function make `mean()` drop missing values without our telling it.
+
+```{r eval=FALSE}
+mn <- function(x) mean(x, na.rm=TRUE)
+```
+
+Function to be used throughout the report to round fractional values by a default amount (here round to 0.001):
+
+```{r eval=FALSE}
+rnd <- function(x) round(x, 3)
+# edit the 3 the change rounding anywhere in the report
+```
+
+A simple function to save coding when you need to recode multiple
+variables from 0/1 to no/yes:
+
+```{r eval=FALSE}
+yn <- function(x) factor(x, 0:1, c('no', 'yes'))
+```
+
+## Resources for Learning R
+
+* [Fast Lane to Learning R](https://github.com//matloff/fasteR)
+* [R Tutorials](https://r-bloggers.com/how-to-learn-r-2)
+* [R Programming Tutorials](https://youtube.com/user/marinstatlectures)
+* [Swirlstats](https://swirlstats.com) (interactive)
+* For [those who have used SPSS or SAS before](https://www.amazon.com/SAS-SPSS-Users-Statistics-Computing/dp/1461406846)
+* [R books on Amazon](http://amzn.to/15URiF6)
+* [UCLA site](https://stats.idre.ucla.edu/r)
+* [R Resources for Beginners](http://www.introductoryr.co.uk/R_Resources_for_Beginners.html)
+* [R for Data Science](https://r4ds.had.co.nz)
+* [R in Action](https://www.amazon.com/R-Action-Robert-Kabacoff/dp/1935182)
+* [Statistical modeling by Legler and Roback](https://bookdown.org/roback/bookdown-bysh)
+* [stackoverflow.com/tags/r](http://stackoverflow.com/tags/r) is the best place for asking questions about the language and for learning from answers to past questions asked

@@ -1,0 +1,341 @@
+# Analysis File Creation {#sec-fcreate}
+
+```{mermaid}
+flowchart LR
+Im[Import] --> vn[Manageable<br>Variable<br>Names] --> An[Annotate<br>Add Metadata]
+An --> Int["Internal<br>(imported labels)"] & Ext[External]
+An --> lu[Labels<br>Units]
+An --> V["View Data Dictionary<br>(metadata)"]
+Im --> csv[CSV] & bin[Binary]
+Im --> mf[Multiple Files<br>Looping]
+```
+
+## Note on File Directory Structure
+
+I have a directory for each major project, and put everything in that
+directory (including data files) except for graphics files for
+figures, which are placed in their own subdirectory underneath the
+project folder.[With `Quarto` I specify that `html` files are to be self-contained, so there are no separate graphics files.]{.aside}  The directory name for the project includes key
+identifying information, and files within that directory do not
+contain project information in their names, nor do they contain dates,
+unless I want to freeze an old version of an analysis script.
+
+For multi-analyst projects or ones in which you want to capture the entire code history, having the project on `github` is worthwhile.
+
+## Importing and Creating Annotated Analysis Files {#sec-fcreate-import}
+
+I typically create a compact analysis file in a separate R script
+called `create.r` and have it produce compressed R binary `data.frame`
+or `data.table` `.rds` files using `saveRDS(name, 'name.rds', compress='xz')`.  Then I have an analysis script named for example `a.qmd` (for [Quarto](https://quarto.org) reports) or `a.Rmd` (for RMarkdown reports) that starts with `d <- readRDS('name.rds')`.  [Templates for analysis reports are [here](http://hbiostat.org/rr/index.html#template), and a comprehensive report example may be found [here](https://hbiostat.org/R/Hmisc/markov).]{.aside} This process is especially helpful with analysis file creation takes multiple steps or files are large.  `readRDS` is very fast for loading binary R objects.  [There is an older way to read/write binary R objects using R `load` and `save` and `Hmisc` frontends for them `Load` and `Save`.  Files using these formats typically have suffixes of `.rda`, `.RData`, or `.sav`, and using `load` stores the object under its original name, which might not be clear until you check your R `.global` environment by looking in the upper right `RStudio` panel.]{.aside}
+
+When variables need to be recoded, have labels added or changed, or
+have units of 
+measurement added[Variable labels and units of measurement are used in special ways in my R packages.  This will show up in the `describe` and `contents` function outputs below and in axis labels for graphics.]{.aside}, I specify those using the `Hmisc` package [`upData`
+function](https://www.rdocumentation.org/packages/Hmisc/versions/4.7-0/topics/upData).
+
+To facilitate some operations requiring variable names to be quoted, define a function `.q` to quote them automatically. `.q` is like the `Hmisc` function `Cs` but also allows elements to be named.  It will be in `Hmisc` 4.7-1.
+
+```{r quote}
+.q <- function(...) {
+  s <- sys.call()[-1]
+  w <- as.character(s)
+  n <- names(s)
+  if(length(n)) names(w) <- n
+  w
+}
+
+.q(a, b, c, 'this and that')
+.q(dog=a, giraffe=b, cat=c)
+```
+
+Here is an `upData` example:
+
+```{r eval=FALSE}
+# Function to recode from atypical coding for yes/no in raw data
+yn <- function(x) factor(x, 0:1, c('yes', 'no'))
+d <-
+  upData(d,
+         rename = .q(gender=sex, any.event=anyEvent),
+         posSE    = yn(posSE),
+         newMI    = yn(newMI),
+         newPTCA  = yn(newPTCA),
+         newCABG  = yn(newCABG),
+         death    = yn(death),
+         hxofHT   = yn(hxofHT),
+         hxofDM   = yn(hxofDM),
+         hxofCig  = factor(hxofCig, c(0, 0.5, 1),
+                           c('heavy', 'moderate', 'non-smoker')), 
+         hxofMI   = yn(hxofMI),
+         hxofPTCA = yn(hxofPTCA),
+         hxofCABG = yn(hxofCABG),
+         chestpain= yn(chestpain),
+         anyEvent = yn(anyEvent),
+         drop=.q(event.no, phat, mics, deltaEF,
+                 newpkmphr, gdpkmphr, gdmaxmphr, gddpeakdp, gdmaxdp,
+                 hardness),
+         labels=c(
+           bhr       = 'Basal heart rate',
+           basebp    = 'Basal blood pressure',
+           basedp    = 'Basal Double Product bhr*basebp',
+           age       = 'Age',
+           pkhr      = 'Peak heart rate',
+           sbp       = 'Systolic blood pressure',
+           dp        = 'Double product pkhr*sbp',
+           dose      = 'Dose of dobutamine given',
+           maxhr     = 'Maximum heart rate',
+           pctMphr   = 'Percent maximum predicted heart rate achieved',
+           mbp       = 'Maximum blood pressure',
+           dpmaxdo   = 'Double product on max dobutamine dose',
+           dobdose   = 'Dobutamine dose at max double product',
+           baseEF    = 'Baseline cardiac ejection fraction',
+           dobEF     = 'Ejection fraction on dobutamine', 
+           chestpain = 'Chest pain', 
+           ecg       = 'Baseline electrocardiogram diagnosis',
+           restwma   = 'Resting wall motion abnormality on echocardiogram', 
+           posSE     = 'Positive stress echocardiogram',
+           newMI     = 'New myocardial infarction',
+           newPTCA   = 'Recent angioplasty',
+           newCABG   = 'Recent bypass surgery', 
+           hxofHT    = 'History of hypertension', 
+           hxofDM    = 'History of diabetes',
+           hxofMI    = 'History of myocardial infarction',
+           hxofCig   = 'History of smoking',
+           hxofPTCA  = 'History of angioplasty',
+           hxofCABG  = 'History of coronary artery bypass surgery',
+           anyEvent  = 'Death, newMI, newPTCA, or newCABG'),
+         units=.q(age=years, bhr=bpm, basebp=mmHg, basedp='bpm*mmHg',
+           pkhr=mmHg, sbp=mmHg, dp='bpm*mmHg', maxhr=bpm,
+           mbp=mmHg, dpmaxdo='bpm*mmHg', baseEF='%', dobEF='%',
+           pctMphr='%', dose=mg, dobdose=mg)
+         )
+
+saveRDS(d, 'stressEcho.rds', compress='xz')
+
+# Note that we could have automatically recoded all 0:1 variables
+# if they were all to be treated identically:
+
+for(x in names(d)) 
+  if(all(d[[x]] %in% c(0,1))) d[[x]] <- yn(d[[x]])
+```
+
+::: {.panel-tabset}
+
+##  
+
+
+
+## External Metadata
+
+Sometimes metadata comes from a separate source.  Suppose you imported a data frame `d` but have also imported a data frame `m` containing metadata: the same variable names in `d` (variable `name`) plus fields `label`, `units`, and `comment`.  Dataset `m` can contain variables not currently being used.  To add the labels and units into `d` and to store comments separately, use the following example.
+
+```{r eval=FALSE}
+n <- names(d)
+i <- n %nin% m$name
+if(any(i)) cat('The following variables have no metadata:',
+               paste(n[i], collapse=', '), '\n')
+vcomment        <- m$comment
+names(vcomment) <- m$name
+mn              <- subset(m, name %in% n)
+labs            <- mn$label
+un              <- mn$units
+names(labs)     <- names(un) <- mn$name
+d <- upData(d, labels=labs, units=un)
+```
+
+To look up the `comment` for a variable at any time use e.g. `vcomment['height']`.  All comments were saved in vector `vcomment` in case the metadata dictionary `m` defined variables that are not in `d` but were to be imported later in the script.  Comments for multiple variables can be looked up using e.g. `vcomment[.q(height, weight, age)]`.
+
+::: {.column-margin}
+If you want to look up a variable's comment without having to quote its name use the following:
+
+```{r vcom,eval=FALSE}
+vcom <- function(...)
+  vcomment[as.character(sys.call()[-1])]
+# Example usage: vcom(age,sbp,dbp)
+```
+
+:::
+
+## CSV
+
+The built-in function in R for reading `.csv` files is [`read.csv`](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table).  The `Hmisc` package has a function [`csv.get`](https://www.rdocumentation.org/packages/Hmisc/versions/4.7-0/topics/csv.get) which calls `read.csv` but offers some enhancements in variable naming, date handling, and reading variable labels from a specified row number.  Illegal characters in variable names are changed to periods, and by default underscores are also changed to periods.  If any variable names are changed and the `labels` argument is not given, original variable names are stored in the variable `label` attributes.
+
+The [`fread`](https://www.rdocumentation.org/packages/data.table/versions/1.14.2/topics/fread) function in the `data.table` package is blazing fast for reading large files and offers a number of options.  `csv.get` uses it if `data.table` is installed on the system.
+
+## REDCap
+
+If reading data exported from [`REDCap`](https://www.project-redcap.org)  that are placed into the
+project directory I run the following to get rid of duplicate
+(`factor` and non-`factor` versions of variables `REDCap` produces)
+variables and automatically convert dates to `Date` variables:
+
+```
+require(Hmisc)
+getRs('importREDCap.r', put='source')  # source() code to define function
+mydata <- importREDCap()  # by default operates on last downloaded export
+saveRDS(mydata, 'mydata.rds', compress='xz')
+```
+
+When file names are not given to `importREDCap` the function looks for
+the latest created `.csv` file and `.R` file with same prefix and uses those.
+See [this](http://hbiostat.org/bbr/md/r.html) for more information.
+
+## SAS, Stata, SPSS
+
+SAS, Stata, and SPSS binary files are converted to R `data.frame`s using the R [haven package](https://haven.tidyverse.org).  Here's an example:
+
+```{r haven, eval=FALSE}
+require(haven)   # after you've installed the package
+d <- read_sas('mydata.sas7bdat')
+d <- read_xpt('mydata.xpt')        # SAS transport files
+d <- read_dta('mydata.dta')        # Stata
+d <- read_sav('mydata.sav')        # SPSS
+d <- read_por('mydata.por')        # Older SPSS files
+```
+
+These import functions carry variable labels into the data frame and convert dates and times appropriately.  Character vectors are not converted to factors.
+
+## Excel
+
+The `readxl` package that comes with R reads binary Excel spreadsheet `.xls` and `.xlsx` files to produce something that is almost a data frame.  Here is an example where the imported dataset is converted into a plain `data.frame` and the variable names are changed to all lower case.  `read_excel` does not handle variable labels.  You can specify which sheet or which cell range to import if desired.
+
+```{r excel, eval=FALSE}
+d <- readxl::read_excel('my.xlsx')
+# Or use require(readxl) then d <- read_excel(...)
+d <- as.data.frame(d)
+# Or better: make it a data table: setDT(d)
+names(d) <- tolower(names(d))
+```
+
+
+## Multiple Files
+
+One of the most important principles to following in programming data analyses is to not do the same thing more than once.  Repetitive code wastes time and is harder to maintain.  One example of avoiding repetition is in reading a large number of files in R.  If the files are stored in one directory and have a consistent file naming scheme (or you want to import every `.csv` file in the directory), one can avoid naming the individual files.  The results may be stored in an R `list` that has named elements, and there are many processing tasks that can be automated by looping over this list.
+
+In the following example assume that all the data files are `.csv` files in the current working directory, and they all have names of the form `xz*.csv`.  Let's read all of them and put each file into a data frame named by the characters in front of `.csv`.  These data frames are stuffed into a `list` named `X`.  The `Hmisc` `csv.get` function is used to read the files, automatically translating dates to `Date` variables, and because `lowernames=TRUE` is specified, variable names are translated to lower case.  There is an option to fetch variable labels from a certain row of each `.csv` file but we are not using that.
+
+```{r eval=FALSE}
+files <- list.files(pattern='xz.*.csv')  # vector of qualifying file names
+# Get base part of *.csv
+dnames <- sub('.csv', '', files)
+X <- list()
+i <- 0
+for(f in files) {
+  cat('Reading file', f, '\n')
+  i <- i + 1
+  d <- csv.get(f, lowernames=TRUE)
+  # To read SAS, Stata, SPSS binary files use a haven function instead
+  # To convert to data.table do setDT(d) here
+  X[[dnames[i]]] <- d
+}
+saveRDS(X, 'X.rds', compress='xz')  # Efficiently store all datasets together
+```
+
+To process one of the datasets one can do things like `summary(X[[3]])` or `summary(X$baseline)` where the third dataset stored was named `baseline` because it was imported from `baseline.csv`.
+
+Now there are many possibilities for processing all the datasets at once such as the following.
+
+```{r processmany,eval=FALSE}
+k   <- length(X)          # number of datasets
+nam <- lapply(X, names)   # list with k elements, each is a vector of names
+# Get the union of all variable names used in any dataset
+sort(unique(unlist(nam))) # all the variables appearing in any dataset
+# Get variable names contained in all datasets
+common <- names(X[[1]])
+for(i in 2 : k) {
+  common <- intersect(common, names(X[[i]]))
+  if(! length(common)) break  # intersection already empty
+}
+sort(common)
+# Compute number of variables across datasets
+nvar <- sapply(X, length)  # or ncol
+# Print number of observations per dataset
+sapply(X, nrow)
+# For each variable name count the number of datasets containing it
+w <- data.table(dsname=rep(names(X), nvar), vname=unlist(nam))
+w[, .N, keyby=vname]
+# For each variable create a comma-separated list of datasets
+# containing it
+w[, .(datasets=paste(sort(dsname), collapse=', ')), keyby=vname]
+# For datasets having a subject ID variable named id compute
+# the number of unique ids
+uid <- function(d) if('id' %in% names(d)) length(unique(d$id)) else NA
+sapply(X, uid)
+# To repeatedly analyze one of the datasets, extract it to a single data frame
+d <- X$baseline
+describe(d)
+```
+
+## Importing the Latest File
+
+Sometimes one keeps multiple versions of the raw data to be imported inside the project folder.  If you want to import the file that was last modified you can use the `reptools` `latestFile` function.  You give it a pattern of file names to match.  For example a pattern of `.csv$` means "ending with `.csv`" and a pattern of `^baseline` means "starting with `baseline`".  A pattern of `foo` means that `foo` is contained anywhere in the file name.  Here is an example.
+
+```{r eval=FALSE}
+# Look for file names starting with base, followed by any number of
+# characters, and ending with .csv
+f <- latestFile('^base.*csv$')
+d <- csv.get(f)
+```
+
+## Post Import
+
+The `Hmisc` package `cleanup.import` function improves imported data storage in a number of ways including converting double precision variables to `integer` when originally `double` but not containing fractional values (this halves the storage requirement).  `Hmisc::upData` is the go-to function for annotating data frames/tables, renaming variables, and dropping variables.  `Hmisc::dataframeReduced` removes problematic variables, e.g., those with a high fraction of missing values or that are binary with very small prevalence.
+
+:::
+
+## Variable Naming
+
+I prefer short but descriptive variable names.  As exemplified above, I use variable `label`s and `units` to provide more information.  For example I wouldn't name the age variable `age.at.enrollment.yrs` but would name it `age` with a label of `Age at Enrollment` and with `units` of `years`.  Short, clear names unclutter code, especially formulas in statistical models.  One can always fetch a variable label while writing a program (e.g., typing `label(d$age)` at the console) to check that you have the right variable (or put the data dictionary in a window for easy reference, as shown below).  `Hmisc` package graphics and table making functions such as `summaryM` and `summary.formula` specially typeset `units` in a smaller font.
+
+
+## Data Dictionary {#sec-fcreate-dd}
+
+The `Hmisc` package `contents` function will provide a concise data dictionary.    Here is an example using the permanent version (which coded binary variables as 0/1 instead of N/Y) of the dataset created above, which can be accessed with the `Hmisc` `getHdata` function.  The top of the `contents` output has the number of levels for `factor` variables hyperlinked.  Click on the number to go directly to the list of levels for that variable.
+
+```{r getdat}
+require(Hmisc)
+getHdata(stressEcho)
+d <- stressEcho
+```
+
+::: {.callout-note collapse="true"}
+# Data Dictionary
+
+```{r ddict2,results='asis'}
+html(contents(d), levelType='table')
+```
+:::
+
+You can write the text output of `contents` into a text file in your current working directory, and click on that file in the `RStudio` `Files` window to create a new tab in the editor panel where you can view the data dictionary at any time.  This is especially helpful if you need a reminder of variable definitions that are stored in the variable labels.  Here is an example where the formatted data dictionary is saved.  [Users having the `xless` system command installed can pop up a `contents` window at any time by typing `xless(contents(d))` in the console. `xless` is in `Hmisc`.]{.aside}
+
+```{r,eval=FALSE}
+capture.output(contents(d), file='contents.txt')
+```
+
+Or put the html version of the data dictionary into a small browser window to which you can refer at any point in analysis coding.
+
+```{r eval=FALSE}
+cat(html(contents(d)), file='contents.html')
+browseURL('contents.html', browser='vivaldi -new-window')
+```
+
+
+`RStudio` provides a nice way to do this, facilitated by the `htmlView` helper function in `reptools`.  `htmlView` takes any number of objects for which an `html` method exists to render them.  They are rendered in the `RStudio` `Viewer` pane.  If you are running outside `RStudio`, your default browser will be launched instead.[Occasionally `RStudio Viewer` will drop its arrow button making it impossible to navigate back and forth to different `html` outputs.<br>Code for `htmlView` and `htmlViewx` may be viewed in [`reptools.r`](https://github.com/harrelfe/rscripts/blob/master/reptools.r).]{.aside}
+
+```{r eval=FALSE}
+getRs('reptools.r', put='source')
+# reptools.r defines htmlView, htmlViewx, kabl, maketabs, dataChk, ...
+htmlView(contents(d))
+```
+
+In some cases it is best to have a browser window open to the full descriptive statistics for a data table/frame (see below; the `describe` function also shows labels, units, and levels).  [For either approach it would be easy to have multiple tabs open, one tab for each of a series of data tables, or use `htmlView`.]{.aside}
+
+To be able to have multiple windows open to see information about datasets it is advantageous to open an external browser window.  The `htmlViewx` function will by default open a Vivaldi browser window with the first output put in a new window and all subsequent objects displayed as tabs within that same window.  This behavior can be controlled with the `tab` argument, and you can use a different browser by issuing for example `options(vbrowser='firefox')`.[In Windows you may have to specify a full path and `firefox.exe`.  The tab names will not be correct until `Hmisc` 4.7-1 appears.]{.aside}  As an example suppose that two datasets were read from the `hbiostat.org/data` data repository, and the data dictionary and descriptive statistics for both datasets were to be converted to `html` and placed in an external browser window for the duration of the R session.
+
+```{r vbrowse,eval=FALSE}
+getHdata(support)
+getHdata(support2)
+htmlViewx(contents(support ), describe(support ),
+          contents(support2), describe(support2))
+```
+
+A screenshot of the result is [here](https://hbiostat.org/img/htmlViewx.png).

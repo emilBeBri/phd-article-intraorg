@@ -1,0 +1,14 @@
+{
+  "hash": "e01bc20f3f29f3e2d5f3540a0ceabebe",
+  "result": {
+    "markdown": "\n# How to use the online version of this article {.unnumbered}\n\nThis article is rendered using [quarto](https://quarto.org/). The source code can be seen by clicking the `code` button at the topright. \n\n\nIt is possible  **to highlighte and annotate** parts of the text, which requires a signup to the academic annotation tool [hypothesis](https://quarto.org/), which is a nonprofit NGO. \n\nIt is encouraged to use this annotation and highlight-tool, as an experiment in how a 'social' reading of an article before a presentation could look like, since other readers will be able to see your highlights and comments. \n\n\n::: {.cell}\n\n```{.r .cell-code}\nsetwd('..'); getwd()\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"/home/emil/Dropbox/arbejde/cbs/phd/articles/intra-org-inequality\"\n```\n:::\n\n```{.r .cell-code}\nlibrary('readxl')\nlibrary('plotly')\n```\n:::\n\n\n\n\nExample 1\n\n\n```{mermaid}\n\n%%| fig-width: 5\nflowchart LR\nR[R Workflow] --> Rformat[Report formatting]\nRformat --> Quarto[Quarto setup<br><br>Using metadata in<br>report output<br><br>Table and graph formatting]\nR --> DI[Data import] --> Annot[Annotate data<br><br>View data dictionary<br>to assist coding]\nR --> Do[Data overview] --> F[Observation filtration<br>Missing data patterns<br>Data about data]\nR --> P[Data processing] --> DP[Recode<br>Transform<br>Reshape<br>Merge<br>Aggregate<br>Manipulate]\nR --> Des[Descriptive statistics<br>Univariate or simple<br>stratification]\nR --> An[Analysis<br>Stay close to data] --> DA[Descriptive<br><br>Avoid tables by using<br>nonparametric smoothers] & FA[Formal]\nR --> CP[Caching<br>Parallel computing<br>Simulation]\n```\n\n\nExample 2\n\n\n```{dot}\n//| label: fig-dot\n//| fig-width: 3\n//| fig-cap: |\n//|   How Quarto orchestrates rendering of documents: start with\n//|   a qmd file, use the Knitr or Jupyter engine to perform the\n//|   computations and convert it to an md file, then use Pandoc\n//|   to convert to various file formats including HTML, PDF,\n//|   and Word.\n\ngraph G {\n  layout=neato\n  qmd -- Knitr;\n  qmd -- Jupyter;\n  Knitr -- md;\n  Jupyter -- md;\n  md -- pandoc;\n  pandoc -- HTML;\n  pandoc -- PDF;\n  pandoc -- Word;\n  pandoc -- more;\n}\n```\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

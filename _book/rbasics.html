@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.12">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Relational inequality in a network perspective - 3&nbsp; R Basics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./rformat.html" rel="next">
+<link href="./casestudy.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-......"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-......', { 'anonymize_ip': true});
+</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false,
+  "enableExperimentalNewNoteButton": true
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="mermaidf.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-xl navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Relational inequality in a network perspective</span>
+  </a>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Basics</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./casestudy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Case Study: The <em>Titanic</em></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rbasics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rformat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Report Formatting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fcreate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analysis File Creation</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#assignment-operator" id="toc-assignment-operator" class="nav-link active" data-scroll-target="#assignment-operator"> <span class="header-section-number">3.1</span> Assignment Operator</a></li>
+  <li><a href="#sec-rbasics-objects" id="toc-sec-rbasics-objects" class="nav-link" data-scroll-target="#sec-rbasics-objects"> <span class="header-section-number">3.2</span> Object Types</a></li>
+  <li><a href="#sec-rbasics-na" id="toc-sec-rbasics-na" class="nav-link" data-scroll-target="#sec-rbasics-na"> <span class="header-section-number">3.3</span> Missing Values</a></li>
+  <li><a href="#subscripting" id="toc-subscripting" class="nav-link" data-scroll-target="#subscripting"> <span class="header-section-number">3.4</span> Subscripting</a></li>
+  <li><a href="#branching-and-ifthen" id="toc-branching-and-ifthen" class="nav-link" data-scroll-target="#branching-and-ifthen"> <span class="header-section-number">3.5</span> Branching and If/Then</a>
+  <ul class="collapse">
+  <li><a href="#decisions-based-on-one-scalar-value" id="toc-decisions-based-on-one-scalar-value" class="nav-link" data-scroll-target="#decisions-based-on-one-scalar-value"> <span class="header-section-number">3.5.1</span> Decisions Based on One Scalar Value</a></li>
+  <li><a href="#series-of-separate-decisions-over-a-vector-of-values" id="toc-series-of-separate-decisions-over-a-vector-of-values" class="nav-link" data-scroll-target="#series-of-separate-decisions-over-a-vector-of-values"> <span class="header-section-number">3.5.2</span> Series of Separate Decisions Over a Vector of Values</a></li>
+  <li><a href="#if-trick" id="toc-if-trick" class="nav-link" data-scroll-target="#if-trick"> <span class="header-section-number">3.5.3</span> <code>if</code> Trick</a></li>
+  </ul></li>
+  <li><a href="#sec-rbasics-functions" id="toc-sec-rbasics-functions" class="nav-link" data-scroll-target="#sec-rbasics-functions"> <span class="header-section-number">3.6</span> Functions</a></li>
+  <li><a href="#resources-for-learning-r" id="toc-resources-for-learning-r" class="nav-link" data-scroll-target="#resources-for-learning-r"> <span class="header-section-number">3.7</span> Resources for Learning R</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-rbasics" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Basics</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+O[Objects] --&gt; N[Numeric] --&gt; Nt[integer<br>floating point]
+O --&gt; NN[Non-Numeric] --&gt; log[logical] &amp; ch[character] &amp; F[function]
+O --&gt; Sh[Shape] --&gt; Shs[scalar<br>vector<br>matrix<br>array]
+Sh --&gt; Li[list]
+Li --&gt; df[data.frame] &amp; dt[data.table] &amp; it[irregular tree]
+O --&gt; Ad["Addressing<br>(subscripts)"] --&gt; sub[integer<br>logical<br>names]
+O --&gt; SV[Special Values] --&gt; na[NA]
+F --&gt; cf[Common Functions<br>Write Your Own]
+Dec[Decisions] --&gt; btypes[if<br>ifelse<br>switch]
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<section id="assignment-operator" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="assignment-operator"><span class="header-section-number">3.1</span> Assignment Operator</h2>
+<p>You assign an R object to a value using the assignment operator <code>&lt;-</code> or the equal sign. <code>&lt;-</code> is read as “gets”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> y</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'mydata.csv'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sec-rbasics-objects" class="level2 page-columns page-full" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-rbasics-objects"><span class="header-section-number">3.2</span> Object Types</h2>
+<p>Everything in R is an object. Some primitive types of objects in R are below.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>integer</td>
+<td>whole numbers</td>
+</tr>
+<tr class="even">
+<td>logical</td>
+<td>values of <code>TRUE</code> or <code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td>double</td>
+<td>floating point non-whole numbers</td>
+</tr>
+<tr class="even">
+<td>character</td>
+<td>character strings</td>
+</tr>
+<tr class="odd">
+<td>function</td>
+<td>code defining a function</td>
+</tr>
+</tbody>
+</table>
+<p>In the table below, objects of different shapes are described. <code>rows</code> and <code>cols</code> refers to vectors of integers or logicals, or if the elements of the object are named, character strings.</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 25%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Example</th>
+<th>Values Retrieved By</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>scalar</td>
+<td><code>x &lt;- 3</code></td>
+<td><code>x</code></td>
+</tr>
+<tr class="even">
+<td>vector</td>
+<td><code>y &lt;- c(1, 2, 5)</code></td>
+<td><code>y[2]</code> (2), <code>y[2:3]</code> (2, 5), <code>y[-1]</code> (2, 5), <code>y[c(TRUE,FALSE,TRUE)]</code> (1, 5)</td>
+</tr>
+<tr class="odd">
+<td>named vector</td>
+<td><code>y &lt;- c(a=1, b=2, d=5)</code></td>
+<td><code>y[2]</code> (2), <code>y['b']</code> (2), <code>y[c('a','b')]</code> (1, 2)</td>
+</tr>
+<tr class="even">
+<td>matrix</td>
+<td><code>y &lt;- cbind(1:3, 4:5)</code></td>
+<td><code>y[rows,cols]</code>, <code>y[rows,]</code> (all cols), <code>y[,cols]</code> (all rows)</td>
+</tr>
+<tr class="odd">
+<td>array</td>
+<td><code>y &lt;- array(1:30, dim=c(2,3,5))</code></td>
+<td><code>y[1,1,1]</code> (1), <code>y[2,3,5]</code> (30)</td>
+</tr>
+<tr class="even">
+<td>list</td>
+<td><code>x &lt;- list(a='cat', b=c(1,3,7))</code></td>
+<td><code>x$a</code> (‘cat’), <code>x[[1]]</code> (‘cat’), <code>x[['a']]</code> (‘cat’)</td>
+</tr>
+</tbody>
+</table>
+<p>Named vectors provide an extremely quick table lookup and recoding capability.</p>
+<p><code>list</code> objects are arbitrary trees and can have elements nested to any level. You can have lists of lists or lists of data frames/tables.</p>
+<p>Vectors can be of many different types when a <code>class</code> is added to them. Two of the most common are <code>Date</code>s and <code>factor</code>s. Character strings are handled very efficiently in R so there is not always a need to store categorical variables as <code>factor</code>s. But there is one reason: to order levels, i.e., distinct variable values, so that tabular and graphical output will list values in a more logical order than alphabetic. A factor variable has a <code>levels</code> <em>attribute</em> added to it to accomplish this. An example is <code>x &lt;- factor(x, 1:3, c('cat', 'dog', 'fox'))</code> where the second argument <code>1:3</code> is the vector of possible numeric values <code>x</code> currently takes on (in order) and the three character strings are the corresponding <code>levels</code>. Internally <code>factors</code> are coded as integers, but they print as character strings.</p>
+<div class="page-columns page-full"><p>Rectangular data objects, i.e., when the number of rows is the same for every column (variable), can be represented by matrices, arrays, <code>data.frame</code>s, and <code>data.table</code>s. In a matrix or array, every value is of the same type. A <code>data.frame</code> or a <code>data.table</code> is an R <code>list</code> that can have mixtures of numeric, character, factor, dates, and other object types. A <code>data.table</code> is also a <code>data.frame</code> but the converse isn’t true. <code>data.table</code>s are handled by the R <code>data.table</code> package and don’t have row names but can be indexed, are much faster to process, and have a host of methods implemented for aggregation and other operations. <code>data.frame</code>s are handled by base R.</p><div class="no-row-height column-margin column-container"><span class="aside">See <span class="quarto-unresolved-ref">?sec-sim-array</span> for an example of using arrays with named elements</span></div></div>
+<p>Data frames are best managed by converting them to data tables and using the <code>data.table</code> package. When <code>data.table</code> is not used there are three indispensable functions for operating on data frames:</p>
+<ul>
+<li><code>with</code> for analyzing variables within a data frame without constantly prefixing variable names with <code>dataframename$</code></li>
+<li><code>transform</code> for adding or changing variables within a data frame</li>
+<li><code>Hmisc</code> <code>upData</code> function for doing the same as <code>transform</code> but also allowing metadata to be added to the data, e.g., variable labels and units (to be discussed later)</li>
+</ul>
+<p>Here are some examples of <code>with</code> and <code>transform</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Better than mean(mydata$systolic.bp - mydata$diastolic.bp) :</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(mydata, <span class="fu">mean</span>(systolic.bp <span class="sc">-</span> diastolic.bp))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Better than mydata$pulse.pressure &lt;- mydata$systolic.bp - mydata$diastolic.bp:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">transform</span>(mydata,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">pulse.pressure =</span> systolic.bp <span class="sc">-</span> diastolic.bp,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">bmi            =</span> wt <span class="sc">/</span> ht <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform several operations on the same data frame</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(mydata, {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>               x3 <span class="ot">&lt;-</span> x1 <span class="sc">/</span> <span class="fu">sqrt</span>(x2)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>               <span class="fu">ols</span>(y <span class="sc">~</span> x3)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>             }  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sec-rbasics-na" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-rbasics-na"><span class="header-section-number">3.3</span> Missing Values</h2>
+<p>R objects of any type can have elements whose values are missing. The symbol R uses for a missing value is <code>NA</code>. The <code>is.na</code> function returns <code>TRUE/FALSE</code> according to whether an element is missing. The following examples illustrate operations on <code>NA</code>s.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="cn">NA</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)              <span class="co"># mean of all x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)  <span class="co"># mean of non-missing x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(x)             <span class="co"># vector corresponding to x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(x))        <span class="co"># count # NAs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(x))      <span class="co"># count # NAs and non-NAs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+FALSE  TRUE 
+    4     2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">!</span> <span class="fu">is.na</span>(x)]        <span class="co"># get the non-missing x's</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 4 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>           <span class="co"># make x[1] missing</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA  2 NA  4  5 NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]    <span class="co"># first 6 lower case letters of alphabet</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">is.na</span>(x)]          <span class="co"># get y for which x is NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a" "c" "f"</code></pre>
+</div>
+</div>
+<p>As seen in the examples, most simple statistical summarization functions such as <code>mean</code> will result in <code>NA</code> if any element is <code>NA</code>, and you have to specify an optional argument <code>na.rm=TRUE</code> to remove <code>NA</code>s before computing so that the result will be, for example, the mean of the non-missing values.</p>
+</section>
+<section id="subscripting" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="subscripting"><span class="header-section-number">3.4</span> Subscripting</h2>
+<p>Examples of subscripting are given above. Subscripting via placement of <code>[]</code> after an object name is used for subsetting, and occasionally for using some elements more than once:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>, <span class="st">'fox'</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dog" "fox"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "cat" "cat" "fox" "fox" "dog"</code></pre>
+</div>
+</div>
+<p>Subscripting a variable or a data frame/table by a vector of <code>TRUE/FALSE</code> values is a very powerful feature of R. This is used to obtain elements satisfying one or more conditions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">2</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>x[y <span class="sc">&gt;</span> <span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 1 4</code></pre>
+</div>
+</div>
+<p>The last line of code can be read as “values of <code>x</code> such that <code>y &gt; 7</code>”.</p>
+</section>
+<section id="branching-and-ifthen" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="branching-and-ifthen"><span class="header-section-number">3.5</span> Branching and If/Then</h2>
+<section id="decisions-based-on-one-scalar-value" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="decisions-based-on-one-scalar-value"><span class="header-section-number">3.5.1</span> Decisions Based on One Scalar Value</h3>
+<p>Common approaches to this problem are <code>if</code> and <code>switch</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>type <span class="ot">&lt;-</span> <span class="st">'semiparametric'</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">parametric     =</span> <span class="fu">ols</span>(y <span class="sc">~</span> x),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">semiparametric =</span> <span class="fu">orm</span>(y <span class="sc">~</span> x),</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">nonparametric  =</span> <span class="fu">rcorr</span>(x, y, <span class="at">type=</span><span class="st">'spearman'</span>),</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            { z <span class="ot">&lt;-</span> y <span class="sc">/</span> x</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>              <span class="fu">c</span>(<span class="at">median=</span><span class="fu">median</span>(z), <span class="at">gmean=</span><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(z)))) } )</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The last 2 lines are executed for any type other than the 3 listed</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">if</span>(type <span class="sc">==</span> <span class="st">'parametric'</span>)    <span class="fu">ols</span>(y <span class="sc">~</span> x)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(type <span class="sc">==</span> <span class="st">'semiparametric'</span>) <span class="fu">orm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(type <span class="sc">==</span> <span class="st">'nonparametric'</span>)  <span class="fu">rcorr</span>(x, y, <span class="at">type=</span><span class="st">'spearman'</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> {</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    z <span class="ot">&lt;-</span> y <span class="sc">/</span> z</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">median=</span><span class="fu">median</span>(z), <span class="at">gmean=</span><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(z)))</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What is inside <code>if( )</code> must be a single scalar element that is evaluated to whether it’s <code>TRUE</code> or <code>FALSE</code>.</p>
+</section>
+<section id="series-of-separate-decisions-over-a-vector-of-values" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="series-of-separate-decisions-over-a-vector-of-values"><span class="header-section-number">3.5.2</span> Series of Separate Decisions Over a Vector of Values</h3>
+<p>The <code>ifelse</code> or <code>data.table::fifelse</code> functions are most often used for this, but <code>data.table::fcase</code> is a little better. Here’s an example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>, <span class="st">'giraffe'</span>, <span class="st">'elephant'</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>type <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>), <span class="st">'domestic'</span>, <span class="st">'wild'</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>type</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "domestic" "domestic" "wild"     "wild"    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(data.table)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>), <span class="st">'domestic'</span>, <span class="at">default=</span><span class="st">'wild'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "domestic" "domestic" "wild"     "wild"    </code></pre>
+</div>
+</div>
+</section>
+<section id="if-trick" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="if-trick"><span class="header-section-number">3.5.3</span> <code>if</code> Trick</h3>
+<p>Sometimes when constructing variable-length vectors and other objects, elements are to be included in the newly constructed object only when certain conditions apply. When a condition does not apply, no element is to be inserted. We can capitalize on the fact that the result of <code>if(...)</code> is <code>NULL</code> when <code>...</code> is not <code>TRUE</code>, and concatenating <code>NULL</code> results in ignoring it. Here are two examples. In the first the resulting vector will have length 2, 3, or 4 depending on <code>sex</code> and <code>height</code>. In the second example the new vector will have the appropriate element <code>names</code> preserved.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">23</span>; z <span class="ot">&lt;-</span> <span class="dv">46</span>; sex <span class="ot">&lt;-</span> <span class="st">'female'</span>; height <span class="ot">&lt;-</span> <span class="dv">71</span>; u <span class="ot">&lt;-</span> pi; w <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(y, z, <span class="cf">if</span>(sex <span class="sc">==</span> <span class="st">'male'</span>) u, <span class="cf">if</span>(height <span class="sc">&gt;</span> <span class="dv">70</span>) w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23 46  7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">x1=</span><span class="dv">3</span>, <span class="cf">if</span>(sex <span class="sc">==</span> <span class="st">'male'</span>) <span class="fu">c</span>(<span class="at">x2=</span><span class="dv">4</span>), <span class="cf">if</span>(height <span class="sc">&gt;</span> <span class="dv">70</span>) <span class="fu">c</span>(<span class="at">x3=</span>height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x1 x3 
+ 3 71 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reduce clutter in case of variable name conflicts:</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(y, z, sex, height, u, w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="sec-rbasics-functions" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-rbasics-functions"><span class="header-section-number">3.6</span> Functions</h2>
+<p>There are so many functions in R that it may be better to use the <a href="https://stackoverflow.com/questions/tagged/r">stackoverflow.com</a> Q&amp;A to find the ones you need (as of 2022-05-26 there are 450,000 R questions there). Here are just a few of the multitude of handy R functions. The first functions listed below return the R missing value <code>NA</code> if any element is missing. You can specify <code>na.rm=TRUE</code> to remove <code>NA</code>s from consideration first, so they will not cause the result to be <code>NA</code>. Most functions get their arguments (inputs) in () after the function name. Some functions like <code>%in%</code> are binary operators whose two arguments are given on the left and right of <code>%in%</code>.</p>
+<ul>
+<li><code>mean</code>, <code>median</code>, <code>quantile</code>, <code>var</code>, <code>sd</code>: Compute statistical summaries on one vector</li>
+<li><code>min, max</code>: Minimum or maximum of values in a vector or of multiple variables, resulting in one number</li>
+<li><code>pmin, pmax</code>: Parallel minimum and maximum for vectors, resulting in a vector. Example: <code>pmin(x, 3)</code> returns a vector of the same length as <code>x</code>. Each element is the minimum of the original value or 3.</li>
+<li><code>range</code>: Returns a vector of length two with the minimum and maximum</li>
+<li><code>plot</code>, <code>points</code>, <code>lines</code>, <code>text</code>: Basic ploting functions</li>
+<li><code>table</code>: Frequency tabulation and multi-way tabulations of any type of vector variables</li>
+<li><code>unique</code>: Return vector of distinct values, in same order as original values</li>
+<li><code>union</code>, <code>intersect</code>, <code>setdiff</code>, <code>setequal</code>: Set operations on two vectors (see below)</li>
+<li><code>a %in% b</code>, <code>a %nin% b</code>: Set membership functions that determine whether each element in <code>a</code> is in <code>b</code> (for <code>%in%</code>) or is not in <code>b</code> (for <code>%nin%</code>, which is in the <code>Hmisc</code> package)</li>
+</ul>
+<p>Set operators are amazingly helpful. Here are some examples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(x)       <span class="co"># vector of distinct values of x, including NA if occurred</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(x)) <span class="co"># distinct values in ascending order</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(<span class="fu">unique</span>(x), <span class="cn">NA</span>)  <span class="co"># distinct values excluding NA if it occurred</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(x)   <span class="co"># returns TRUE for elements that are duplicated by</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                <span class="co"># values occurring EARLIER in the list</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(x, y)     <span class="co"># find all distinct values in the union of x &amp; y</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(x, y) <span class="co"># find all distinct values in both x &amp; y</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(x, y)   <span class="co"># find all distinct x that are not in y</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">setequal</span>(x, y)  <span class="co"># returns TRUE or FALSE depending on whether the distinct</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>                <span class="co"># values of x and y are identical, ignoring how they</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>                <span class="co"># are ordered</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Find a list of subject ids that are found in baseline but not in follow-up datasets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>idn <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(baseline<span class="sc">$</span>id, followup<span class="sc">$</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Avoid repetition: Don’t say <code>if(animal == 'cat' | animal == 'dog') ....</code>; use <code>%in%</code> instead:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(animal <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>)) ...</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or if(animal %in% .q(cat, dog)) ... using Hmisc's .q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Likewise don’t say <code>if(animal != 'cat' &amp; animal != 'dog')</code> but use <code>if(animal %nin% c('cat', 'dog')) ...</code></p>
+<p>To get documentation on a function type the following in the R console: <code>?functionname</code> or <code>?packagename::functionname</code>.</p>
+<p>Even new R users can benefit from writing functions to reduce repetitive coding. A function has <em>arguments</em> and these can have default values for when the argument is not specified by the user when the function is called. Here are some examples. One line functions do not need to have their bodies enclosed in <code>{}</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>cuberoot <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">^</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cuberoot</span>(<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">power=</span><span class="dv">2</span>) {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">abs</span>(x <span class="sc">-</span> <span class="fl">0.5</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  u <span class="sc">/</span> (<span class="fl">1.</span> <span class="sc">+</span> u <span class="sc">^</span> power)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(<span class="dv">3</span>, <span class="at">power=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3448276</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3448276</code></pre>
+</div>
+</div>
+<p>Write a function make <code>mean()</code> drop missing values without our telling it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>mn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Function to be used throughout the report to round fractional values by a default amount (here round to 0.001):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>rnd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x, <span class="dv">3</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># edit the 3 the change rounding anywhere in the report</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A simple function to save coding when you need to recode multiple variables from 0/1 to no/yes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>yn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">factor</span>(x, <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="fu">c</span>(<span class="st">'no'</span>, <span class="st">'yes'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="resources-for-learning-r" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="resources-for-learning-r"><span class="header-section-number">3.7</span> Resources for Learning R</h2>
+<ul>
+<li><a href="https://github.com//matloff/fasteR">Fast Lane to Learning R</a></li>
+<li><a href="https://r-bloggers.com/how-to-learn-r-2">R Tutorials</a></li>
+<li><a href="https://youtube.com/user/marinstatlectures">R Programming Tutorials</a></li>
+<li><a href="https://swirlstats.com">Swirlstats</a> (interactive)</li>
+<li>For <a href="https://www.amazon.com/SAS-SPSS-Users-Statistics-Computing/dp/1461406846">those who have used SPSS or SAS before</a></li>
+<li><a href="http://amzn.to/15URiF6">R books on Amazon</a></li>
+<li><a href="https://stats.idre.ucla.edu/r">UCLA site</a></li>
+<li><a href="http://www.introductoryr.co.uk/R_Resources_for_Beginners.html">R Resources for Beginners</a></li>
+<li><a href="https://r4ds.had.co.nz">R for Data Science</a></li>
+<li><a href="https://www.amazon.com/R-Action-Robert-Kabacoff/dp/1935182">R in Action</a></li>
+<li><a href="https://bookdown.org/roback/bookdown-bysh">Statistical modeling by Legler and Roback</a></li>
+<li><a href="http://stackoverflow.com/tags/r">stackoverflow.com/tags/r</a> is the best place for asking questions about the language and for learning from answers to past questions asked</li>
+</ul>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    toggleBodyColorMode(window.document.querySelector("link#quarto-bootstrap"));
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./casestudy.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Case Study: The <em>Titanic</em></span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./rformat.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Report Formatting</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb47" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># R Basics {#sec-rbasics}</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>O[Objects] --&gt; N[Numeric] --&gt; Nt[<span class="kw">integer</span>&lt;br&gt;floating point]</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>O --&gt; NN[Non-Numeric] --&gt; <span class="fu">log</span>[logical] &amp; ch[character] &amp; F[function]</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>O --&gt; Sh[Shape] --&gt; Shs[<span class="fu">scalar</span>&lt;br&gt;vector&lt;br&gt;matrix&lt;br&gt;array]</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>Sh --&gt; Li[list]</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>Li --&gt; df[data.frame] &amp; dt[data.table] &amp; it[irregular tree]</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>O --&gt; Ad[<span class="ot">"</span><span class="st">Addressing&lt;br&gt;(subscripts)</span><span class="ot">"</span>] --&gt; <span class="kw">sub</span>[<span class="kw">integer</span>&lt;br&gt;logical&lt;br&gt;names]</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>O --&gt; SV[Special Values] --&gt; na[NA]</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>F --&gt; cf[Common Functions&lt;br&gt;Write Your Own]</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>Dec[Decisions] --&gt; btypes[<span class="kw">if</span>&lt;br&gt;ifelse&lt;br&gt;switch]</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Assignment Operator</span></span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>You assign an R object to a value using the assignment operator <span class="in">`&lt;-`</span> or the equal sign.  <span class="in">`&lt;-`</span> is read as "gets".</span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> y</span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'mydata.csv'</span>)</span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> y</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Object Types {#sec-rbasics-objects}</span></span>
+<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a>Everything in R is an object.  Some primitive types of objects in R are below.</span>
+<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>| Type | Meaning |</span>
+<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>|------|---------|</span>
+<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a>| integer | whole numbers |</span>
+<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a>| logical | values of <span class="in">`TRUE`</span> or <span class="in">`FALSE`</span> |</span>
+<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a>| double  | floating point non-whole numbers |</span>
+<span id="cb47-37"><a href="#cb47-37" aria-hidden="true" tabindex="-1"></a>| character | character strings |</span>
+<span id="cb47-38"><a href="#cb47-38" aria-hidden="true" tabindex="-1"></a>| function| code defining a function |</span>
+<span id="cb47-39"><a href="#cb47-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-40"><a href="#cb47-40" aria-hidden="true" tabindex="-1"></a>In the table below, objects of different shapes are described.</span>
+<span id="cb47-41"><a href="#cb47-41" aria-hidden="true" tabindex="-1"></a><span class="in">`rows`</span> and <span class="in">`cols`</span> refers to vectors of integers or logicals, or if the elements of the object are named, character strings.</span>
+<span id="cb47-42"><a href="#cb47-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-43"><a href="#cb47-43" aria-hidden="true" tabindex="-1"></a>| Type | Example |Values Retrieved By|</span>
+<span id="cb47-44"><a href="#cb47-44" aria-hidden="true" tabindex="-1"></a>|------|---------|--------------------|</span>
+<span id="cb47-45"><a href="#cb47-45" aria-hidden="true" tabindex="-1"></a>| scalar |  <span class="in">`x &lt;- 3`</span> | <span class="in">`x`</span> |</span>
+<span id="cb47-46"><a href="#cb47-46" aria-hidden="true" tabindex="-1"></a>| vector | <span class="in">`y &lt;- c(1, 2, 5)`</span> | <span class="in">`y[2]`</span> (2), <span class="in">`y[2:3]`</span> (2, 5), <span class="in">`y[-1]`</span> (2, 5), <span class="in">`y[c(TRUE,FALSE,TRUE)]`</span> (1, 5) |</span>
+<span id="cb47-47"><a href="#cb47-47" aria-hidden="true" tabindex="-1"></a>| named vector | <span class="in">`y &lt;- c(a=1, b=2, d=5)`</span> | <span class="in">`y[2]`</span> (2), <span class="in">`y['b']`</span> (2), <span class="in">`y[c('a','b')]`</span> (1, 2) |</span>
+<span id="cb47-48"><a href="#cb47-48" aria-hidden="true" tabindex="-1"></a>| matrix | <span class="in">`y &lt;- cbind(1:3, 4:5)`</span> | <span class="in">`y[rows,cols]`</span>, <span class="in">`y[rows,]`</span> (all cols), <span class="in">`y[,cols]`</span> (all rows) |</span>
+<span id="cb47-49"><a href="#cb47-49" aria-hidden="true" tabindex="-1"></a>| array  | <span class="in">`y &lt;- array(1:30, dim=c(2,3,5))`</span> | <span class="in">`y[1,1,1]`</span> (1), <span class="in">`y[2,3,5]`</span> (30) |</span>
+<span id="cb47-50"><a href="#cb47-50" aria-hidden="true" tabindex="-1"></a>| list | <span class="in">`x &lt;- list(a='cat', b=c(1,3,7))`</span> | <span class="in">`x$a`</span> ('cat'), <span class="in">`x[[1]]`</span> ('cat'), <span class="in">`x[['a']]`</span> ('cat') |</span>
+<span id="cb47-51"><a href="#cb47-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-52"><a href="#cb47-52" aria-hidden="true" tabindex="-1"></a>Named vectors provide an extremely quick table lookup and recoding capability.</span>
+<span id="cb47-53"><a href="#cb47-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-54"><a href="#cb47-54" aria-hidden="true" tabindex="-1"></a><span class="in">`list`</span> objects are arbitrary trees and can have elements nested to any level.  You can have lists of lists or lists of data frames/tables.</span>
+<span id="cb47-55"><a href="#cb47-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-56"><a href="#cb47-56" aria-hidden="true" tabindex="-1"></a>Vectors can be of many different types when a <span class="in">`class`</span> is added to them.  Two of the most common are <span class="in">`Date`</span>s and <span class="in">`factor`</span>s.  Character strings are handled very efficiently in R so there is not always a need to store categorical variables as <span class="in">`factor`</span>s.  But there is one reason: to order levels, i.e., distinct variable values, so that tabular and graphical output will list values in a more logical order than alphabetic.  A factor variable has a <span class="in">`levels`</span> _attribute_ added to it to accomplish this.  An example is <span class="in">`x &lt;- factor(x, 1:3, c('cat', 'dog', 'fox'))`</span> where the second argument <span class="in">`1:3`</span> is the vector of possible numeric values <span class="in">`x`</span> currently takes on (in order) and the three character strings are the corresponding <span class="in">`levels`</span>.  Internally <span class="in">`factors`</span> are coded as integers, but they print as character strings.</span>
+<span id="cb47-57"><a href="#cb47-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-58"><a href="#cb47-58" aria-hidden="true" tabindex="-1"></a>Rectangular data objects, i.e., when the number of rows is the same for every column (variable), can be represented by matrices, arrays, <span class="in">`data.frame`</span>s, and <span class="in">`data.table`</span>s.  In a matrix or array, every value is of the same type.  A <span class="in">`data.frame`</span> or a <span class="in">`data.table`</span> is an R <span class="in">`list`</span> that can have mixtures of numeric, character, factor, dates, and other object types.  A <span class="in">`data.table`</span> is also a <span class="in">`data.frame`</span> but the converse isn't true.  <span class="in">`data.table`</span>s are handled by the R <span class="in">`data.table`</span> package and don't have row names but can be indexed, are much faster to process, and have a host of methods implemented for aggregation and other operations.  <span class="in">`data.frame`</span>s are handled by base R.<span class="co">[</span><span class="ot">See @sec-sim-array for an example of using arrays with named elements</span><span class="co">]</span>{.aside}</span>
+<span id="cb47-59"><a href="#cb47-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-60"><a href="#cb47-60" aria-hidden="true" tabindex="-1"></a>Data frames are best managed by converting them to data tables and using the <span class="in">`data.table`</span> package.  When <span class="in">`data.table`</span> is not used there are three indispensable functions for operating on data frames:</span>
+<span id="cb47-61"><a href="#cb47-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-62"><a href="#cb47-62" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`with`</span> for analyzing variables within a data frame without constantly prefixing variable names with <span class="in">`dataframename$`</span></span>
+<span id="cb47-63"><a href="#cb47-63" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`transform`</span> for adding or changing variables within a data frame</span>
+<span id="cb47-64"><a href="#cb47-64" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`Hmisc`</span> <span class="in">`upData`</span> function for doing the same as <span class="in">`transform`</span> but also allowing metadata to be added to the data, e.g., variable labels and units (to be discussed later)</span>
+<span id="cb47-65"><a href="#cb47-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-66"><a href="#cb47-66" aria-hidden="true" tabindex="-1"></a>Here are some examples of <span class="in">`with`</span> and <span class="in">`transform`</span>.</span>
+<span id="cb47-67"><a href="#cb47-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-68"><a href="#cb47-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r with,eval=FALSE}</span></span>
+<span id="cb47-69"><a href="#cb47-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Better than mean(mydata$systolic.bp - mydata$diastolic.bp) :</span></span>
+<span id="cb47-70"><a href="#cb47-70" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(mydata, <span class="fu">mean</span>(systolic.bp <span class="sc">-</span> diastolic.bp))</span>
+<span id="cb47-71"><a href="#cb47-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Better than mydata$pulse.pressure &lt;- mydata$systolic.bp - mydata$diastolic.bp:</span></span>
+<span id="cb47-72"><a href="#cb47-72" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">transform</span>(mydata,</span>
+<span id="cb47-73"><a href="#cb47-73" aria-hidden="true" tabindex="-1"></a>                    <span class="at">pulse.pressure =</span> systolic.bp <span class="sc">-</span> diastolic.bp,</span>
+<span id="cb47-74"><a href="#cb47-74" aria-hidden="true" tabindex="-1"></a>                    <span class="at">bmi            =</span> wt <span class="sc">/</span> ht <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb47-75"><a href="#cb47-75" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform several operations on the same data frame</span></span>
+<span id="cb47-76"><a href="#cb47-76" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(mydata, {</span>
+<span id="cb47-77"><a href="#cb47-77" aria-hidden="true" tabindex="-1"></a>               x3 <span class="ot">&lt;-</span> x1 <span class="sc">/</span> <span class="fu">sqrt</span>(x2)</span>
+<span id="cb47-78"><a href="#cb47-78" aria-hidden="true" tabindex="-1"></a>               <span class="fu">ols</span>(y <span class="sc">~</span> x3)</span>
+<span id="cb47-79"><a href="#cb47-79" aria-hidden="true" tabindex="-1"></a>             }  )</span>
+<span id="cb47-80"><a href="#cb47-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-81"><a href="#cb47-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-82"><a href="#cb47-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## Missing Values {#sec-rbasics-na}</span></span>
+<span id="cb47-83"><a href="#cb47-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-84"><a href="#cb47-84" aria-hidden="true" tabindex="-1"></a>R objects of any type can have elements whose values are missing.  The symbol R uses for a missing value is <span class="in">`NA`</span>.  The <span class="in">`is.na`</span> function returns <span class="in">`TRUE/FALSE`</span> according to whether an element is missing.  The following examples illustrate operations on <span class="in">`NA`</span>s.</span>
+<span id="cb47-85"><a href="#cb47-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-86"><a href="#cb47-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r na}</span></span>
+<span id="cb47-87"><a href="#cb47-87" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="cn">NA</span>)</span>
+<span id="cb47-88"><a href="#cb47-88" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)              <span class="co"># mean of all x</span></span>
+<span id="cb47-89"><a href="#cb47-89" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)  <span class="co"># mean of non-missing x</span></span>
+<span id="cb47-90"><a href="#cb47-90" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(x)             <span class="co"># vector corresponding to x</span></span>
+<span id="cb47-91"><a href="#cb47-91" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(x))        <span class="co"># count # NAs</span></span>
+<span id="cb47-92"><a href="#cb47-92" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(x))      <span class="co"># count # NAs and non-NAs</span></span>
+<span id="cb47-93"><a href="#cb47-93" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">!</span> <span class="fu">is.na</span>(x)]        <span class="co"># get the non-missing x's</span></span>
+<span id="cb47-94"><a href="#cb47-94" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>           <span class="co"># make x[1] missing</span></span>
+<span id="cb47-95"><a href="#cb47-95" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb47-96"><a href="#cb47-96" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]    <span class="co"># first 6 lower case letters of alphabet</span></span>
+<span id="cb47-97"><a href="#cb47-97" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">is.na</span>(x)]          <span class="co"># get y for which x is NA</span></span>
+<span id="cb47-98"><a href="#cb47-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-99"><a href="#cb47-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-100"><a href="#cb47-100" aria-hidden="true" tabindex="-1"></a>As seen in the examples, most simple statistical summarization functions such as <span class="in">`mean`</span> will result in <span class="in">`NA`</span> if any element is <span class="in">`NA`</span>, and you have to specify an optional argument <span class="in">`na.rm=TRUE`</span> to remove <span class="in">`NA`</span>s before computing so that the result will be, for example, the mean of the non-missing values.</span>
+<span id="cb47-101"><a href="#cb47-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-102"><a href="#cb47-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## Subscripting</span></span>
+<span id="cb47-103"><a href="#cb47-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-104"><a href="#cb47-104" aria-hidden="true" tabindex="-1"></a>Examples of subscripting are given above. </span>
+<span id="cb47-105"><a href="#cb47-105" aria-hidden="true" tabindex="-1"></a>Subscripting via placement of <span class="in">`[]`</span> after an object name is used for subsetting, and occasionally for using some elements more than once:</span>
+<span id="cb47-106"><a href="#cb47-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-107"><a href="#cb47-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r subsc}</span></span>
+<span id="cb47-108"><a href="#cb47-108" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>, <span class="st">'fox'</span>)</span>
+<span id="cb47-109"><a href="#cb47-109" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb47-110"><a href="#cb47-110" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>)]</span>
+<span id="cb47-111"><a href="#cb47-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-112"><a href="#cb47-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-113"><a href="#cb47-113" aria-hidden="true" tabindex="-1"></a>Subscripting a variable or a data frame/table by a vector of <span class="in">`TRUE/FALSE`</span> values is a very powerful feature of R.  This is used to obtain elements satisfying one or more conditions:</span>
+<span id="cb47-114"><a href="#cb47-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-115"><a href="#cb47-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r subcond}</span></span>
+<span id="cb47-116"><a href="#cb47-116" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
+<span id="cb47-117"><a href="#cb47-117" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">2</span>)</span>
+<span id="cb47-118"><a href="#cb47-118" aria-hidden="true" tabindex="-1"></a>x[y <span class="sc">&gt;</span> <span class="dv">7</span>]</span>
+<span id="cb47-119"><a href="#cb47-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-120"><a href="#cb47-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-121"><a href="#cb47-121" aria-hidden="true" tabindex="-1"></a>The last line of code can be read as "values of <span class="in">`x`</span> such that <span class="in">`y &gt; 7`</span>".</span>
+<span id="cb47-122"><a href="#cb47-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-123"><a href="#cb47-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## Branching and If/Then</span></span>
+<span id="cb47-124"><a href="#cb47-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-125"><a href="#cb47-125" aria-hidden="true" tabindex="-1"></a><span class="fu">### Decisions Based on One Scalar Value</span></span>
+<span id="cb47-126"><a href="#cb47-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-127"><a href="#cb47-127" aria-hidden="true" tabindex="-1"></a>Common approaches to this problem are <span class="in">`if`</span> and <span class="in">`switch`</span>.</span>
+<span id="cb47-128"><a href="#cb47-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-129"><a href="#cb47-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r ifs,eval=FALSE}</span></span>
+<span id="cb47-130"><a href="#cb47-130" aria-hidden="true" tabindex="-1"></a>type <span class="ot">&lt;-</span> <span class="st">'semiparametric'</span></span>
+<span id="cb47-131"><a href="#cb47-131" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
+<span id="cb47-132"><a href="#cb47-132" aria-hidden="true" tabindex="-1"></a>            <span class="at">parametric     =</span> <span class="fu">ols</span>(y <span class="sc">~</span> x),</span>
+<span id="cb47-133"><a href="#cb47-133" aria-hidden="true" tabindex="-1"></a>            <span class="at">semiparametric =</span> <span class="fu">orm</span>(y <span class="sc">~</span> x),</span>
+<span id="cb47-134"><a href="#cb47-134" aria-hidden="true" tabindex="-1"></a>            <span class="at">nonparametric  =</span> <span class="fu">rcorr</span>(x, y, <span class="at">type=</span><span class="st">'spearman'</span>),</span>
+<span id="cb47-135"><a href="#cb47-135" aria-hidden="true" tabindex="-1"></a>            { z <span class="ot">&lt;-</span> y <span class="sc">/</span> x</span>
+<span id="cb47-136"><a href="#cb47-136" aria-hidden="true" tabindex="-1"></a>              <span class="fu">c</span>(<span class="at">median=</span><span class="fu">median</span>(z), <span class="at">gmean=</span><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(z)))) } )</span>
+<span id="cb47-137"><a href="#cb47-137" aria-hidden="true" tabindex="-1"></a><span class="co"># The last 2 lines are executed for any type other than the 3 listed</span></span>
+<span id="cb47-138"><a href="#cb47-138" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">if</span>(type <span class="sc">==</span> <span class="st">'parametric'</span>)    <span class="fu">ols</span>(y <span class="sc">~</span> x)</span>
+<span id="cb47-139"><a href="#cb47-139" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
+<span id="cb47-140"><a href="#cb47-140" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(type <span class="sc">==</span> <span class="st">'semiparametric'</span>) <span class="fu">orm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb47-141"><a href="#cb47-141" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
+<span id="cb47-142"><a href="#cb47-142" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(type <span class="sc">==</span> <span class="st">'nonparametric'</span>)  <span class="fu">rcorr</span>(x, y, <span class="at">type=</span><span class="st">'spearman'</span>)</span>
+<span id="cb47-143"><a href="#cb47-143" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> {</span>
+<span id="cb47-144"><a href="#cb47-144" aria-hidden="true" tabindex="-1"></a>    z <span class="ot">&lt;-</span> y <span class="sc">/</span> z</span>
+<span id="cb47-145"><a href="#cb47-145" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">median=</span><span class="fu">median</span>(z), <span class="at">gmean=</span><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(z)))</span>
+<span id="cb47-146"><a href="#cb47-146" aria-hidden="true" tabindex="-1"></a>  <span class="er">}</span></span>
+<span id="cb47-147"><a href="#cb47-147" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-148"><a href="#cb47-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-149"><a href="#cb47-149" aria-hidden="true" tabindex="-1"></a><span class="at">What is inside </span><span class="st">`</span><span class="fu">if</span>( )<span class="st">`</span><span class="at"> must be a single scalar element that is evaluated to whether it's </span><span class="st">`</span>TRUE<span class="st">`</span><span class="at"> or </span><span class="st">`</span>FALSE<span class="st">`</span><span class="at">.</span></span>
+<span id="cb47-150"><a href="#cb47-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-151"><a href="#cb47-151" aria-hidden="true" tabindex="-1"></a><span class="at">### Series of Separate Decisions Over a Vector of Values</span></span>
+<span id="cb47-152"><a href="#cb47-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-153"><a href="#cb47-153" aria-hidden="true" tabindex="-1"></a><span class="at">The </span><span class="st">`</span>ifelse<span class="st">`</span><span class="at"> or </span><span class="st">`</span>data.table<span class="sc">::</span>fifelse<span class="st">`</span><span class="at"> functions are most often used for this, but </span><span class="st">`</span>data.table<span class="sc">::</span>fcase<span class="st">`</span><span class="at"> is a little better.  Here's an example.</span></span>
+<span id="cb47-154"><a href="#cb47-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-155"><a href="#cb47-155" aria-hidden="true" tabindex="-1"></a><span class="st">```</span>{r ifelse}</span>
+<span id="cb47-156"><a href="#cb47-156" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>, <span class="st">'giraffe'</span>, <span class="st">'elephant'</span>)</span>
+<span id="cb47-157"><a href="#cb47-157" aria-hidden="true" tabindex="-1"></a>type <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>), <span class="st">'domestic'</span>, <span class="st">'wild'</span>)</span>
+<span id="cb47-158"><a href="#cb47-158" aria-hidden="true" tabindex="-1"></a>type</span>
+<span id="cb47-159"><a href="#cb47-159" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(data.table)</span>
+<span id="cb47-160"><a href="#cb47-160" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>), <span class="st">'domestic'</span>, <span class="at">default=</span><span class="st">'wild'</span>)</span>
+<span id="cb47-161"><a href="#cb47-161" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-162"><a href="#cb47-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-163"><a href="#cb47-163" aria-hidden="true" tabindex="-1"></a><span class="at">### </span><span class="st">`</span>if<span class="st">`</span><span class="at"> Trick</span></span>
+<span id="cb47-164"><a href="#cb47-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-165"><a href="#cb47-165" aria-hidden="true" tabindex="-1"></a><span class="at">Sometimes when constructing variable-length vectors and other objects, elements are to be included in the newly constructed object only when certain conditions apply.  When a condition does not apply, no element is to be inserted.  We can capitalize on the fact that the result of </span><span class="st">`</span><span class="fu">if</span>(...)<span class="st">`</span><span class="at"> is </span><span class="st">`</span>NULL<span class="st">`</span><span class="at"> when </span><span class="st">`</span>...<span class="st">`</span><span class="at"> is not </span><span class="st">`</span>TRUE<span class="st">`</span><span class="at">, and concatenating </span><span class="st">`</span>NULL<span class="st">`</span><span class="at"> results in ignoring it.  Here are two examples.  In the first the resulting vector will have length 2, 3, or 4 depending on </span><span class="st">`</span>sex<span class="st">`</span><span class="at"> and </span><span class="st">`</span>height<span class="st">`</span><span class="at">.  In the second example the new vector will have the appropriate element </span><span class="st">`</span>names<span class="st">`</span><span class="at"> preserved.</span></span>
+<span id="cb47-166"><a href="#cb47-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-167"><a href="#cb47-167" aria-hidden="true" tabindex="-1"></a><span class="st">```</span>{r iftrick}</span>
+<span id="cb47-168"><a href="#cb47-168" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">23</span>; z <span class="ot">&lt;-</span> <span class="dv">46</span>; sex <span class="ot">&lt;-</span> <span class="st">'female'</span>; height <span class="ot">&lt;-</span> <span class="dv">71</span>; u <span class="ot">&lt;-</span> pi; w <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb47-169"><a href="#cb47-169" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(y, z, <span class="cf">if</span>(sex <span class="sc">==</span> <span class="st">'male'</span>) u, <span class="cf">if</span>(height <span class="sc">&gt;</span> <span class="dv">70</span>) w)</span>
+<span id="cb47-170"><a href="#cb47-170" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">x1=</span><span class="dv">3</span>, <span class="cf">if</span>(sex <span class="sc">==</span> <span class="st">'male'</span>) <span class="fu">c</span>(<span class="at">x2=</span><span class="dv">4</span>), <span class="cf">if</span>(height <span class="sc">&gt;</span> <span class="dv">70</span>) <span class="fu">c</span>(<span class="at">x3=</span>height))</span>
+<span id="cb47-171"><a href="#cb47-171" aria-hidden="true" tabindex="-1"></a><span class="co"># reduce clutter in case of variable name conflicts:</span></span>
+<span id="cb47-172"><a href="#cb47-172" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(y, z, sex, height, u, w)</span>
+<span id="cb47-173"><a href="#cb47-173" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-174"><a href="#cb47-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-175"><a href="#cb47-175" aria-hidden="true" tabindex="-1"></a><span class="at">## Functions {#sec-rbasics-functions}</span></span>
+<span id="cb47-176"><a href="#cb47-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-177"><a href="#cb47-177" aria-hidden="true" tabindex="-1"></a><span class="at">There are so many functions in R that it may be better to use the [stackoverflow.com](https://stackoverflow.com/questions/tagged/r) Q&amp;A to find the ones you need (as of 2022-05-26 there are 450,000 R questions there).  Here are just a few of the multitude of handy R functions.  The first functions listed below return the R missing value </span><span class="st">`</span>NA<span class="st">`</span><span class="at"> if any element is missing.  You can specify </span><span class="st">`</span><span class="at">na.rm=</span>TRUE<span class="st">`</span><span class="at"> to remove </span><span class="st">`</span>NA<span class="st">`</span><span class="at">s from consideration first, so they will not cause the result to be </span><span class="st">`</span>NA<span class="st">`</span><span class="at">.  Most functions get their arguments (inputs) in () after the function name.  Some functions like </span><span class="st">`</span><span class="sc">%in%</span><span class="st">`</span><span class="at"> are binary operators whose two arguments are given on the left and right of </span><span class="st">`</span><span class="sc">%in%</span><span class="st">`</span><span class="at">.</span></span>
+<span id="cb47-178"><a href="#cb47-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-179"><a href="#cb47-179" aria-hidden="true" tabindex="-1"></a><span class="at">* </span><span class="st">`</span>mean<span class="st">`</span><span class="at">, </span><span class="st">`</span>median<span class="st">`</span><span class="at">, </span><span class="st">`</span>quantile<span class="st">`</span><span class="at">, </span><span class="st">`</span>var<span class="st">`</span><span class="at">, </span><span class="st">`</span>sd<span class="st">`</span><span class="at">: Compute statistical summaries on one vector</span></span>
+<span id="cb47-180"><a href="#cb47-180" aria-hidden="true" tabindex="-1"></a><span class="at">* </span><span class="st">`</span>min, max<span class="st">`</span><span class="at">: Minimum or maximum of values in a vector or of multiple variables, resulting in one number</span></span>
+<span id="cb47-181"><a href="#cb47-181" aria-hidden="true" tabindex="-1"></a><span class="at">* </span><span class="st">`</span>pmin, pmax<span class="st">`</span><span class="at">: Parallel minimum and maximum for vectors, resulting in a vector.  Example: </span><span class="st">`</span><span class="fu">pmin</span>(x, <span class="dv">3</span>)<span class="st">`</span><span class="at"> returns a vector of the same length as </span><span class="st">`</span>x<span class="st">`</span><span class="at">.  Each element is the minimum of the original value or 3.</span></span>
+<span id="cb47-182"><a href="#cb47-182" aria-hidden="true" tabindex="-1"></a><span class="at">* </span><span class="st">`</span>range<span class="st">`</span><span class="at">: Returns a vector of length two with the minimum and maximum</span></span>
+<span id="cb47-183"><a href="#cb47-183" aria-hidden="true" tabindex="-1"></a><span class="at">* </span><span class="st">`</span>plot<span class="st">`</span><span class="at">, </span><span class="st">`</span>points<span class="st">`</span><span class="at">, </span><span class="st">`</span>lines<span class="st">`</span><span class="at">, </span><span class="st">`</span>text<span class="st">`</span><span class="at">: Basic ploting functions</span></span>
+<span id="cb47-184"><a href="#cb47-184" aria-hidden="true" tabindex="-1"></a><span class="at">* </span><span class="st">`</span>table<span class="st">`</span><span class="at">: Frequency tabulation and multi-way tabulations of any type of vector variables</span></span>
+<span id="cb47-185"><a href="#cb47-185" aria-hidden="true" tabindex="-1"></a><span class="at">* </span><span class="st">`</span>unique<span class="st">`</span><span class="at">: Return vector of distinct values, in same order as original values</span></span>
+<span id="cb47-186"><a href="#cb47-186" aria-hidden="true" tabindex="-1"></a><span class="at">* </span><span class="st">`</span>union<span class="st">`</span><span class="at">, </span><span class="st">`</span>intersect<span class="st">`</span><span class="at">, </span><span class="st">`</span>setdiff<span class="st">`</span><span class="at">, </span><span class="st">`</span>setequal<span class="st">`</span><span class="at">: Set operations on two vectors (see below)</span></span>
+<span id="cb47-187"><a href="#cb47-187" aria-hidden="true" tabindex="-1"></a><span class="at">* </span><span class="st">`</span>a <span class="sc">%in%</span> b<span class="st">`</span><span class="at">, </span><span class="st">`</span>a <span class="sc">%nin%</span> b<span class="st">`</span><span class="at">: Set membership functions that determine whether each element in </span><span class="st">`</span>a<span class="st">`</span><span class="at"> is in </span><span class="st">`</span>b<span class="st">`</span><span class="at"> (for </span><span class="st">`</span><span class="sc">%in%</span><span class="st">`</span><span class="at">) or is not in </span><span class="st">`</span>b<span class="st">`</span><span class="at"> (for </span><span class="st">`</span><span class="sc">%nin%</span><span class="st">`</span><span class="at">, which is in the </span><span class="st">`</span>Hmisc<span class="st">`</span><span class="at"> package)</span></span>
+<span id="cb47-188"><a href="#cb47-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-189"><a href="#cb47-189" aria-hidden="true" tabindex="-1"></a><span class="at">Set operators are amazingly helpful.  Here are some examples.</span></span>
+<span id="cb47-190"><a href="#cb47-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-191"><a href="#cb47-191" aria-hidden="true" tabindex="-1"></a><span class="st">```</span>{r setup,eval<span class="ot">=</span><span class="cn">FALSE</span>}</span>
+<span id="cb47-192"><a href="#cb47-192" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(x)       <span class="co"># vector of distinct values of x, including NA if occurred</span></span>
+<span id="cb47-193"><a href="#cb47-193" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(x)) <span class="co"># distinct values in ascending order</span></span>
+<span id="cb47-194"><a href="#cb47-194" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(<span class="fu">unique</span>(x), <span class="cn">NA</span>)  <span class="co"># distinct values excluding NA if it occurred</span></span>
+<span id="cb47-195"><a href="#cb47-195" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(x)   <span class="co"># returns TRUE for elements that are duplicated by</span></span>
+<span id="cb47-196"><a href="#cb47-196" aria-hidden="true" tabindex="-1"></a>                <span class="co"># values occurring EARLIER in the list</span></span>
+<span id="cb47-197"><a href="#cb47-197" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(x, y)     <span class="co"># find all distinct values in the union of x &amp; y</span></span>
+<span id="cb47-198"><a href="#cb47-198" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(x, y) <span class="co"># find all distinct values in both x &amp; y</span></span>
+<span id="cb47-199"><a href="#cb47-199" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(x, y)   <span class="co"># find all distinct x that are not in y</span></span>
+<span id="cb47-200"><a href="#cb47-200" aria-hidden="true" tabindex="-1"></a><span class="fu">setequal</span>(x, y)  <span class="co"># returns TRUE or FALSE depending on whether the distinct</span></span>
+<span id="cb47-201"><a href="#cb47-201" aria-hidden="true" tabindex="-1"></a>                <span class="co"># values of x and y are identical, ignoring how they</span></span>
+<span id="cb47-202"><a href="#cb47-202" aria-hidden="true" tabindex="-1"></a>                <span class="co"># are ordered</span></span>
+<span id="cb47-203"><a href="#cb47-203" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-204"><a href="#cb47-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-205"><a href="#cb47-205" aria-hidden="true" tabindex="-1"></a><span class="at">Find a list of subject ids that are found in baseline but not in follow-up datasets:</span></span>
+<span id="cb47-206"><a href="#cb47-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-207"><a href="#cb47-207" aria-hidden="true" tabindex="-1"></a><span class="st">```</span>{r eval<span class="ot">=</span><span class="cn">FALSE</span>}</span>
+<span id="cb47-208"><a href="#cb47-208" aria-hidden="true" tabindex="-1"></a>idn <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(baseline<span class="sc">$</span>id, followup<span class="sc">$</span>id)</span>
+<span id="cb47-209"><a href="#cb47-209" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-210"><a href="#cb47-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-211"><a href="#cb47-211" aria-hidden="true" tabindex="-1"></a><span class="at">Avoid repetition: Don't say </span><span class="st">`</span><span class="fu">if</span>(animal <span class="sc">==</span> <span class="st">'cat'</span> <span class="sc">|</span> animal <span class="sc">==</span> <span class="st">'dog'</span>) ....<span class="st">`</span><span class="at">; use </span><span class="st">`</span><span class="sc">%in%</span><span class="st">`</span><span class="at"> instead:</span></span>
+<span id="cb47-212"><a href="#cb47-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-213"><a href="#cb47-213" aria-hidden="true" tabindex="-1"></a><span class="st">```</span>{r eval<span class="ot">=</span><span class="cn">FALSE</span>}</span>
+<span id="cb47-214"><a href="#cb47-214" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(animal <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>)) ...</span>
+<span id="cb47-215"><a href="#cb47-215" aria-hidden="true" tabindex="-1"></a><span class="co"># or if(animal %in% .q(cat, dog)) ... using Hmisc's .q</span></span>
+<span id="cb47-216"><a href="#cb47-216" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-217"><a href="#cb47-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-218"><a href="#cb47-218" aria-hidden="true" tabindex="-1"></a><span class="at">Likewise don't say </span><span class="st">`</span><span class="fu">if</span>(animal <span class="sc">!=</span> <span class="st">'cat'</span> <span class="sc">&amp;</span> animal <span class="sc">!=</span> <span class="st">'dog'</span>)<span class="st">`</span><span class="at"> but use </span><span class="st">`</span><span class="fu">if</span>(animal <span class="sc">%nin%</span> <span class="fu">c</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>)) ...<span class="st">`</span></span>
+<span id="cb47-219"><a href="#cb47-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-220"><a href="#cb47-220" aria-hidden="true" tabindex="-1"></a><span class="at">To get documentation on a function type the following in the R console: </span><span class="st">`</span>?functionname<span class="st">`</span><span class="at"> or </span><span class="st">`</span>?packagename<span class="sc">::</span>functionname<span class="st">`</span><span class="at">.</span></span>
+<span id="cb47-221"><a href="#cb47-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-222"><a href="#cb47-222" aria-hidden="true" tabindex="-1"></a><span class="at">Even new R users can benefit from writing functions to reduce repetitive coding.  A function has _arguments_ and these can have default values for when the argument is not specified by the user when the function is called.  Here are some examples.  One line functions do not need to have their bodies enclosed in </span><span class="st">`</span>{}<span class="st">`</span><span class="at">.</span></span>
+<span id="cb47-223"><a href="#cb47-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-224"><a href="#cb47-224" aria-hidden="true" tabindex="-1"></a><span class="st">```</span>{r runex}</span>
+<span id="cb47-225"><a href="#cb47-225" aria-hidden="true" tabindex="-1"></a>cuberoot <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">^</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span>
+<span id="cb47-226"><a href="#cb47-226" aria-hidden="true" tabindex="-1"></a><span class="fu">cuberoot</span>(<span class="dv">8</span>)</span>
+<span id="cb47-227"><a href="#cb47-227" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">power=</span><span class="dv">2</span>) {</span>
+<span id="cb47-228"><a href="#cb47-228" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">abs</span>(x <span class="sc">-</span> <span class="fl">0.5</span>)</span>
+<span id="cb47-229"><a href="#cb47-229" aria-hidden="true" tabindex="-1"></a>  u <span class="sc">/</span> (<span class="fl">1.</span> <span class="sc">+</span> u <span class="sc">^</span> power)</span>
+<span id="cb47-230"><a href="#cb47-230" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb47-231"><a href="#cb47-231" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(<span class="dv">3</span>, <span class="at">power=</span><span class="dv">2</span>)</span>
+<span id="cb47-232"><a href="#cb47-232" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(<span class="dv">3</span>)</span>
+<span id="cb47-233"><a href="#cb47-233" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-234"><a href="#cb47-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-235"><a href="#cb47-235" aria-hidden="true" tabindex="-1"></a><span class="at">Write a function make </span><span class="st">`</span><span class="fu">mean</span>()<span class="st">`</span><span class="at"> drop missing values without our telling it.</span></span>
+<span id="cb47-236"><a href="#cb47-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-237"><a href="#cb47-237" aria-hidden="true" tabindex="-1"></a><span class="st">```</span>{r eval<span class="ot">=</span><span class="cn">FALSE</span>}</span>
+<span id="cb47-238"><a href="#cb47-238" aria-hidden="true" tabindex="-1"></a>mn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb47-239"><a href="#cb47-239" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-240"><a href="#cb47-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-241"><a href="#cb47-241" aria-hidden="true" tabindex="-1"></a><span class="at">Function to be used throughout the report to round fractional values by a default amount (here round to 0.001):</span></span>
+<span id="cb47-242"><a href="#cb47-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-243"><a href="#cb47-243" aria-hidden="true" tabindex="-1"></a><span class="st">```</span>{r eval<span class="ot">=</span><span class="cn">FALSE</span>}</span>
+<span id="cb47-244"><a href="#cb47-244" aria-hidden="true" tabindex="-1"></a>rnd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x, <span class="dv">3</span>)</span>
+<span id="cb47-245"><a href="#cb47-245" aria-hidden="true" tabindex="-1"></a><span class="co"># edit the 3 the change rounding anywhere in the report</span></span>
+<span id="cb47-246"><a href="#cb47-246" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-247"><a href="#cb47-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-248"><a href="#cb47-248" aria-hidden="true" tabindex="-1"></a><span class="at">A simple function to save coding when you need to recode multiple</span></span>
+<span id="cb47-249"><a href="#cb47-249" aria-hidden="true" tabindex="-1"></a><span class="at">variables from 0/1 to no/yes:</span></span>
+<span id="cb47-250"><a href="#cb47-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-251"><a href="#cb47-251" aria-hidden="true" tabindex="-1"></a><span class="st">```</span>{r eval<span class="ot">=</span><span class="cn">FALSE</span>}</span>
+<span id="cb47-252"><a href="#cb47-252" aria-hidden="true" tabindex="-1"></a>yn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">factor</span>(x, <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="fu">c</span>(<span class="st">'no'</span>, <span class="st">'yes'</span>))</span>
+<span id="cb47-253"><a href="#cb47-253" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb47-254"><a href="#cb47-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-255"><a href="#cb47-255" aria-hidden="true" tabindex="-1"></a><span class="at">## Resources for Learning R</span></span>
+<span id="cb47-256"><a href="#cb47-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-257"><a href="#cb47-257" aria-hidden="true" tabindex="-1"></a><span class="at">* [Fast Lane to Learning R](https://github.com//matloff/fasteR)</span></span>
+<span id="cb47-258"><a href="#cb47-258" aria-hidden="true" tabindex="-1"></a><span class="at">* [R Tutorials](https://r-bloggers.com/how-to-learn-r-2)</span></span>
+<span id="cb47-259"><a href="#cb47-259" aria-hidden="true" tabindex="-1"></a><span class="at">* [R Programming Tutorials](https://youtube.com/user/marinstatlectures)</span></span>
+<span id="cb47-260"><a href="#cb47-260" aria-hidden="true" tabindex="-1"></a><span class="at">* [Swirlstats](https://swirlstats.com) (interactive)</span></span>
+<span id="cb47-261"><a href="#cb47-261" aria-hidden="true" tabindex="-1"></a><span class="at">* For [those who have used SPSS or SAS before](https://www.amazon.com/SAS-SPSS-Users-Statistics-Computing/dp/1461406846)</span></span>
+<span id="cb47-262"><a href="#cb47-262" aria-hidden="true" tabindex="-1"></a><span class="at">* [R books on Amazon](http://amzn.to/15URiF6)</span></span>
+<span id="cb47-263"><a href="#cb47-263" aria-hidden="true" tabindex="-1"></a><span class="at">* [UCLA site](https://stats.idre.ucla.edu/r)</span></span>
+<span id="cb47-264"><a href="#cb47-264" aria-hidden="true" tabindex="-1"></a><span class="at">* [R Resources for Beginners](http://www.introductoryr.co.uk/R_Resources_for_Beginners.html)</span></span>
+<span id="cb47-265"><a href="#cb47-265" aria-hidden="true" tabindex="-1"></a><span class="at">* [R for Data Science](https://r4ds.had.co.nz)</span></span>
+<span id="cb47-266"><a href="#cb47-266" aria-hidden="true" tabindex="-1"></a><span class="at">* [R in Action](https://www.amazon.com/R-Action-Robert-Kabacoff/dp/1935182)</span></span>
+<span id="cb47-267"><a href="#cb47-267" aria-hidden="true" tabindex="-1"></a><span class="at">* [Statistical modeling by Legler and Roback](https://bookdown.org/roback/bookdown-bysh)</span></span>
+<span id="cb47-268"><a href="#cb47-268" aria-hidden="true" tabindex="-1"></a><span class="at">* [stackoverflow.com/tags/r](http://stackoverflow.com/tags/r) is the best place for asking questions about the language and for learning from answers to past questions asked</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2022, Frank E Harrell Jr
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.gnu.org/licenses/gpl-3.0.en.html">License</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
