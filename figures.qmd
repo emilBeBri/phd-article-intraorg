@@ -1,7 +1,0 @@
-# List of Figures
-
-```{r echo=FALSE}
-require(Hmisc)
-getRs('reptools.r')
-printCap(book=TRUE)
-```

@@ -1,6 +1,7 @@
 
 # Tie definitions and their influence on network formation
 
+
 Ties can be defined in different ways, that can have a huge impact on the meaning of the ties, and the number of ties a person has. This will influence the analysis greatly, so this section will explore 2 different types of ties. The one type will have two different tresholds, so the number of explored options is three in total. 
 
 - **The first** definition of a tie includes every person within 

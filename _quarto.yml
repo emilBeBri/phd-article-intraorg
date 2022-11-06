@@ -1,42 +1,56 @@
 project:
   type: book
 
+
+
 book:
-  title: "Intraorganizational Inequality In A Network Perspective"
-  subtitle: "something something"
+  title: "Relational inequality in the workplace"
+  subtitle: "Intraorganizational Inequality In A Network Perspective"
   author:
-    - name: Emil Pula Bellamy Begtrup-Bright
+    - name: Emil Bellamy Begtrup-Bright
       url: https://some-website.org
       affiliation: Department of Organization<br>Copenhagen Business School
   date: last-modified
   site-url: https://some-website.org/rflow
   url: https://some-website.org/rflow
 
+
+
+
+
   # google-analytics: "G-......"
+
+  # chapters:
+  #   - index.qmd
+  #   - abstract.qmd
+  #   - research_questions.qmd
+  #   - defining-the-population.qmd
 
   chapters:
     - index.qmd
-    - abstract.qmd
-    - research_questions.qmd
-    - defining-the-population.qmd
-    # - rbasics.qmd
-    # - rformat.qmd
-    # - fcreate.qmd
-    # - missing.qmd
-    # - datachk.qmd
-    # - doverview.qmd
-    # - descript.qmd
-    # - manip.qmd
-    # - sstats.qmd
-    # - merge.qmd
-    # - long.qmd
-    # - graphics.qmd
-    # - analysis.qmd
-    # - caching.qmd
-    # - parallel.qmd
-    # - sim.qmd
-    # - figures.qmd
-    - app-edgelist-exploration.qmd
+    - part: Outline
+      chapters: 
+        - abstract.qmd
+        - research_questions.qmd
+    - part: Main body
+      chapters: 
+        - abstract.qmd
+    - part: Ending
+      chapters: 
+        - ending.qmd
+    - part: appendices
+      chapters: 
+      - app-edgelist-exploration.qmd
+      - defining-the-population.qmd
+      - team-moves.qmd
+      - references.qmd
+
+
+
+
+
+
+
 
   page-footer:
     background: light
@@ -56,20 +70,20 @@ book:
   navbar:
     collapse-below: xl
 
+bibliography: references.bib 
+
 filters:
   - lightbox
 
-
 lightbox: auto
-
-
 
 format:
   html:
-    theme: journal
+    # theme: cosmo
     number-depth: 3
     cap-location: margin
     reference-location: margin
+    citation-location: margin
     # css: mermaidf.css
     code-tools: true
     code-block-bg: "#f1f3f5"
@@ -85,8 +99,6 @@ execute:
   warning: false
   message: false
   freeze: auto
-
-
 
 # website:
 #   navbar:

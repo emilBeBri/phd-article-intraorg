@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://some-website.org/rflow/intro.html</loc>
-    <lastmod>2022-07-19T07:13:28.190Z</lastmod>
-  </url>
-  <url>
     <loc>https://some-website.org/rflow/index.html</loc>
-    <lastmod>2022-08-30T09:42:10.590Z</lastmod>
-  </url>
-  <url>
-    <loc>https://some-website.org/rflow/research_questions.html</loc>
-    <lastmod>2022-08-30T09:57:31.340Z</lastmod>
+    <lastmod>2022-11-03T15:15:40.080Z</lastmod>
   </url>
   <url>
     <loc>https://some-website.org/rflow/abstract.html</loc>
-    <lastmod>2022-08-30T09:57:28.596Z</lastmod>
+    <lastmod>2022-11-03T15:15:52.850Z</lastmod>
+  </url>
+  <url>
+    <loc>https://some-website.org/rflow/research_questions.html</loc>
+    <lastmod>2022-10-12T12:00:01.759Z</lastmod>
   </url>
   <url>
     <loc>https://some-website.org/rflow/app-edgelist-exploration.html</loc>
-    <lastmod>2022-08-25T13:33:55.031Z</lastmod>
+    <lastmod>2022-10-17T11:44:21.251Z</lastmod>
+  </url>
+  <url>
+    <loc>https://some-website.org/rflow/ending.html</loc>
+    <lastmod>2022-10-12T12:00:06.793Z</lastmod>
   </url>
   <url>
     <loc>https://some-website.org/rflow/defining-the-population.html</loc>
-    <lastmod>2022-08-30T12:53:36.978Z</lastmod>
+    <lastmod>2022-10-17T11:43:14.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://some-website.org/rflow/references.html</loc>
+    <lastmod>2022-11-03T14:05:59.731Z</lastmod>
+  </url>
+  <url>
+    <loc>https://some-website.org/rflow/team-moves.html</loc>
+    <lastmod>2022-11-03T15:51:37.536Z</lastmod>
   </url>
 </urlset>

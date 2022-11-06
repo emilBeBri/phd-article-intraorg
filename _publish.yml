@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: a4e36547-34d2-443e-8c69-a439decbcf8f
+      url: 'https://emilbebri-phd-article-intraorg.netlify.app'

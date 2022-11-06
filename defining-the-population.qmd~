@@ -1,6 +1,8 @@
 
 # Tie definitions and their influence on network formation
 
+is this thing on?
+
 Ties can be defined in different ways, that can have a huge impact on the meaning of the ties, and the number of ties a person has. This will influence the analysis greatly, so this section will explore 2 different types of ties. The one type will have two different tresholds, so the number of explored options is three in total. 
 
 - **The first** definition of a tie includes every person within 
@@ -61,11 +63,12 @@ Using 2018 as a benchmark year, there is xxxx no. of people in Denmark, with the
 
 
 
-#  like  analysis of transitivity 
+# Analysis of transitivity 
 
 
 
-Here is a list of the different ones. It's<leader>is  joyfull to work with, nothing more, nothing less. 
+Here is a list of the different ones. It's is joyfull to work with, nothing more, nothing less. 
+
 
 
 ```{r new one, echo=FALSE}
@@ -75,6 +78,9 @@ knitr::include_graphics('img/dst-shot/fig-edgelist-type-worksite-size-lineplot.p
 ```
 
 
+
+
+asdfasfd
 
 
 
