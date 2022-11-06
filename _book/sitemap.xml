@@ -2,34 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://some-website.org/rflow/index.html</loc>
-    <lastmod>2022-11-03T15:15:40.080Z</lastmod>
+    <lastmod>2022-11-06T14:26:56.677Z</lastmod>
   </url>
   <url>
     <loc>https://some-website.org/rflow/abstract.html</loc>
-    <lastmod>2022-11-03T15:15:52.850Z</lastmod>
+    <lastmod>2022-11-06T13:16:37.233Z</lastmod>
   </url>
   <url>
     <loc>https://some-website.org/rflow/research_questions.html</loc>
-    <lastmod>2022-10-12T12:00:01.759Z</lastmod>
-  </url>
-  <url>
-    <loc>https://some-website.org/rflow/app-edgelist-exploration.html</loc>
-    <lastmod>2022-10-17T11:44:21.251Z</lastmod>
+    <lastmod>2022-11-06T13:16:37.236Z</lastmod>
   </url>
   <url>
     <loc>https://some-website.org/rflow/ending.html</loc>
-    <lastmod>2022-10-12T12:00:06.793Z</lastmod>
+    <lastmod>2022-11-06T13:16:37.236Z</lastmod>
+  </url>
+  <url>
+    <loc>https://some-website.org/rflow/app-edgelist-exploration.html</loc>
+    <lastmod>2022-11-06T13:16:37.236Z</lastmod>
   </url>
   <url>
     <loc>https://some-website.org/rflow/defining-the-population.html</loc>
-    <lastmod>2022-10-17T11:43:14.842Z</lastmod>
-  </url>
-  <url>
-    <loc>https://some-website.org/rflow/references.html</loc>
-    <lastmod>2022-11-03T14:05:59.731Z</lastmod>
+    <lastmod>2022-11-06T13:16:37.239Z</lastmod>
   </url>
   <url>
     <loc>https://some-website.org/rflow/team-moves.html</loc>
-    <lastmod>2022-11-03T15:51:37.536Z</lastmod>
+    <lastmod>2022-11-06T16:33:42.560Z</lastmod>
+  </url>
+  <url>
+    <loc>https://some-website.org/rflow/references.html</loc>
+    <lastmod>2022-11-06T13:16:37.243Z</lastmod>
   </url>
 </urlset>

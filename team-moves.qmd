@@ -5,7 +5,7 @@
 A team move is defined as a situation where *n* people (n > 1) move together from worksite A to worksite B in the following year. 
 
 
-Team moves needs to be inferred by patterns of movement between companies and worksites. There is a difference in team moves between two worksites *within* the same company, and team moves between two worksites that are not within the same company. 
+Team moves needs to be inferred by patterns of movement between worksites, and the companies that the worksites are nested within. There is a difference in team moves between two worksites *within* the same company, and team moves between two worksites that are not within the same company. 
 
 
 These patterns are easier to establish by empirical example. The following will use the year 2017 (= "T0") and 2018 (= "T1") to establish the mobility patterns. These observations can best be conceptualized as *dyads*, a relationship in the terms of worker mobility, between worksite A and worksite B - information from both years are utilized to create the dyadic observation between any two worksites from which a move was conducted.
@@ -18,13 +18,14 @@ First, we exclude the \~ 32.000 persons within each year that does either has an
  
 After removing these, we have \~ 2.900.000 people with a job, in \~ 290.000 companies, across \~ 330.000 worksites. These numbers do not vary substantially across the two years. 
 
-\~ 2.630.000 had a job in both years. Of these, \~ 575.000 people changed from one worksite to another. \~ 5.000 of these moved to or from one of the previously mentioned This is the population we begin with.
+\~ 2.630.000 had a job in both years. Of these, \~ 575.000 people changed from worksite to another worksite. \~ 130.000  of these moves between worksites was within the same company identifier, and can therefore be characterized as a move within an internal labour market within the company. \~ 450.000 did not move within the same company, and are therefore moves on the external labour markets^[ignoring, for now, the possibility of a merger-or-acquisition-type 'jobmove'.].
 
+Within the internal labour markets, \~ 90.000 people moved from one worksite to another *with another worker from the same worksite*, which amounts to \~ 70 pct of the moves on the internal markets. On the external markets, 75.000 workers moved together, which is \~ 15 pct of the moves on the external markets. 
 
+That the number of people moving together from one worksite to another is higher - even a lot higher - than on the external markets is to be expected. 
 
 
 [the numbers have been rounded with large margins, and therefore do not add up. The order of magnitudes is the important information here.]{.aside}
-
 ```{mermaid}
 flowchart TD;
 
@@ -32,9 +33,17 @@ flowchart TD;
 
 classDef default fill:#4D7092,stroke:black,color:white,stroke-width:0.5px;
 
+classDef notimportant fill:grey,stroke:black,color:white,stroke-width:0.5px;
 
 
-pop0(["575.000 jobmovers"])
+
+
+
+pop000(["job in a single year<br>2.900.000"])
+pop00a(["job in both years<br>2.630.000"])
+pop00b(["outside the labour market<br>in one of the years <br>270.000 "])
+pop0(["jobmovers<br>575.000"])
+pop0b(["same job<br>2.0.55.000"])
 in1(["internal<br>markets<br>130.000"])
 ex1(["external<br>markets<br>450.000"])
 
@@ -45,18 +54,30 @@ in1a(["individual<br>moves<br>40.000"])
 ex1a(["individual<br>moves<br>375.000"])
 
 
-pop0 --> ex1
-pop0 --> in1
+class pop00b notimportant;
+class pop0b notimportant;
 
-ex1 --> ex2
-ex1 --> ex1a
+
+pop000 --> pop00a
+pop000 --> pop00b
+pop00a --> pop0
+
+pop00a --> pop0b
+
+pop0 --> in1
+pop0 --> ex1
+
 in1 --> in2
 in1 --> in1a
+ex1 --> ex2
+ex1 --> ex1a
 
 
 ```
 
 
+
+# Lasse  - disregard herfra
  
 
 as @granovetter1973strength says, it is the information inherent in the weak ties with information about jobs that are an important part of .... blah blah blah

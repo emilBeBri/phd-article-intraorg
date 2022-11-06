@@ -7,6 +7,13 @@
     "text": "This article is rendered using quarto. The source code can be seen by clicking the code button at the topright. You are welcome to reuse it any way you like.\nIt is possible to highlighte and annotate parts of the text, which requires a signup to the academic annotation tool hypothesis, which is a nonprofit NGO.\nIt is encouraged to use this annotation and highlight-tool, as an experiment in how a ‘social’ reading of an article before a presentation could look like, since other readers will be able to see your highlights and comments.\na fast and simple setup guide to hypothesis, with pictures, is available here.\nIf it is difficult to make out the details on a figure, clicking on the figure enlarges it."
   },
   {
+    "objectID": "index.html#note-on-data-privacy",
+    "href": "index.html#note-on-data-privacy",
+    "title": "Relational inequality in the workplace",
+    "section": "Note on data privacy",
+    "text": "Note on data privacy\nThis article uses aggregated data from Statistics Denmark (DST). Care has been taken in order to comply with DST regulations in order to conceal unit-level identification of either individuals or companies.\nThis has several practical consequens - One of them being that scatterpoints, showing individuals or companies, will not be used. Instead, hexagonal plots are used."
+  },
+  {
     "objectID": "abstract.html",
     "href": "abstract.html",
     "title": "1  Abstract",
@@ -21,18 +28,18 @@
     "text": "How does variation in organizational network structure explain differences in the distribution of economic resources at the worksite?\n\nThe next section will outline the framework of RIT, followed by the primary theoretical inequality generating mechanisms, and how these might be conceptualized in relational (network) terms."
   },
   {
-    "objectID": "app-edgelist-exploration.html",
-    "href": "app-edgelist-exploration.html",
-    "title": "Ex-colleguerial edgelists",
-    "section": "",
-    "text": "Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Salutantibus vitae elit libero, a pharetra augue. Quam diu etiam furor iste tuus nos eludet? Fabio vel iudice vincam, sunt in culpa qui officia. Quam temere in vitiis, legem sancimus haerentia. Quisque ut dolor gravida, placerat libero vel, euismod. Plura mihi bona sunt, inclinet, amari petere vellent. Ab illo tempore, ab est sed immemorabili. Ullamco laboris nisi ut aliquid ex ea commodi consequat. Quae vero auctorem tractata ab fiducia dicuntur. At nos hinc posthac, sitientis piros Afros.\n\n\n\n\n\nFigure 1: Density plots that shows the distribution of contacts within each type of edgelists (2018). Topcoded at 20 contacts.\n\n\n\n\nMorbi fringilla convallis sapien, id pulvinar odio volutpat. Hi omnes lingua, institutis, legibus inter se differunt. Non equidem invideo, miror magis posuere velit aliquet. Quid securi etiam tamquam eu fugiat nulla pariatur. Inmensae subtilitatis, obscuris et malesuada fames. Fictum, deserunt mollit anim laborum astutumque! Fabio vel iudice vincam, sunt in culpa qui officia. Inmensae subtilitatis, obscuris et malesuada fames. Ambitioni dedisse scripsisse iudicaretur. Nec dubitamus multa iter quae et nos invenerat. Petierunt uti sibi concilium totius Galliae in diem certam indicere."
-  },
-  {
     "objectID": "ending.html",
     "href": "ending.html",
     "title": "4  Concluding remarks",
     "section": "",
     "text": "Petierunt uti sibi concilium totius Galliae in diem certam indicere. Morbi fringilla convallis sapien, id pulvinar odio volutpat. A communi observantia non est recedendum. Fabio vel iudice vincam, sunt in culpa qui officia. Inmensae subtilitatis, obscuris et malesuada fames. Ambitioni dedisse scripsisse iudicaretur. Nec dubitamus multa iter quae et nos invenerat. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Fabio vel iudice vincam, sunt in culpa qui officia. Inmensae subtilitatis, obscuris et malesuada fames. Ambitioni dedisse scripsisse iudicaretur. Nec dubitamus multa iter quae et nos invenerat. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Fictum, deserunt mollit anim laborum astutumque! Quisque placerat facilisis egestas cillum dolore. Nec dubitamus multa iter quae et nos invenerat. Contra legem facit qui id facit quod lex prohibet. Quam diu etiam furor iste tuus nos eludet? Fabio vel iudice vincam, sunt in culpa qui officia. Inmensae subtilitatis, obscuris et malesuada fames. Ambitioni dedisse scripsisse iudicaretur. Nec dubitamus multa iter quae et nos invenerat. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Non equidem invideo, miror magis posuere velit aliquet. Quisque placerat facilisis egestas cillum dolore. Curabitur blandit tempus ardua ridiculus sed magna. Contra legem facit qui id facit quod lex prohibet. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Fictum, deserunt mollit anim laborum astutumque! Quisque placerat facilisis egestas cillum dolore. Nec dubitamus multa iter quae et nos invenerat. Contra legem facit qui id facit quod lex prohibet. Quam diu etiam furor iste tuus nos eludet? Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Donec sed odio operae, eu vulputate felis rhoncus. Salutantibus vitae elit libero, a pharetra augue. Nihil hic munitissimus habendi senatus locus, nihil horum? A communi observantia non est recedendum. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Morbi fringilla convallis sapien, id pulvinar odio volutpat. A communi observantia non est recedendum. Cum sociis natoque penatibus et magnis dis parturient. Curabitur blandit tempus ardua ridiculus sed magna. Salutantibus vitae elit libero, a pharetra augue."
+  },
+  {
+    "objectID": "app-edgelist-exploration.html",
+    "href": "app-edgelist-exploration.html",
+    "title": "Ex-colleguerial edgelists",
+    "section": "",
+    "text": "Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Salutantibus vitae elit libero, a pharetra augue. Quam diu etiam furor iste tuus nos eludet? Fabio vel iudice vincam, sunt in culpa qui officia. Quam temere in vitiis, legem sancimus haerentia. Quisque ut dolor gravida, placerat libero vel, euismod. Plura mihi bona sunt, inclinet, amari petere vellent. Ab illo tempore, ab est sed immemorabili. Ullamco laboris nisi ut aliquid ex ea commodi consequat. Quae vero auctorem tractata ab fiducia dicuntur. At nos hinc posthac, sitientis piros Afros.\n\n\n\n\n\nFigure 1: Density plots that shows the distribution of contacts within each type of edgelists (2018). Topcoded at 20 contacts.\n\n\n\n\nMorbi fringilla convallis sapien, id pulvinar odio volutpat. Hi omnes lingua, institutis, legibus inter se differunt. Non equidem invideo, miror magis posuere velit aliquet. Quid securi etiam tamquam eu fugiat nulla pariatur. Inmensae subtilitatis, obscuris et malesuada fames. Fictum, deserunt mollit anim laborum astutumque! Fabio vel iudice vincam, sunt in culpa qui officia. Inmensae subtilitatis, obscuris et malesuada fames. Ambitioni dedisse scripsisse iudicaretur. Nec dubitamus multa iter quae et nos invenerat. Petierunt uti sibi concilium totius Galliae in diem certam indicere."
   },
   {
     "objectID": "defining-the-population.html",
@@ -42,59 +49,45 @@
     "text": "The first definition of a tie includes every person within\nThe second definition of a tie includes every person filling up. This is included with two upper bounds for the number of connections possible:\n\n150 possible ties\n75 possible ties\n\n\nUsing 2018 as a benchmark year, there is xxxx no. of people in Denmark, with their ‘primary economic activity’ classified as working XXX worksites. These worksites were subdivisions of XXX different companies. #todo: check how much that varies.\n/* ::: {.callout-note .column-page collapse=“true”} */\n\n6 Descriptive of people working in Denmark 2010-2018\n\n\n\n/* ::: */\n\n\n7 Analysis of transitivity\nHere is a list of the different ones. It’s is joyfull to work with, nothing more, nothing less.\n\n\n\n\n\nFigure 7.1: this <- s lit\n\n\n\n\nasdfasfd\n#todo:\nWhen looking at the edgelists, they can be created in differ\nthere are a couple of features about the edgelists that needs to be taken into account when using data as the main source of income.\n\n\n\nentire labourforce: ~ 2.8 mio (29 relevant )"
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "7  References",
-    "section": "",
-    "text": "Rawls, John. 1971. A Theory of Justice. 1st ed. Cambridge, Massachussets: Belknap Press of Harvard University Press.\n\nBourdieu, P. 1979. “Symbolic Power.” Critique of Anthropology 4 (13-14): 77–85. https://doi.org/10.1177/0308275x7900401307.\nthis work is pretty good, too Bourdieu (1979)\n\n\n\n\n\n\n\n\nBourdieu, P. 1979. “Symbolic Power.” Critique of\nAnthropology 4 (13-14): 77–85. https://doi.org/10.1177/0308275x7900401307.\n\n\nGranovetter, Mark S. 1973. “The Strength of Weak Ties.”\nAmerican Journal of Sociology 78: 360–80.\n\n\nRawls, John. 1971. A Theory of Justice. 1st ed. Cambridge,\nMassachussets: Belknap Press of Harvard University Press."
-  },
-  {
     "objectID": "team-moves.html",
     "href": "team-moves.html",
     "title": "6  Team moves",
     "section": "",
-    "text": "A team move is defined as a situation where n people (n > 1) move together from worksite A to worksite B in the following year.\nTeam moves needs to be inferred by patterns of movement between companies and worksites. There is a difference in team moves between two worksites within the same company, and team moves between two worksites that are not within the same company.\nThese patterns are easier to establish by empirical example. The following will use the year 2017 (= “T0”) and 2018 (= “T1”) to establish the mobility patterns. These observations can best be conceptualized as dyads, a relationship in the terms of worker mobility, between worksite A and worksite B - information from both years are utilized to create the dyadic observation between any two worksites from which a move was conducted."
-  },
-  {
-    "objectID": "team-moves.html#administrative-change-of-the-worksite-identifier",
-    "href": "team-moves.html#administrative-change-of-the-worksite-identifier",
-    "title": "6  Team moves",
-    "section": "6.2 Administrative change of the worksite identifier",
-    "text": "6.2 Administrative change of the worksite identifier\nThe identification of these cases is made more complicated by the usual in- and outflow of workers at a worksite - the simple case of all workers moving to a new worksite is not very common, since in any given year, some workers are leaving the worksite to work at another worksite. This means that a threshold needs to be identified - above that threshold, if, say, 75 % of the workers seem to “move” from worksite A to worksite B, we can assume that it’s the same worksite. Of course, at a small company, this might be more common just as a result of an actual team move - it’s not unrealistic that 3 workers make an actual team move together, and if the company consists of 4 people, where the last might move to worksite C, then workste A and B will erroneously classified as the same worksite. These two dimensions needs to be taken into account when making the decision rule.\nFirst, figure Figure 6.1 shows the distribution of worksite-to-worksite ties with the share of people that came from the 2017 worksite (that ceased to exit) , and are now working in the 2018 worksite (that only existed from that year).\n\n\n\n\n\nFigure 6.1: Distribution of worksites that appears for the first time in 2018, and the no. of people (in percent) in these worksites that came from another worksite, which ceased to exit in 2017.\n\n\n\n\n\n\n\n\n\nFigure 6.2: Heatmap w. hexagonal bins, which plots the size of worksite A (2017) against the inflow out workers from worksite A to worksite B. The bins are colored by the no. of worksites in the bin. It can be seen that the mode of the distribution is very small N where every single worker moved to worksite B. These counts do not include worksites with a single person working in it.\n\n\n\n\nIn order to establish a sensible threshold that takes both the relative and the absolute size of the worksite into account, some descriptive statistics are needed."
-  },
-  {
-    "objectID": "team-moves.html#team-moves",
-    "href": "team-moves.html#team-moves",
-    "title": "6  Team moves",
-    "section": "6.3 Team moves",
-    "text": "6.3 Team moves"
-  },
-  {
-    "objectID": "team-moves.html#mergersacquisitions",
-    "href": "team-moves.html#mergersacquisitions",
-    "title": "6  Team moves",
-    "section": "6.4 Mergers/acquisitions",
-    "text": "6.4 Mergers/acquisitions\nnot quite sure about this one - how to behave here?\nthe third case is a bit more complicated. It’s a team move where the team moves together from worksite A to worksite B, but the worksite B is a new worksite that was created by merging two or more worksites. This is a bit more complicated because it’s not clear how to count the team moves. For example, if worksite A and worksite B merge to create worksite C, and 10 people move from worksite A to worksite C, and 10 people move from worksite B to worksite C, should we count this as 20 team moves, or 10 team moves? I think the answer is 10 team moves, but I’m not sure."
-  },
-  {
-    "objectID": "team-moves.html#section",
-    "href": "team-moves.html#section",
-    "title": "6  Team moves",
-    "section": "6.1 ",
-    "text": "6.1 \n2905491 job in 2017 2956196 job in 2018 2628464 job in both years (this is the population - the ones that creates collegerial ties. How many of these are team moves in one way or the other?)\n576991 changed from one arbnr to another\n/* 163398 was moves where > 1 person moved together from one worksite to another. */\nE[“Enter Environmentof DTDT[rows,columns,by/on]”]\n\n\n\n\n\nflowchart TD\n\npop0[]\nE[\"Enter Environment<br>of DT<br>DT[rows,columns,by/on]\"]\npop0 --> E\n\nR[Rows To Fetch<br>Or Change]\nC[\"Columns to Fetch<br><hr>Or Create/Redefine<br>with :=\"]\nOB[\"by (grouping)<br><hr>on (matching)\"]\nE --> R & C & OB\n\nR & C & OB --> DTC[\"]\"] --> L[Leave<br>Environment]\nL --> N[\"No :=<br><br>Print/Plot Output<br>or Assign Result To<br>New Data Table\"]\n\nL --> IP[\":=<br><br>Change DT in Place\"]"
+    "text": "A team move is defined as a situation where n people (n > 1) move together from worksite A to worksite B in the following year.\nTeam moves needs to be inferred by patterns of movement between worksites, and the companies that the worksites are nested within. There is a difference in team moves between two worksites within the same company, and team moves between two worksites that are not within the same company.\nThese patterns are easier to establish by empirical example. The following will use the year 2017 (= “T0”) and 2018 (= “T1”) to establish the mobility patterns. These observations can best be conceptualized as dyads, a relationship in the terms of worker mobility, between worksite A and worksite B - information from both years are utilized to create the dyadic observation between any two worksites from which a move was conducted."
   },
   {
     "objectID": "team-moves.html#defining-the-population",
     "href": "team-moves.html#defining-the-population",
     "title": "6  Team moves",
     "section": "6.1 Defining the population",
-    "text": "6.1 Defining the population\nFirst, we exclude the ~ 32.000 persons within each year that does either has an cvrnr but does not have an arbnr (~ 30.000), or that has an arbnr but does not have an cvrnr (~ 2.000). This is less than xxx of the working population, as these are not part of the collegaial edgelists anyway, since they require both, see appendix xxx.\nAfter removing these, we have ~ 2.900.000 people with a job, in ~ 290.000 companies, across ~ 330.000 worksites. These numbers do not vary substantially across the two years.\n~ 2.630.000 had a job in both years. Of these, ~ 575.000 people changed from one worksite to another. ~ 5.000 of these moved to or from one of the previously mentioned This is the population we begin with.\nthe numbers have been rounded with large margins, and therefore do not add up. The order of magnitudes is the important information here.\n\n\n\n\nflowchart TD;\n\n\n\nclassDef default fill:#4D7092,stroke:black,color:white,stroke-width:0.5px;\n\n\n\npop0([\"575.000 jobmovers\"])\nin1([\"internal<br>markets<br>130.000\"])\nex1([\"external<br>markets<br>450.000\"])\n\nin2([\"team<br>moves<br>90.000\"])\nex2([\"team<br>moves<br>75.000\"])\n\nin1a([\"individual<br>moves<br>40.000\"])\nex1a([\"individual<br>moves<br>375.000\"])\n\n\npop0 --> ex1\npop0 --> in1\n\nex1 --> ex2\nex1 --> ex1a\nin1 --> in2\nin1 --> in1a\n\n\n\n\n\n\n\n\n\nas Granovetter (1973) says, it is the information inherent in the weak ties with information about jobs that are an important part of …. blah blah blah\n\nGranovetter, Mark S. 1973. “The Strength of Weak Ties.” American Journal of Sociology 78 (6): 1360–80. https://doi.org/10.1086/225469.\nIn the first case, it’s not actually a move. The identification of these cases serves as a crosswalk that can identify worksites that change only on the administrative level and can be considered to be one and the same.\nWe can conceptualize 3 distinct types of team moves:\n\nAdministrative change of the worksite identifier (e.g. a worksite is renamed).\nTeam moves\nMergers/acquisitions\n\nIn the following I will go the 3 types of team moves in more detail.\nthe actual date is not observed (make a test - you can, actually)"
+    "text": "6.1 Defining the population\nFirst, we exclude the ~ 32.000 persons within each year that does either has an cvrnr but does not have an arbnr (~ 30.000), or that has an arbnr but does not have an cvrnr (~ 2.000). This is less than xxx of the working population, as these are not part of the collegaial edgelists anyway, since they require both, see appendix xxx.\nAfter removing these, we have ~ 2.900.000 people with a job, in ~ 290.000 companies, across ~ 330.000 worksites. These numbers do not vary substantially across the two years.\n~ 2.630.000 had a job in both years. Of these, ~ 575.000 people changed from worksite to another worksite. ~ 130.000 of these moves between worksites was within the same company identifier, and can therefore be characterized as a move within an internal labour market within the company. ~ 450.000 did not move within the same company, and are therefore moves on the external labour markets1.1 ignoring, for now, the possibility of a merger-or-acquisition-type ‘jobmove’.\nWithin the internal labour markets, ~ 90.000 people moved from one worksite to another with another worker from the same worksite, which amounts to ~ 70 pct of the moves on the internal markets. On the external markets, 75.000 workers moved together, which is ~ 15 pct of the moves on the external markets.\nThat the number of people moving together from one worksite to another is higher - even a lot higher - than on the external markets is to be expected.\nthe numbers have been rounded with large margins, and therefore do not add up. The order of magnitudes is the important information here.\n\n\n\n\nflowchart TD;\n\n\n\nclassDef default fill:#4D7092,stroke:black,color:white,stroke-width:0.5px;\n\nclassDef notimportant fill:grey,stroke:black,color:white,stroke-width:0.5px;\n\n\n\n\n\npop000([\"job in a single year<br>2.900.000\"])\npop00a([\"job in both years<br>2.630.000\"])\npop00b([\"outside the labour market<br>in one of the years <br>270.000 \"])\npop0([\"jobmovers<br>575.000\"])\npop0b([\"same job<br>2.0.55.000\"])\nin1([\"internal<br>markets<br>130.000\"])\nex1([\"external<br>markets<br>450.000\"])\n\nin2([\"team<br>moves<br>90.000\"])\nex2([\"team<br>moves<br>75.000\"])\n\nin1a([\"individual<br>moves<br>40.000\"])\nex1a([\"individual<br>moves<br>375.000\"])\n\n\nclass pop00b notimportant;\nclass pop0b notimportant;\n\n\npop000 --> pop00a\npop000 --> pop00b\npop00a --> pop0\n\npop00a --> pop0b\n\npop0 --> in1\npop0 --> ex1\n\nin1 --> in2\nin1 --> in1a\nex1 --> ex2\nex1 --> ex1a"
   },
   {
-    "objectID": "index.html#note-on-data-privacy",
-    "href": "index.html#note-on-data-privacy",
-    "title": "Relational inequality in the workplace",
-    "section": "Note on data privacy",
-    "text": "Note on data privacy\nThis article uses aggregated data from Statistics Denmark (DST). Care has been taken in order to comply with DST regulations in order to conceal unit-level identification of either individuals or companies.\nThis has several practical consequens - One of them being that scatterpoints, showing individuals or companies, will not be used. Instead, hexagonal plots are used."
+    "objectID": "team-moves.html#administrative-change-of-the-worksite-identifier",
+    "href": "team-moves.html#administrative-change-of-the-worksite-identifier",
+    "title": "6  Team moves",
+    "section": "7.1 Administrative change of the worksite identifier",
+    "text": "7.1 Administrative change of the worksite identifier\nThe identification of these cases is made more complicated by the usual in- and outflow of workers at a worksite - the simple case of all workers moving to a new worksite is not very common, since in any given year, some workers are leaving the worksite to work at another worksite. This means that a threshold needs to be identified - above that threshold, if, say, 75 % of the workers seem to “move” from worksite A to worksite B, we can assume that it’s the same worksite. Of course, at a small company, this might be more common just as a result of an actual team move - it’s not unrealistic that 3 workers make an actual team move together, and if the company consists of 4 people, where the last might move to worksite C, then workste A and B will erroneously classified as the same worksite. These two dimensions needs to be taken into account when making the decision rule.\nFirst, figure Figure 7.1 shows the distribution of worksite-to-worksite ties with the share of people that came from the 2017 worksite (that ceased to exit) , and are now working in the 2018 worksite (that only existed from that year).\n\n\n\n\n\nFigure 7.1: Distribution of worksites that appears for the first time in 2018, and the no. of people (in percent) in these worksites that came from another worksite, which ceased to exit in 2017.\n\n\n\n\n\n\n\n\n\nFigure 7.2: Heatmap w. hexagonal bins, which plots the size of worksite A (2017) against the inflow out workers from worksite A to worksite B. The bins are colored by the no. of worksites in the bin. It can be seen that the mode of the distribution is very small N where every single worker moved to worksite B. These counts do not include worksites with a single person working in it.\n\n\n\n\nIn order to establish a sensible threshold that takes both the relative and the absolute size of the worksite into account, some descriptive statistics are needed."
+  },
+  {
+    "objectID": "team-moves.html#team-moves",
+    "href": "team-moves.html#team-moves",
+    "title": "6  Team moves",
+    "section": "7.2 Team moves",
+    "text": "7.2 Team moves"
+  },
+  {
+    "objectID": "team-moves.html#mergersacquisitions",
+    "href": "team-moves.html#mergersacquisitions",
+    "title": "6  Team moves",
+    "section": "7.3 Mergers/acquisitions",
+    "text": "7.3 Mergers/acquisitions\nnot quite sure about this one - how to behave here?\nthe third case is a bit more complicated. It’s a team move where the team moves together from worksite A to worksite B, but the worksite B is a new worksite that was created by merging two or more worksites. This is a bit more complicated because it’s not clear how to count the team moves. For example, if worksite A and worksite B merge to create worksite C, and 10 people move from worksite A to worksite C, and 10 people move from worksite B to worksite C, should we count this as 20 team moves, or 10 team moves? I think the answer is 10 team moves, but I’m not sure."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "7  References",
+    "section": "",
+    "text": "Rawls, John. 1971. A Theory of Justice. 1st ed. Cambridge, Massachussets: Belknap Press of Harvard University Press.\n\nBourdieu, P. 1979. “Symbolic Power.” Critique of Anthropology 4 (13-14): 77–85. https://doi.org/10.1177/0308275x7900401307.\nthis work is pretty good, too Bourdieu (1979)\n\n\n\n\n\n\n\n\nBourdieu, P. 1979. “Symbolic Power.” Critique of\nAnthropology 4 (13-14): 77–85. https://doi.org/10.1177/0308275x7900401307.\n\n\nGranovetter, Mark S. 1973. “The Strength of Weak Ties.”\nAmerican Journal of Sociology 78 (6): 1360–80. https://doi.org/10.1086/225469.\n\n\nRawls, John. 1971. A Theory of Justice. 1st ed. Cambridge,\nMassachussets: Belknap Press of Harvard University Press."
   }
 ]
