@@ -1,0 +1,147 @@
+# testing
+
+
+hvad er problemet? hvorfor siger den html til si
+
+
+
+
+```{r echo=TRUE, eval=TRUE}
+
+source('/home/emil/Dropbox/data-science/R/.Rprofile')
+source('/home/emil/Dropbox/data-science/R/r-setup-standard-packages.r')
+setwd("/home/emil/Dropbox/arbejde/cbs/phd/articles/intra-org-inequality")
+library(haven)
+library(fixest)
+library(dplyr)
+library(kable)
+library(kableExtra)
+library(modelsummary)
+
+f1 <- read_dta('/home/emil/Dropbox/arbejde/cbs/phd/courses/econometrics-course/07-paneldata/07-paneldata-lecture-wagecps.dta') %>% data.table()
+# cof_x <- 'ed'
+# cof_y <- 'lwage'
+# cof_y_dv  <- cof_y %+% ' ~ ' %+% cof_x
+# cof_controls <- 'exp + exp2 + wks'
+# form_fe <- paste(cof_y_dv %+% ' + ', cof_controls, ' | id', collapse = ' + ') %>%  as.formula()
+# mod_fe  <- feols(form_fe, f1)
+# qsave(mod_fe, file='output/mod_fe.qs')
+
+
+mod_fe <- qread('output/mod_fe.qs')
+
+
+mod_fe
+
+# coef(mod_fe)
+
+library(fixest)
+library(pander)
+
+data(airquality)
+
+# Setting a dictionary 
+setFixest_dict(c(Ozone = "Ozone (ppb)", Solar.R = "Solar Radiation (Langleys)",
+                 Wind = "Wind Speed (mph)", Temp = "Temperature"))
+est = feols(Ozone ~ Solar.R + sw0(Wind + Temp) | csw(Month, Day), 
+            airquality, cluster = ~Day)
+# etable(est, postprocess.df = pandoc.table.return, style = "rmarkdown")
+
+```
+
+
+
+```{r}
+
+fpe_raw <- read_dta("twfe/WDI-FPE-data.dta") |> data.table()
+# Remove rows where primary school enrollment is missing
+fpe_primary = fpe_raw[!is.na(primary)]
+
+# Remove rows where secondary school enrollment is missing
+fpe_secondary = fpe_raw[!is.na(secondary)]
+
+
+
+# models 
+
+# Look at secondary schools too
+model_lm_sec <- lm(secondary ~ treatment + country + factor(year),
+                   data = fpe_secondary)
+
+df_secondary <- fpe_secondary %>% distinct(country) %>% nrow()
+
+model_lm_clustered_sec <- lmtest::coeftest(model_lm_sec,
+                                           vcov = sandwich::vcovCL,
+                                           cluster = ~country,
+                                           df = df_secondary - 1,
+                                           save = TRUE)
+
+model_lm_robust_sec <- estimatr::lm_robust(secondary ~ treatment,
+                                 fixed_effects = ~ country + year,
+                                 data = fpe_secondary,
+                                 clusters = country, se_type = "stata")
+
+model_feols_sec <- feols(secondary ~ treatment | country + year,
+                         data = fpe_secondary,
+                         cluster = ~ country,
+                         # dof = dof(fixef.K = "full"))
+                         ssc = dof(fixef.K = "full"))
+
+# Define the goodness-of-fit stats to include
+gof_stuff <- tribble(
+  ~raw, ~clean, ~fmt,
+  "nobs", "N", 0,
+  "r.squared", "R²", 3
+)
+
+# Define extra rows at the end of the table
+extra_rows <- tribble(
+  ~term, ~a, ~b, ~c, ~d, ~e, ~f,
+  "Country fixed effects", "•", "•", "•", "•", "•", "•",
+  "Year fixed effects", "•", "•", "•", "•", "•", "•"
+)
+
+modelsummary(list("<code>lm()</code>" = model_lm_clustered,
+                  "<code>lm_robust()</code>" = model_lm_robust,
+                  "<code>feols()</code>" = model_feols,
+                  "<code>lm()</code>" = model_lm_clustered_sec,
+                  "<code>lm_robust()</code>" = model_lm_robust_sec,
+                  "<code>feols()</code>" = model_feols_sec),
+             coef_rename = c("treatment" = "Treatment"),
+             estimate = "{estimate}",
+             statistic = c("s.e. = {std.error}", "p = {p.value}"),
+             coef_omit = "^country|^factor|Intercept",
+             gof_map = gof_stuff,
+             add_rows = extra_rows,
+             escape = FALSE, output = "kableExtra") %>%
+  add_header_above(c(" " = 1, "Primary enrollment" = 3, "Secondary enrollment" = 3)) %>%
+  kable_styling(htmltable_class = "table table-sm")
+
+
+```
+
+<!--
+
+# trash
+
+
+
+
+```{r }
+library('knitr')
+library('kableExtra')
+library('formattable') 
+
+
+f1 <- fread('output/table-team-moves-type_lmarket.csv', sep=';')
+
+f1 %>% kable('html') %>% kable_styling(bootstrap_options=qc(striped), position='left', fixed_thead=T)  %>% kable_paper('hover', full_width=TRUE)  
+
+
+```
+
+-->
+
+
+
+

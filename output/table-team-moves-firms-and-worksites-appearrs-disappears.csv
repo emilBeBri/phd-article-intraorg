@@ -1,0 +1,22 @@
+type_lmarket;type_firm_ws_status;individual move;team move;type_firm_ws_status2
+all;both ws existed priorly + both firms existed priorly;80 %;67 %;all firms and worksites exists
+all;ws B appears + both firms existed priorly;03 %;11 %;both firms existed, ws B appears
+all;ws B appears + firm B appears;07 %;05 %;firm Y appears, ws B appears
+all;ws A disappears + both firms existed priorly;00 %;08 %;both firms existed, ws A disappears
+all;ws A disappears + firm A disappears;06 %;03 %;firm X & ws A disappears
+all;ws A disappears & ws B appears + both firms existed priorly;00 %;00 %;firms exists, ws A disappears, ws B appears
+all;ws A disappears & ws B appears + firm A disappears & firm B appears;00 %;00 %;XA disappears and YB appears
+external market;both ws existed priorly + both firms existed priorly;80 %;65 %;all firms and worksites exists
+external market;ws B appears + both firms existed priorly;00 %;05 %;both firms existed, ws B appears
+external market;ws B appears + firm B appears;07 %;11 %;firm Y appears, ws B appears
+external market;ws A disappears + both firms existed priorly;00 %;00 %;both firms existed, ws A disappears
+external market;ws A disappears + firm A disappears;06 %;07 %;firm X & ws A disappears
+external market;ws A disappears & ws B appears + both firms existed priorly;00 %;00 %;firms exists, ws A disappears, ws B appears
+external market;ws A disappears & ws B appears + firm A disappears & firm B appears;00 %;05 %;XA disappears and YB appears
+internal market;both ws existed priorly + both firms existed priorly;82 %;68 %;all firms and worksites exists
+internal market;ws B appears + both firms existed priorly;09 %;16 %;both firms existed, ws B appears
+internal market;ws B appears + firm B appears;00 %;00 %;firm Y appears, ws B appears
+internal market;ws A disappears + both firms existed priorly;05 %;12 %;both firms existed, ws A disappears
+internal market;ws A disappears + firm A disappears;00 %;00 %;firm X & ws A disappears
+internal market;ws A disappears & ws B appears + both firms existed priorly;04 %;04 %;firms exists, ws A disappears, ws B appears
+internal market;ws A disappears & ws B appears + firm A disappears & firm B appears;00 %;00 %;XA disappears and YB appears

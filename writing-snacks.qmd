@@ -1,0 +1,14 @@
+# to-do
+
+- fix overlap af sidenotes i quarto 
+- dst: check raw edgelist og forstaa hvorfor disco er forkert (engang)
+- lav regression tables i R og quarto
+- den der youtube video - inspiration:
+    - manager-employee relationship - more controls? age, or age-difference, or seniority of manager that you have a tie with, for example?
+
+
+
+
+
+## done
+- find gary becker reference til human capital argumentet

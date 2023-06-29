@@ -1,0 +1,73 @@
+<!--
+```{r}
+params_dt=data.frame(
+            )
+```
+
+-->
+
+
+# Defining the relations  
+
+
+Network data based on administrative registries allows the definition of ties to be based on formal criteria, which are less susceptible to measurement error, something which SNA is highly sensitive to, see @laumann1983boundary. It is also very robust against systematic bias in measurement errors. 
+
+Shared formal institutional settings such as workplace, neighborghood, family and education seem to capture most of the strong connections of people, see @wrzus2013social @buijs2022friends.   Such a link between two people identified through a shared formal bond recorded in administrative data can be conceptualized as an *affinity* towards meaningful social relations, that comes about when people "participate regularly in collective activities.",  @breiger1974duality. This affininity is of course, only that - an affinity - one might say *probability* - of having a meaningful connection. When applied to whole populations, across time, this should, as a general tendency, translate into meaningful  relations, although the emotional intensity of the relations will vary.
+
+These relations, based on participation in collective (economic) activites from earlier worksites, are the ties in my network specification , following the guidelines of @laumann1983boundary,. The boundary specification of the network itself is simply the current worksite in any given year between 2010-2019. So a network in 2014 has X number of employees (the network) and of these, Y number of people have worked together (the ties).  
+
+The number of people in the formal setting, e.g. the *size*, matters for the affinities under scrutiny here. We choose to only include ties made at worksites of 750 people^[the year that the two people met at the worksize being the year of the size evaluation.], since on average^[If not stated explicitly otherwise, averages, medians etc. are calculated on the period 2010-2019] ~ 90 % of all workers in Denmark have their main employment in worksites of 750 people or fewer. 
+This threshold also applies to the current worksite, e.g. the network. The size of the current worksite is also limited to worksites equal to or larger than 10 people, since dynamics in very small companies are hypothezied to being different, if nothing else because the measurements of network analysis with very few people can hardly be called 'a network' at all. Psychological inquiry into social network research show that somewhere around 8 people is where a group dynamic changes from everyone being quite close to differences in communication arises, e.g. where one might suspect that ties formed elsewhere might actually have network effects, in the sense that the edges of the network would have utility [reference her]. 
+
+The upperbound cutoff points are admittedly somewhat arbitrary, but sensitivity tests found in [XXX] show that the results are robust within a wide range of values, within reasonable orders of magnitude.
+
+The upshot of using administrative data this way is that we can examine network configurations across a plethora of different types of worksites, many of which would not give access to survey-based collection of more granular relational data, and there is likely to be quite a lot of bias in that selection process. For all of it's imprecistion in terms of the subjective experiences that, in a sense, makes up social relations, and that we cannot hope to measure accurately here, the sample sizes and the generalisability adds up to an attractive setup with a high empirical validity and reliability (I hope lol).
+
+
+## About the registries, continued
+
+The data comes from the Statistics Denmark, and is primarily based on the Workforce Registry (RAS), the Wage-worksite registry (IDAN) and the General Population registry (BEF). 
+
+I only take into account full-time jobs recognized by Statistics Denmark as a worker's primary employment source for the year when RAS is tallied each November (referred to as November jobs). 
+
+This definition will favour the analysis towards workers with a stable connection to the labour market. While including people with a marginal attachment to the labour market is possible, it would introduce several new sources of error, would add to the already complex data structure and take a lot of time. Therefore, I choose to focus on the stable labour market which does after all include most people [find ref or make some numbers from DST yourself]
+
+By using November jobs, I exclude job moves made while workers maintain another, more significant job, and instances where a job mover has already left their new job by November.
+
+To make sure that two people actually worked together at the same time, there need to be more than a year of overlap at the same worksite in the registry: it is not enough that person A stopped working at worksite X in 2018 and person B began working there in 2018, since person A could have left the worksite in September and person B could have started in November or in December. Of course, since we know it was their primary source of employment, the chance that person Bs primary source of employement should have happened only the last two months of that year is small. But it will happen, and in order to remove these spurious ties, for person A and B to have a tie person A would have to stop working there in 2019 and not in 2018 (assuming person B started in 2018)^[The analysis has been repeated for the years XXX to YYY that contains start and end dates for all jobs. The differences were negligible. #todo]
+
+I exclude the military from the analysis, and everyone with a missing ISCO code [ how many? #todo ]
+
+# Identification strategy
+
+A key issue in terms of identification of effects on wages is of course that these shared formal institutional settings are not randomly assigned, and neither is the choice of which workplaces a person will go to - so if I move 
+
+
+The model used will be fixed-effect model, following @wooldridge2010econometric. Let  
+
+the model is specified as follows:
+
+
+$$ \hat{log(wage)}_{iwt} = {\delta}_{o} + {\delta Female}_{i} + {\delta X }_{wt} + {\delta X }_{it} +  {\varphi}_{w(i,t)} + {\varphi}_{t} + {\epsilon}_{ijt} $$
+
+
+Where ${\delta Female}_{i}$ is an binary index for gender, ${\delta X }_{wt}$ is a vector of time-varying workplace controls, ${\delta X }_{it}$ is a vector of time-varying individual controls.  ${\varphi}_{w(i,t)}$ is a fixed effect for the worksite-ISCO-year combination and ${\epsilon}_{ijt}$ is the error term.  
+
+
+<!--
+@Lasse : Er det rigtigt? Hvorfor har @tomaskovicdevey2015sweden year fixed effect med? 
+-->
+
+
+<!-- , ${\varphi}_{t}$ is a fixed effect for the year,  -->
+
+
+
+## Controls
+
+The Danish registry IDAN offers high-quality, administratively-based variables on jobexperience going back to 1964. This is important as it the potentially confounder of the network effects.
+
+
+
+
+

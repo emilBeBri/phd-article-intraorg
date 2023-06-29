@@ -1,0 +1,92 @@
+# About the data
+
+
+
+
+The ties formed a 
+
+
+Certain important restrictions: 
+
+- current jobs 
+- edges formed 
+
+average of the 10 years  blahblah blah
+
+
+
+below: 
+
+
+There are two levels of data in this paper.
+
+- tie definition:  The shared workhistory between two employees at their current worksite.  
+- network boundary specification: The employees at the current worksite in any given year between 2010-2019. 
+
+Both of these levels are subject to restrictions on the population being analyzed. 
+
+As for the tie definition, these are people who have worked together in the past, at a worksite w. <= 750 employees, within the last ten years. As for the network boundary, this is current worksite. So any worksite will go from having everyone at he current worksite connected by having worked at a former worksite (a network of density=1) at the same time,  to having no one having worked together previously, (a network density of 0).  
+
+As for the tie definition, only worksites w. <= 750 employees are considered. 
+
+
+Large establishments are excluded because the likelihood of two employees knowing each other in such places is low; however, this exclusion means that findings are only applicable to smaller firms.
+Denmark is a small-establishment economy, with ~ 90% of workers' primary employment in establishments of 750 workers or fewer in 2018. 
+
+
+Furthermore, only current worksites with >= 10 employees are considered. The motivation for adding an extra exclusion restriction for very small current worksites, is that the power-and barganning dynamics will be different. 
+
+
+
+
+
+
+
+<!-- 
+## Trash
+
+Thirdly, I exclude worksites within the public sector. The Danish and Scandinavian welfare states are characterized by a high degree of public sector employment, and the public sector is known to have a different social structure than the private sector [ find reference ]. 
+
+
+
+ I do *not*, however, exclude ties *formed* within the public sector, as there is no reason to believe that these should have a fundamentally different social value in the current worksite than ties formed in the private sector. -->
+
+
+# Descriptive stats 
+
+
+
+## worksites and population 
+
+Since the population is defined only as worksites that has at least a single tie between two employees from a former worksite, looking at how these companies might differ from the general population of worksites of comparable sizes are of interest.  
+
+
+[run t-tests of difference btw the two #TODO]
+
+We see from the figure below that the worksites with ties are larger than the general population of worksites. This is to be expected, as: A) the general probability of a worksite to have a dyad of ex-collegues is higher and B) people working at larger worksites are plausably more likely to have worked at large worksites in the past, making ties more likely, and C) larger companies tend to be divided up to several workplaces, which are also larger, and a jump between within the company from one physical address to another is also a tie.
+
+[why is there a dip at the beginning of the dist for all worksites, which isn't there for the network ones? #TODO]
+
+![Sizes of worksites w. networks and worksites in general. RHS is a zoomed in version of LHS. Only sites between 10-750 employees.](./img/dst-shot/fig-cherry489.png)
+
+## Degree 
+
+
+![Percentile distribution of ties. xx people have no ties, and the top percentiles have a lot.](./img/dst-shot/fig-jalapeno89.png)
+
+## transitivity
+
+Transitivity is the tendency for two people who are both connected to a third person to be connected to each other.  (more here)
+
+78 % of people have no transitivity, e.g. 0 or 1 tie, and the ones where the transitivity applies, it rapidly goes to 1.  
+
+[ tal om hvorvidt det er fra samme eller forskellige firmaer at forbindelserne er opstaaet. ]
+
+
+![Percentile distribution of transitivity in the networks. Most people have no transitivity, e.g. 0 or 1 tie, and the distribution after that is heavy skewed towards 1, e.g. full transitivity.](./img/dst-shot/fig-wildrice34.png)
+
+
+## manager ties
+
+
+

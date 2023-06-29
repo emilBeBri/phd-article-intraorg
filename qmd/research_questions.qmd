@@ -1,0 +1,30 @@
+# Research question
+
+thus I arrive at the following research question:
+
+    > How does variation in organizational network structure explain differences in the distribution of economic resources at the worksite?
+
+The next section will outline the framework of RIT, followed by the primary theoretical inequality generating mechanisms, and how these might be conceptualized in relational (network) terms.
+
+
+
+    > How does variablity in gendered network structures affect wages?
+
+
+- Tie effect: Having a tie in a workplace have a positive effect on wage
+        - gender modifier: The effect is larger for men than for women
+    - Homophilous tie effect: Having a tie of the same gender has a positive effect on wage
+        - gender modifier: The effect is larger for men than for women
+
+- Manager tie effect  Having a tie to a current manager has a larger effect than to a non-manager.
+        - gender modifier: The effect is larger for men than for women
+    - Homophilous manager tie effect: Having a tie of the same gender has a positive effect on wage
+        - gender modifier: The effect is larger for men than for women
+
+- Network closure: Having ties that are also connected to each other has an even more positive effect on wages
+    - gender modifier: The effect is larger for men than for women
+
+
+
+
+

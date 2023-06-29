@@ -1,0 +1,49 @@
+# Ex-colleguerial edgelists   {.unnumbered}
+
+In order to establish 
+
+Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Salutantibus vitae elit libero, a pharetra augue. Quam diu etiam furor iste tuus nos eludet? Fabio vel iudice vincam, sunt in culpa qui officia. Quam temere in vitiis, legem sancimus haerentia. Quisque ut dolor gravida, placerat libero vel, euismod.
+Plura mihi bona sunt, inclinet, amari petere vellent. Ab illo tempore, ab est sed immemorabili. Ullamco laboris nisi ut aliquid ex ea commodi consequat. Quae vero auctorem tractata ab fiducia dicuntur. At nos hinc posthac, sitientis piros Afros.
+
+
+
+```{r setup, echo=FALSE, include=FALSE}
+library(fs)
+library(readxl)
+library(magrittr)
+library(data.table)
+library(dttools)
+library(knitr)
+library(kableExtra)
+``` 
+
+
+```{r,  echo=FALSE}
+
+
+include_graphics('img/test.png') 
+
+
+```
+
+
+
+
+
+
+
+
+
+```{r labour malesuada, echo=FALSE}
+
+# df <- read_xlsx(here::here("input/table-external-markets-arbnr-fid-appears-disappears.xlsx"))
+
+ex1 <- read_xlsx('input/table-external-markets-arbnr-fid-appears-disappears.xlsx') %>% data.table()
+
+
+ex1 %>% kbl() %>% kable_styling()
+
+
+
+``` 
+

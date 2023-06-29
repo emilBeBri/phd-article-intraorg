@@ -1,0 +1,8 @@
+type_firm_ws_status2,V1
+all firms and worksites exists,442
+"both firms existed, ws B appears",44
+"firm Y appears, ws B appears",30
+"both firms existed, ws A disappears",25
+firm X & ws A disappears,22
+"firms exists, ws A disappears, ws B appears",8
+XA disappears and YB appears,5

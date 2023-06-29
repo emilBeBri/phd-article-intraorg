@@ -1,0 +1,14 @@
+{
+  "hash": "c4bf1677b3d520443a1105498c3d5fb5",
+  "result": {
+    "markdown": "\n\n\n# Tie definitions and their influence on network formation asf \n\n\nTies can be defined in different ways, that can have a huge impact on the meaning of the ties, and the number of ties a person has. This will influence the analysis greatly, so this section will explore 2 different types of ties. The one type will have two different tresholds, so the number of explored options is three in total. \n\n- **The first** definition of a tie includes every person within \n- **The second** definition of a tie includes every person filling up. This is included with two upper bounds for the number of connections possible: \n  + 150 possible ties \n  + 75 possible ties \n\n\nUsing 2018 as a benchmark year, there is xxxx no. of people in Denmark, with their 'primary economic activity' classified as working XXX worksites. These worksites were subdivisions of XXX different companies. #todo: check how much that varies.\n\n\n ::: {.callout-note .column-page collapse=\"true\"} \n\n# Descriptive of people working in Denmark 2010-2018\n\n\n::: {.cell}\n\n:::\n\n\n\n::: \n\n\n\n\n\n\n# Analysis of transitivity \n\n\n\nHere is a list of the different ones. It's is joyfull to work with, nothing more, nothing less. \n\nThe black line is the share of workplaces in the population of that size. The other lines are the share of workplaces of that size within a given type of edgelist.\n\n\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![this <- s lit](img/dst-shot/fig-edgelist-type-worksite-size-lineplot.png){#fig-mylabel width=745}\n:::\n:::\n\n\n\n\n\nasdfasfd\n\n\n\n\n\n\n\n\n\n#todo:\n\nWhen looking at the edgelists, they can be created in differ\n\nthere are a couple of features about the edgelists that needs to be taken into account when using data as the main source of income.\n\n\n\n\n\n\n![entire labourforce: ~ 2.8 mio (29 relevant ) ](./img/edgelist-filter-types.png)\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

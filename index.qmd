@@ -1,0 +1,24 @@
+
+## How to use  {.unnumbered}
+
+This article is rendered using [quarto](https://quarto.org/). The source code can be seen by clicking the `code` button at the topright. You are welcome to reuse it any way you like.
+
+It is possible  **to highlighte and annotate** parts of the text, which requires a signup to the academic annotation tool [hypothesis](https://quarto.org/), which is a nonprofit NGO. 
+
+It is encouraged to use this annotation and highlight-tool, as an experiment in how a 'social' reading of an article before a presentation could look like, since other readers will be able to see your highlights and comments. 
+
+a fast and simple setup guide to hypothesis, with pictures, is available [here](https://teaching.lfhanley.net/english528fall22/how-to-annotate/).
+
+If it is difficult to make out the details on a figure, clicking on the figure enlarges it.
+
+
+## Note on data privacy {.unnumbered}
+
+This article uses aggregated data from Statistics Denmark (DST). Care has been taken in order to comply with DST regulations in order to conceal unit-level identification of either individuals or companies.
+
+This has several practical consequens - One of them being that scatterpoints, showing individuals or companies, will not be used. Instead, [hexagonal plots are used](https://ggplot2.tidyverse.org/reference/geom_hex.html).
+
+
+
+
+

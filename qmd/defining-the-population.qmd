@@ -1,0 +1,122 @@
+
+```{r setup, echo=FALSE, include=FALSE}
+library(fs)
+library(readxl)
+library(magrittr)
+library(data.table)
+library(dttools)
+library(knitr)
+library(kableExtra)
+``` 
+
+# Tie definitions and their influence on network formation asf 
+
+
+Ties can be defined in different ways, that can have a huge impact on the meaning of the ties, and the number of ties a person has. This will influence the analysis greatly, so this section will explore 2 different types of ties. The one type will have two different tresholds, so the number of explored options is three in total. 
+
+- **The first** definition of a tie includes every person within 
+- **The second** definition of a tie includes every person filling up. This is included with two upper bounds for the number of connections possible: 
+  + 150 possible ties 
+  + 75 possible ties 
+
+
+Using 2018 as a benchmark year, there is xxxx no. of people in Denmark, with their 'primary economic activity' classified as working XXX worksites. These worksites were subdivisions of XXX different companies. #todo: check how much that varies.
+
+
+ ::: {.callout-note .column-page collapse="true"} 
+
+# Descriptive of people working in Denmark 2010-2018
+
+```{r desc, echo=FALSE}
+
+
+
+# setwd('..') 
+# getwd() 
+# dir_table('input')[path %ilike% 'ras']
+
+library('readxl')
+library('plotly')
+
+# a1 <- read_excel('input/ras_n_fid_novprio1.xlsx') %>% data.table() 
+#
+#
+# p1  <-  a1 %>% ggplot(aes(bef_aar, N)) + geom_line() + theme_bb()  + scale_y_continuous(breaks=seq(0, 350000, 50000), limits=c(0,350000)) 
+#
+# ggplotly(p1)
+#
+#
+# # needs to be updated
+# b1 <- dir_table('input/dst-out', regex='arbnr|fid')
+#
+# b2 <- map(b1$path, ~ read_excel(.x) %>% data.table())
+# names(b2)  <- c('establishment', 'company')
+# b2  <- rbindlist(b2, idcol='grp')
+# p2 <- b2 %>% ggplot(aes(bef_aar, N, color=grp)) + geom_line() + theme_bb() + scale_y_continuous(breaks=seq(0, 350000, 50000), limits=c(0,350000)) 
+#
+#
+#
+# ggplotly(p2)
+#
+
+
+
+
+
+
+```
+
+
+::: 
+
+
+
+
+
+
+# Analysis of transitivity 
+
+
+
+Here is a list of the different ones. It's is joyfull to work with, nothing more, nothing less. 
+
+The black line is the share of workplaces in the population of that size. The other lines are the share of workplaces of that size within a given type of edgelist.
+
+
+
+
+
+
+```{r new one, echo=FALSE}
+#| label: fig-mylabel
+#| fig-cap: this <- s lit
+knitr::include_graphics('img/dst-shot/fig-edgelist-type-worksite-size-lineplot.png')
+```
+
+
+
+
+asdfasfd
+
+
+
+
+
+
+
+
+
+#todo:
+
+When looking at the edgelists, they can be created in differ
+
+there are a couple of features about the edgelists that needs to be taken into account when using data as the main source of income.
+
+
+
+
+
+
+![entire labourforce: ~ 2.8 mio (29 relevant ) ](./img/edgelist-filter-types.png)
+
+

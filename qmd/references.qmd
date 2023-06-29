@@ -1,0 +1,16 @@
+
+
+# References
+
+
+see this work [@rawls1971theory]
+
+this work is pretty good, too @bourdieu1979symbolic
+
+
+
+
+::: {#refs}
+:::
+
+

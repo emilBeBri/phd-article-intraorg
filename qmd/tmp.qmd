@@ -1,0 +1,35 @@
+
+# @kazmina2023socioeconomic
+
+We know that social networks do not emerge randomly. Far from it, social networks are typically segregated structures, where people connect to similar others with respect to a variety of characteristics. This is in part due to homophily: there is a higher probability for an individual to establish a social tie with an individual with similar attributes such as, for instance, age, gender, language, nationality, religion (Melamed et al. 2020; McPherson et al. 2001), or socioeconomic-status (Leo et al. 2016; Morales et al. 2019; Dong et al. 2020; Bok´anyi, Juh´asz, et al. 2021). When the well-endowed cluster together, and those in a more disadvantaged position do so as well, these social cleavages make existing inequalities persistent. They may even amplify them (van Ham et al. 2018) because social ties provide a form of capital as an infrastructure towards certain resources (Bourdieu 1986). Social capital literature firmly establishes that social relations provide much needed access to a wide range of resources that are important for reducing inequalities and upward mobility. The resources that may flow through social networks include social and financial opportunities (Uzzi 1999), valuable information relevant for job search (Demchenko 2011; Granovetter 1973; Montgomery 1992; Rajkumar et al. 2022) and educational opportunities (Frank et al. 2018). Using diverse resources embedded in one’s social network results in better socio-economic outcomes (Lin 1982) and access to such resources is in turn determined by “the strength of [social] position” (Campbell et al. 1986; Lin 1999). 
+
+# @tomaskovicdevey2015sweden
+
+Workplaces may change in other ways as well, and so we include a series of controls for skill levels ðaverage education, average tenure, average occupational rankÞ, status characteristics ðpercentage female, percentage white-collarÞ, and organizational characteristics ðsize, entrepreneurial frimÞ. We do not comment on these coefficients in the text, but they are available in the appendix tables. 
+
+# @wooldridge2020introstats
+
+When the uit are serially uncorrelated, fixed effects is more efficient than first differencing (and  the standard errors reported from fixed effects are valid). Because the unobserved effects model is  t ypically stated (sometimes only implicitly) with serially uncorrelated idiosyncratic errors, the FE  estimator is used more than the FD estimator. But we should remember that this assumption can be  false. In many applications, we can expect the unobserved factors that change over time to be serially  correlated. If uit follows a random walk—which means that there is very substantial, positive serial  correlation—then the difference Duit is serially uncorrelated, and first differencing is better. In many  cases, the uit exhibit some positive serial correlation, but perhaps not as much as a random walk.  Then, we cannot easily compare the efficiency of the FE and FD estimators. It is difficult to test whether the uit are serially uncorrelated after FE estimation: we can estimate the time-demeaned errors, u$ it, but not the uit. However, in Section 13-3, we showed how to test  whether the differenced errors, Duit, are serially uncorrelated. If this seems to be the case, FD can be  used. If there is substantial negative serial correlation in the Duit
+-> test om det er FD eller FE du skal bruge! Imponer lasse og dem alle sammen med at du kan det her.
+
+# fragmenter
+
+It has been shown that formal ties capture the majority of people’s strong connections (Wrzus et al. 2013; Buijs et al. 2022; van Eijk 2010). 
+
+
+what we don't get with administrative data: 
+
+- fine-grained measurements like what @mcguire2015variable shows.
+
+what we do get:
+
+- precise information about how whole populations "participate regularly in collective activities." @breiger1974duality
+- in a way that creates *affinities* towards meaningful personal relations 
+
+
+
+# dual structures
+
+
+First, it allows us to examine less common but impactful network configurations, such as triadic closure. Second, the specific organizational cases in which researchers are particularly interested or which are willing to grant access to researchers may not be representative of the wider labor market. Theoretically, by examining the importance of informal networks within hiring organizations beyond direct contacts, we demonstrate the importance of influence as a 
+

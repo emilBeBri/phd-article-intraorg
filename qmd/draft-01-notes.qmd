@@ -1,0 +1,202 @@
+
+
+
+
+- local inequality regimes
+
+
+# introduction
+
+- many people get jobs by contacts
+	- qualitative studies show that relational structures at the workplace has wide implications for power relations, including wages 
+		- find eksempler, fra RIT 
+	- has been confirmed in network studies, se: (hvilke hvilke og hvilke?) 
+	- RIT as a quantitative framework for this 
+	- my contribution: networks
+
+wages as an outcome of this - although the Danish labour market is highly fashioned, this would prove to be a 'hardcore test', just as  it is in @tomaskovicdevey2015sweden - but this time in even lower levels
+
+
+
+
+
+RIT
+findings
+
+dynamics on the worksite
+network research 
+highly complex yada yda
+
+
+
+
+
+
+The mechanisms 
+
+
+- bare genbrug det du har
+
+
+
+
+# "overblik" hvilke elementer er vigtige:
+
+- job authority
+    - relations to job authority
+    -   
+
+- type af netvaerk - hvilke former for relationer er vigtige for folk
+    - @mcguire2015variable
+
+
+- weak or strong ties most effective?
+    - @mcguire2015variable
+
+
+- loendannelse paa arbejdsmarkedet (se paa tomaskovicdevey2020rising for at finde eksempler) 
+    - industry
+    - occupations
+    - within-and-between firm
+        - @tomaskovicdevey2020rising
+
+
+ 
+- other outcomes on the labour market
+
+
+
+
+categorical distinctions
+
+
+
+
+
+
+- types of structure of ties: first neighborhood, second neighborhood, open triads, closed triads 
+	- diverse networks: access to different and non-redundant ressources @granovetter1973strength @burt1992holes
+	-
+
+
+
+
+
+# todo 
+
+deskriptivt, fra [@blommaert2019gender] :
+
+	Campbell (1988) found that men are likely to know persons in more occupations than women (but observed no significant gender differences in diversity of occupational statuses reached through networks).
+> det kan du lave en tabel paa - ved hjaelp af Herfindahl indexet! 
+
+
+i samme aare, fra Krakhardt (lav ref senere): 
+
+beskriv hvordan ties er fordelt i form af sociodemographics, lidt som Blommaert siger i ovenstaaende,  men bare paa endnu flere variable. 
+
+
+
+
+
+
+og:
+	The diversity in job status in respondents’ occupational network was measured by first assigning the listed occupations their value on the International Socio-Economic Index 2008 (ISEI-08, ranging from 16–90) (Ganzeboom, 2010). For example, lorry drivers were given the relatively low score of 36, whereas lawyers were assigned the relatively high score of 81. Subsequently, we calculated the
+> calculate Socio-Economic index paa mit data? Det er Ganzeboom der har lavet det.
+
+
+## network science  
+
+group level analysis (RIT)
+individual level 
+
+
+- transitivity
+
+
+
+# thoughts about content
+
+
+- the meaning of ties in organizations - what do they do?
+- 
+
+the importance of strong ties 
+
+
+
+emotional,
+
+
+- artiklen her handler om de 'smaa' netvaerk i firmaer, og betydningen for oekonomisk ulighed - det er et forsoeg i at se hvad netvaerk kan bidrage med for bedre at forstaa dynamikken i relational ulighed i organisationer.
+- Der er lavet mange gode studier af betydningen af netvaerk, men typisk er det appliceret indenfor enkelte virksomheder.
+	+ many good studies of the significance of networks within companies, but typically, they are built on single cases. This approach often allows to utilize data sources that are uniquely available for this company, such as the fascinating 'mental cubes' of Krackhardt, or the xx of yy (#todo). However, since they do not have a multittude of companies available, it is harder to asses the specific and the general, which is left to meta-articles that survey the results of these single firm studies, see XXX. While the measures availae in this study lack the data about subjective experience that single firm studies often has available, the possibility of detecting and assesing network patterns on a larger structural level. 
+- the meaning of relations at work
+	+ definere relationer - se Krackhardt, @mcguire2015variable 
+		+ krackhardt citerer @granovetter1973strength for at definere weak ties ud fra tid - > 2 x om ugen = strong, < 2 x om ugen = weak
+
+
+- what does relations at work achieve? Of these some might be better for strong ties, others for weak ties
+	+ structures action
+	+ emotional support
+	+ advice
+
+
+Argument: In routine operations, the technical advice network is most important. In non-routine situations, like unionization votes, it's the philos network - e.g. friends network - that matter.  
+
+friendship or advice when dealing with excollegues? We have no way of knowing that. THis is a crucial argument for Krackhardt. We could maybe see if they have children in the same kindergarten, for a sort of experiment? Or if ex colleuge AND old study friend improves the relation?
+
+you can use the argument of Krackhardt to say how networks are the facilitator of change! 
+
+	(...) the patterns of daily or weekly interactions over work-flow problems become the building blocks of power in the organization. Those who  know how to handle the routine exceptions are the ones who know how  to get things done and will assume powerful roles (Crozier 1964).
+	krachrad 1992
+
+also how those who are at the top of 
+
+
+## ways that this works to predict exploitation / opportunity hoarding 
+
+understanding the hypothesis from sweden  
+
+Hypothesis 1
+higher % of immigrants in workplace -> lower wage gap. BUT what if it's the immigrants that are larger % off? Different dynamic. 
+
+reduced status penalty due to categorical distinction - beliefs about ability and so on. 
+
+use a socioeconomic index of the residuals, so that any 
+
+
+
+## social closure / opportunity hoarding
+
+
+    At the individual level, status hierarchies, productivity, personal relationships with supervisors, human and social capital, and personality traits may enable successful claims. As well, social groups, such as unions, professional associations, departments, and spontaneously organized networks of employees, collectively approach employers to negotiate and make wage claims. Solidarity in intragroup networks, relative power over resources, capital ownership and control, and status hierarchies are likely to inﬂuence the persuasiveness of group-level claims making.
+
+
+social closure (opportunity hoarding)
+Opportunity hoarding is also referred to as social closure in much of this literature ðe.g., Weber ½19211968; Parkin 1979; Weeden 2002Þ.
+
+
+Socially salient categorical distinctions are expected to be inﬂuential in
+determining the frequency of explicit and implicit claims as well as their
+legitimacy through mechanisms such as workplace speciﬁc symbolic capital
+ðTatli and Özbilgin 2011Þ, othering ðSchwalbe et al. 2000Þ, status expectations ðRidgeway 1997Þ, stereotyping ðGorman 2005Þ, and cognitive biases in information processing ðNosek et al. 2007Þ. Low-status individuals
+and groups will make fewer claims on resources, and their claims are less
+likely to be ratiﬁed by powerful actors. This notion that actors create and
+use categorical distinctions to pursue individual and collective social closure and ðreÞproduce inequality is widespread in social theory: in addition to Tilly ð1998Þ on categorical inequality, see Bourdieu ðBourdieu and
+Wacquant 1992Þ on classiﬁcation struggles, Abbott ð2005Þ on jurisdictional
+claims, and Lamont and Fournier ð1992Þ on cultural boundary work, but
+this list is far from exhaustive.
+
+
+
+When cultural categorical distinctions overlap with internal division of
+labor, this magniﬁes the inequality that either alone would produce ðBlau
+1977; Tilly 1998Þ. While inequalities are installed categorically, real actors/
+jobs stand in relation to other actors/jobs in the organization and will inhabit multiple categorical distinctions simultaneously and in historically
+speciﬁc interactional contexts ðCollins 1990; Glenn 2002Þ. Past research has
+shown that when status distinctions such as authority and race ðor gender,
+language group, education, job skill level, temporary employment statusÞ
+overlap, they reinforce each other, increasing inequality between positions
+ðHultin and Szulkin 1999, 2003; Avent-Holt and Tomaskovic-Devey 2010,
+2012Þ.
+

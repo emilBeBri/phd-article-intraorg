@@ -1,0 +1,126 @@
+project:
+  type: book
+  output-dir: _output
+  execute-dir: project
+
+knitr:
+  opts_knit:
+    root.dir: '/home/emil/Dropbox/arbejde/cbs/phd/articles/intra-org-inequality'  
+  opts_chunk: 
+    collapse: true
+
+
+    # cache: true
+
+book:
+  title: "Relational inequality in the workplace"
+  subtitle: "Intraorganizational Inequality In A Network Perspective"
+  author:
+    - name: Emil Bellamy Begtrup-Bright
+      url: https://some-website.org
+      affiliation: Department of Organization<br>Copenhagen Business School
+  date: last-modified
+  # site-url: https://some-website.org/rflow
+  # url: https://some-website.org/rflow
+
+
+
+
+  # google-analytics: "G-......"
+
+
+  chapters:
+    - index.qmd
+    - part: Outline
+      chapters: 
+        # - qmd/abstract.qmd
+        # - qmd/research_questions.qmd
+        # - qmd/introduction.qmd
+        - qmd/registry-data.qmd
+          # - qmd/draft-01-notes.qmd
+    # - part: Analysis
+      # chapters: 
+    #     - qmd/descriptive-stats.qmd
+        # - qmd/analysis.qmd
+    # - part: Ending
+    #   chapters: 
+    #     - qmd/ending.qmd
+    # - part: Appendix
+    #   chapters: 
+    #   - qmd/app-edgelist-exploration.qmd
+    #   - qmd/defining-the-population.qmd
+    #   - qmd/worksite-descriptives.qmd
+    #   - qmd/team-moves.qmd
+      # - qmd/testing-grounds.qmd
+    #   - qmd/references.qmd
+
+
+
+
+
+
+
+
+  page-footer:
+    background: light
+    left:
+      # - text: "Copyleft - All rights reversed. The internet is free and so is my content."
+      - text: "Copyleft - All rights reversed. The internet is free and so is this."
+        href: https://www.gnu.org/licenses/copyleft.en.html
+    right:
+      - icon: twitter
+        href: https://twitter.com/Emil_BB
+        aria-label: Quarto Twitter
+      - icon: github
+        href: https://github.com/emilbebri
+        aria-label: Quarto GitHub
+
+
+  navbar:
+    collapse-below: xl
+
+bibliography: references.bib 
+
+filters:
+  - lightbox
+
+lightbox: auto
+
+format:
+  pdf: default
+  html:
+    # theme: cosmo
+    number-depth: 3
+    cap-location: margin
+    reference-location: margin
+    citation-location: margin
+    # css: mermaidf.css
+    code-tools: true
+    code-block-bg: "#f1f3f5"
+    code-block-border-left: "#31BAE9"
+
+comments:
+  hypothesis:
+    theme: clean
+    openSidebar: false
+    enableExperimentalNewNoteButton: true
+
+execute:
+  warning: false
+  message: false
+  freeze: auto
+
+# website:
+#   navbar:
+#     right:
+#       - icon: twitter
+#         href: https://twitter.com/quarto_pub
+#         aria-label: Quarto Twitter
+#   page-footer:
+#       - icon: github
+#         href: https://github.com/quarto-dev/quarto-cli
+#         aria-label: Quarto GitHub
+
+params:
+  avg_n_arbnr_below_p90: 0.1
+  ratio: 0.1

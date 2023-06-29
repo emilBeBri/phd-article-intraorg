@@ -1,0 +1,101 @@
+# Introduction 
+
+
+The focus of this article is how variation in power dynamics at the worksite between individuals and groups relate to wages. this is a component in a larger discussion about rising economic inequality. 
+
+The issue of rising economic inequality has been a hot topic for so long now that stating that fact has become a cliché in introductions. Larger monographs from wellknown authors has synthesized these findings and revealed insight into the state of affairs, as well as the trajectory that led to it, see @tomaskovicdevey2019relational, @savage2021return, @stiglitz2015inequality and @piketty2020capital. The general trend since the 1980s seems to be a larger concentration at the top of the income distribution, in every industrialized country.
+
+<!--
+credit-suize report 2019 - gini coefficient skal aflaeses - kan det passe at DK har saa hoej en coefficient? @Lasse
+-->
+
+
+<!-- The social mechanisms generating economic inequality are manifold. One of the general trends within all but a few of the industrialized countries since the beginning of the '90s is that an increasingly large part of the variation in wages are happening between firms (as opposed to between larger occupational groupings, like 1-digit ISCO codes), see @tomaskovicdevey2020rising and @kim2008intraoccupational    [you need more henvisninger #todo] . It is within this overall trend that this article is focused on understanding the within-firm mechanisms generating differential outcomes in wages, so as to better understand the variety wihitn firms that produces the variance found across worksites [svagt punkt, ikke 100% logisk sammenhaeng] -->
+
+Intraorganizational used here here as the formal and informal relations between people working at the same geographical location, at the same worksite^[intraorganizational could also mean within companies, that can consist of several worksites, or other types of organizations entirely. This will not be the meaning of intraorganizational in this article, unless clearly stated. Likewise, when I say at the 'local' level or similar, I mean at the worksite level.].  To make sense of the power dynamics, I will use the relational inequality theory (RIT), which states that besides productivity-related differences between people and companies, as in the human capital theory of @becker1964humancapital,  individuals create categorical distinctions and assign others to these categories. Through social interaction, meanings are ascribed to these categorical differences, allowing people in one category to seize and monopolize opportunities from those in another category. This exploitation occurs via a claims-making process in which individuals strive to secure and manage resources such as employment, salaries, and career advancements by forming discursive as well as juridical-legal justifications for their entitlement to them, based on ingroup-outgroup dynamics. See @tomaskovicdevey2019relational for an overview.
+
+This article uses administrative linked employer-emplyee data (LEE) to assess the social networks of all the workssites in Denmark between 2010-2019. This makes it possible to follow the ~ 50.000 worksites that have employed people that have also been employed together elsewhere, making a systematic comparison of differences in network structure possible. This is part of a new trend, that I will outline briefly in the following.
+
+Recent advancements in data availability and computing power has set in motion a trend of social networks analysis on an unprecended scale. For example, by utilizing digital footprints from online platforms, see @chetty2022social1, @chetty2022social2, access to comprehensive records of e-mail correspondences within large firms, see @jacobs2021largescale, and novel use of administrative state records spanning whole populations, see @kazmina2023socioeconomic, @bokanyi2022anatomy. while the articles cited have different purposes, such as measuring social segregation or firm performance. In the case of firm performance, @jacobs2021largescale, somewhat surprisingly, find no relation between well-established network measures and firm performance, a surprising result that is still debated and boils down to wether the results are correct or that the data is an unreliable proxy for the networks measured, [ see X Y and Z.  ]. while this article does not adress the same issues as the articles mentioned, the endeavour to understand variation in large networks - or a great deal of smaller networks  spanning  whole populations - - which is an essential step forward from analysis of single-firm cases in terms of generalisability and understanding the consequences of variation in network structure, in this case at worksites and relations of the networks to local wage-bargaining. [naevn og saa ham tyskeren og ham fra budapest]
+
+While this might not have the granularity of the meaning of the social relations - I cannot tell who are actually seeking advice from others, or which people are *actually* friends - that survey-based methods can have, the argument will be that the relations defined based on shared work history between employees is a signal of the network dynamics within an organization, that enables the statistical modelling of the effect of gendered networks on wages.  
+
+One such category is the gender. While actual biologically founded differences might account for *some* differences, the social categorization based on perceived gender differences has certainly been a prime example of types of non-meritocratic inequality processes that RIT seek to explain. 
+
+
+While the RIT framework has produced articles of sophisticated statistical identification of such categorical effects, on gender and ethnicity, the proxies for group dynamics has been focused on different aggregate proxies for group power dynamics, such as the relative size of the different groups within the worksite, at different levels of hierarchy, e.g. the share of women at the workplace, and/or the share or women in management at the workplace, or the amount of inequality within the worksite.
+
+
+It seems to me that the RIT framework has an untapped potential empirically. As I read the theory, it tries to bridge the gap between quantitative and qualitative methods by using the advances in data available - such as linked employer-emplyee (LEE) data - and advances in stastical modelling techniques, such as random effects coefficients for each workplace - and thereby showing how econometric methods is able to explain variance at the level of analysis where people actually take part in economic activity - the worksite, instead of aggregating beyond it^[One might say the discussion between  @grusky2001 and @goldthorpe2002 was a prerunner for this.]. This has traditionally been the domain of qualitative analysis, that stresses the particular social relations that sum up into, for example, a toxic masculine
+ workplace culture, and that might be less pronounced - or even reversed - at another worksite. RIT seeks to move quantitative, large-N studies closer to this level of analysis, so as to show the general patterns in local power dynamics^[This is not to say that macro-level factors such as institutional settings and market features are not powerful components, too. See @aventholt2010relational for a discussion.]. 
+
+While the methods used in RIT are focued on this local level, and uses qualitative studies to legitimate this focus by showing how local social relations are important, the operationalization has previously been measures of, for example, number of women at the worksite, or the share of women in management, combined with other aggregates at the worksite level. This has yielded exciting results that sheds light on the dynamics of economic inequality. But it might be possbile to get even closer to the power dynamics that RIT theorizes and qualitive studies excel in, by using social network analysis, a well-established method and field in itself.
+
+
+Some attempts at getting deeper into the social relations has been made. In these study of @abendroth2016women they use the dyadic gender-composition of workers and managers, e.g. the effect on wages when a male manager is the supervisor of a male worker, vis-a-vis a male manager managing a female worker and so on, to examine the effect on blah blah [fortsaet her].
+
+While this results show interesting effects, it is the aim of this article to go beyond these dyadic relationships and try to understand the social relations in network terms beyond the dyad, in terms of transitivity, betweeenness and so on. While there exists good research on this, they are typically confined to a single or a few worksites, with a few notable exceptions such as @aventholt2020occupational, which uses Swedish administrative data to look at the variation of occupational hierarchies at the local level 
+
+An example might be usefull.  in @krackhardt2003strength, the authors examine a small IT company, with 36 employees. Constructing the network within the firm^[Here 'worksite' and 'firm' is synonymous] out of a questionnaire asking all employees about who their friends in the company are (social/emotional support) and who they seek advice from (task support). A few months after the data collection, the company faced a difficult situation, as The National  Labor Relations Board (NLRB) informed firm management that they were granting a petition by a national union to  hold a certification election. This did not thrill management, and the following months, a powerstruggle  followed among the employees, who were not all convinced that this was in their interest. The labour union failed in achieving certification. They lost the popular vote, although they did at have a substantial support among the employees. So what happened? 
+
+Krackhardt et al.  interviewed 6 key employees after the election, and argue that the betweenness score in the friendship network structure was a key component in the lost petition. The most vocal pro-union employee - who was also officially supported by the union - had a low betweenness score in the friendship network. The two anti-union employees were a lot more central. 
+
+In this way, the network structure accurately portray the bargaining process and the outcome, all of which has surely affected wages and other benefits in the firm. Krackhardt et al. points out that the most central employee in the friendship network was supportive, albeit hesitantly, of the unionization, but was also friends with the two vocal anti-union employees. He choose to keep out of the discussions and the in end even abstained from voting on the issue. Had the union appproach him, things migt have gone differently.
+
+
+It is the goal of this article to examine how these network measures might add to the explanatory power of RIT. One might say 
+
+
+that it is the goal of the article to get RIT closer to the local dynamics, and in the same turn get SNA closer to large-scale analysis, since these, because of data limitations, have often been confined to single or few case studies^[ for a noticeable exception, see @jacobs2021largescale, who find that there is *no effect* when regressing network measurements on firm performance. this is a large-scale study based on e-mail networks. 1.8 billion messages sent by 1.4 million users from 65 US firms, and the result is perplexing, to say the least. This article might contribute to this discussion].
+
+ 
+
+Of course, the level of closeness to the social relations poised by @krackhardt2003strength  is not possible with administrative data. Even the Danish State does not keep a population-level record of friendship among its citizens, after all. As is wellknown, network analysis is very sensitive to measurement error @laumann1983boundary, and so the networks posed cannot be conceptualized as complete - this means that the network metrics posed in this article are not 'realistic' in the sense that someone with a highest level of betweenness, say, is the actual most central person. Since social relations at work - or any other place for that matter - is multidimensional, and depends upon what any given relation is used for - former research such as @mcguire2015variable points to  three dimensions of social utility at work:
+
+- influence-conferring support (support that enhances an employee’s influence at work),
+- task support (assistance with everyday job tasks)
+- social support (emotional aid). 
+
+
+It is unlikely that ex-collegial ties capture these aspects anywhere near the complexity they contain. and, as such, they are incomplete measures, that will be susceptible to measurement errors. 
+
+Rather, the networks posed here, defined as the social relations (possibly) established through a shared history of working at the same places in the past. One might say they are like the 'shadow', or the footprint, of the actual relations of the workplace. They are a signal of the social relations, that, though noisy, might still be a 'a level deeper' than most other measures that can be achieved at scale.
+
+thus, they might shed light on the dynamics of employee bargaining power when estimating the effect of the social relations within the worksite, on the wages. When combined with the categorical distinctions involved in these networks, though incomplete, the structural features of the network properties studied have a validity about general tendencies in network structure at the local level. This should make up  for the for the lack in granularity - and quite possibly missing links - of the particular network at each worksite.
+
+
+<!-- the relations established through a shared history of working at the same places in the past forms a signal, that, though noisely, will have an impact on the bargaining power of the people involved in them, especially when taking into account the number of worksites analysed in this sample.  -->
+
+
+the project:
+
+
+- relational, contextual power dynamics, like @emirbayer1997 - using quantitative tools to reveal general trends. 
+
+
+
+# Previous research on gender inequality at the worksite level
+
+
+The following will focus mostly on the RIT litterature. For an overview in general, see @tolbert2016editorial.
+
+While @tomaskovicdevey2015sweden is about ethcniticy rather than gender, the approach to estimating worksite-level effects is foundational for the approach used in this article. @tomaskovicdevey2015sweden looks at wage differences between native Swedish workers and non-western Swedish with immigrant background.
+
+They fit a fixed effects model with strong individual controls for human capital characteristics, and finds substantial evidence of  worklevel (non-meritocratic) characteristics affecting the wage gap, such as: The share of NW immigrants at the workplace. The share of no. This supports the claim that important inequality-generating mechanisms are in fact happening at the worksite, also in a highly regulated labour markets such as the those in Scandinavia. 
+
+@abendroth2016women use LEE data from german companies with > 500 employees, in order to understand how gendered access to power is related to gender differences in wages.  They use manager–worker dyads as indicators of power in the workplace, as well indicators of HR practices regarding hiring transparency. Their findings suggest, in line with previous research [indsaet her fra artikel], that the share of women in management does shorten[?] the gender wage gap. The more relational indicators the gendered access to power is that of manager-worker dyads, while also dividing the sample into into high skilled and low skilled workers^[and approach also used in @tomaskovicdevey2015sweden]. The general trend is that having a women manager is associated with a wage penalty, and that this effect is largest for women workers in high skilled jobs.
+
+
+
+
+@aventholt2010relational, although not using LEE, find that blablah blah (brug den mere som baggrund)
+
+Taking together, these articles shows an increasing  
+
+
+The RIT framework has mostly been applied as a within group setting, and have not previ 
+
+
+
+
+
