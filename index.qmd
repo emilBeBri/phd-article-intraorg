@@ -1,24 +1,35 @@
 
-## How to use  {.unnumbered}
+## README (IOA summergames '23) {.unnumbered}
 
-This article is rendered using [quarto](https://quarto.org/). The source code can be seen by clicking the `code` button at the topright. You are welcome to reuse it any way you like.
 
-It is possible  **to highlighte and annotate** parts of the text, which requires a signup to the academic annotation tool [hypothesis](https://quarto.org/), which is a nonprofit NGO. 
+This is an unfinished draft, and the analysis part has only the results of the (fixed effects) regression models and not much in the way of explanation, the same with the descriptive figures. They make more sense if you work with that sort of thing normally, but even then, they might be hard to interpret without explanations. I am currently at a summerschool taking a course that is quite hard, and I do not have the time to make a better draft for you than this, sorry.
+
+
+The part of the article that is in the most finished state is the part called `Outline` (p. 1-18). If you have the time, you can also look at the chapter `descriptive statistics` (p. 19-24) and `Analysis`, which is basically just one page with the results of the first regression analysis, in an coefficient plot. Looking at that plot might be a good idea, although, as there is no explanation, I will explain it at the Summer Games session.
+
+In the PDF version of this article, the figures have very small text. I have not corrected this yet. If you have the time and the inclination, [you can see the html version here](https://emilbebri-phd-article-intraorg.netlify.app/), where the figures are clickable, and can be enlarged to fullscreen by doing so.
+
+
+The article is rendered using [quarto](https://quarto.org/).
+
+
+## About the html version
+
+The source code can be seen by clicking the `code` button at the topright. You are welcome to reuse it any way you like.
+
+It is possible **to highlighte and annotate** parts of the text, which requires a signup to the academic annotation tool [hypothesis](https://quarto.org/), which is a nonprofit NGO. 
 
 It is encouraged to use this annotation and highlight-tool, as an experiment in how a 'social' reading of an article before a presentation could look like, since other readers will be able to see your highlights and comments. 
 
-a fast and simple setup guide to hypothesis, with pictures, is available [here](https://teaching.lfhanley.net/english528fall22/how-to-annotate/).
+A fast and simple setup guide to hypothesis, with pictures, is available [here](https://teaching.lfhanley.net/english528fall22/how-to-annotate/).
 
 If it is difficult to make out the details on a figure, clicking on the figure enlarges it.
-
 
 ## Note on data privacy {.unnumbered}
 
 This article uses aggregated data from Statistics Denmark (DST). Care has been taken in order to comply with DST regulations in order to conceal unit-level identification of either individuals or companies.
 
-This has several practical consequens - One of them being that scatterpoints, showing individuals or companies, will not be used. Instead, [hexagonal plots are used](https://ggplot2.tidyverse.org/reference/geom_hex.html).
 
-
-
+<!-- This has several practical consequens - One of them being that scatterpoints, showing individuals or companies, will not be used. Instead, [hexagonal plots are used](https://ggplot2.tidyverse.org/reference/geom_hex.html). -->
 
 

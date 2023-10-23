@@ -2,13 +2,39 @@
 
 - fix overlap af sidenotes i quarto 
 - dst: check raw edgelist og forstaa hvorfor disco er forkert (engang)
-- lav regression tables i R og quarto
 - den der youtube video - inspiration:
     - manager-employee relationship - more controls? age, or age-difference, or seniority of manager that you have a tie with, for example?
 
 
 
+# spm til Lasse
+- lyder det her ikke som om der ikke er noget der skal sendes, og jeg faktisk bare skal dukke op og praesentere: 
+
+
+
+
+
+todo paa artiklen;
+
+
+lav rank af loenhiearki og interager med tie 
+avanceret figur 
+
+homofili figur som kontrast til male-female figur 
+
+reference skal vaere male uden kontakter
+
+hypoteser - de 32 udfald 
+
+aar additiv effekt: 
+
+argumenter for at du har fixed effecd paa worksite-occ, og derefter vil du gerne tage hoejde for evt additive forskelle i loenudvklingen der galeder hele oekonomien (men ikkeindnefor virksomheden - det er ikke en histoire om udvikling i tid, det her, og det vil gaa udover modellen fordi kravenee til antal N bliver meget hoejere. I lyset af det bruger jeg additv aarseffekt.) NB - vaEr sikker paa at std fejl er paa worksite-occ og ikke aar 
+
+
+
+transitivitet skal kombineret med fixed effect paa degree 
 
 
 ## done
-- find gary becker reference til human capital argumentet
+
+

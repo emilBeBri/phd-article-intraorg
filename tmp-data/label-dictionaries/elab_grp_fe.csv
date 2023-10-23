@@ -1,0 +1,25 @@
+from;to
+arbnr;WS-only
+arbnr + bef_aar;WS+year
+arbnr^bef_aar;WS-year
+arbnr[bef_aar];WS/year
+arbnr^disco6;
+arbnr^bef_aar^disco6;
+arbnr^disco6[bef_aar];
+arbnr^disco6 + bef_aar;
+arbnr^disco1;
+arbnr^bef_aar^disco1;
+arbnr^disco1[bef_aar];
+arbnr^disco1 + bef_aar;
+arbnr^disco2;
+arbnr^bef_aar^disco2;
+arbnr^disco2[bef_aar];
+arbnr^disco2 + bef_aar;
+arbnr^disco3;
+arbnr^bef_aar^disco3;
+arbnr^disco3[bef_aar];
+arbnr^disco3 + bef_aar;
+arbnr^disco4;
+arbnr^bef_aar^disco4;
+arbnr^disco4[bef_aar];
+arbnr^disco4 + bef_aar;

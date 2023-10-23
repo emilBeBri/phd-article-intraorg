@@ -1,0 +1,47 @@
+{
+  "index.qmd": {
+    "index.html": "f551109b"
+  },
+  "qmd/abstract.qmd": {
+    "abstract.html": "ebc87539"
+  },
+  "qmd/research_questions.qmd": {
+    "research_questions.html": "c7924d84"
+  },
+  "qmd/ending.qmd": {
+    "ending.html": "3128ca8e"
+  },
+  "qmd/app-edgelist-exploration.qmd": {
+    "app-edgelist-exploration.html": "58a32159"
+  },
+  "qmd/defining-the-population.qmd": {
+    "defining-the-population.html": "293b63d1"
+  },
+  "qmd/team-moves.qmd": {
+    "team-moves.html": "d52a70a1"
+  },
+  "qmd/references.qmd": {
+    "references.html": "5e3d5411"
+  },
+  "qmd/testing-grounds.qmd": {
+    "testing-grounds.html": "ed74fd4c"
+  },
+  "qmd/worksite-descriptives.qmd": {
+    "worksite-descriptives.html": "56e1c173"
+  },
+  "qmd/draft-01.qmd": {
+    "draft-01.html": "7e803418"
+  },
+  "qmd/introduction.qmd": {
+    "introduction.html": "1e26858b"
+  },
+  "qmd/descriptive-stats.qmd": {
+    "descriptive-stats.html": "b72e57cf"
+  },
+  "qmd/analysis.qmd": {
+    "analysis.html": "bbd8c93f"
+  },
+  "qmd/registry-data.qmd": {
+    "registry-data.html": "ce2cf80d"
+  }
+}

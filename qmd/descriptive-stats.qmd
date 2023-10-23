@@ -1,6 +1,20 @@
 # About the data
 
+```{r setup, echo=FALSE}
 
+library(purrr)
+library(data.table)
+library(dttools)
+library(readxl)
+library(knitr)
+library(kableExtra)
+
+
+setwd('/home/emil/Dropbox/arbejde/cbs/phd/articles/intra-org-inequality')
+source('/home/emil/Dropbox/data-science/R/.minimal-Rprofile')
+
+
+```
 
 
 The ties formed a 
@@ -58,10 +72,59 @@ Thirdly, I exclude worksites within the public sector. The Danish and Scandinavi
 
 ## worksites and population 
 
-Since the population is defined only as worksites that has at least a single tie between two employees from a former worksite, looking at how these companies might differ from the general population of worksites of comparable sizes are of interest.  
+
+The baseline population is everyone who is 18 or older and who have a job and an associated worksite identifier, which includes most people [how many? return to this] . We use novprio jobs blah blah blah
 
 
-[run t-tests of difference btw the two #TODO]
+The following table shows the amount of people working
+
+
+
+Since the population is defined only as worksites that has at least a single tie between two employees from a former worksite, looking at how these companies might differ from the general population of worksites of comparable sizes is of interest.  
+
+
+
+
+
+
+## Selection into sample
+
+The following is a table of t-tests where the two groups are the worksites with ties and the general population of worksites. The table shows the mean difference between the two groups, the mean in the population, the mean in the sample, and the p-value of the t-tests. 
+
+The categorical variables  - occupational groups and sector codes, both at the highest level - have been coded as dummies and the mean difference is the difference in the share of people in each category, within the population and the sample.
+
+
+```{r, echo=FALSE}
+
+tt1 = read_xlsx('input/desc/probabiliy-in-sample-ttest-net_arbnr.xlsx') |> data.table()
+tt2 = tt1[!is.na(p.value)][, !'grp']
+tt2[var == 'alder', var := 'Age']
+tt2[var == 'female', var := 'Female']
+tt2[var == 'heltid_32_kode', var := 'Full-time']
+tt2[var == 'n_arbnr', var := 'no. employees at worksite']
+tt2[, var := substr(var, 1, 20) ]
+setnames(tt2, qc(var, mean_diff, mean1, mean2), c('', 'mean diff.',  'Mean in population', 'Mean in sample'))
+
+
+
+```
+
+
+```{r}
+
+
+tt2 %>% kable('html', booktabs=T) %>% kable_styling(bootstrap_options=qc(striped), position='left', fixed_thead=T) |>  
+kable_paper('hover', full_width=TRUE)  |>
+pack_rows('Ethnicity', 5, 7) |>
+pack_rows('Occupation (1-digit ISCO)', 8, 16) |>
+pack_rows('Sector (NACE)', 17, 35)
+# pack_rows( index = c("setosa" = 2, "versicolor" = 4, "virginica" = 3))
+
+
+```
+
+
+
 
 We see from the figure below that the worksites with ties are larger than the general population of worksites. This is to be expected, as: A) the general probability of a worksite to have a dyad of ex-collegues is higher and B) people working at larger worksites are plausably more likely to have worked at large worksites in the past, making ties more likely, and C) larger companies tend to be divided up to several workplaces, which are also larger, and a jump between within the company from one physical address to another is also a tie.
 

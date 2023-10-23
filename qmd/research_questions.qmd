@@ -2,26 +2,26 @@
 
 thus I arrive at the following research question:
 
-    > How does variation in organizational network structure explain differences in the distribution of economic resources at the worksite?
+> How does variation in organizational network structure explain differences in the distribution of economic resources at the worksite? Is gender a mitigating factor in the relationship between network structure and economic resources?
 
 The next section will outline the framework of RIT, followed by the primary theoretical inequality generating mechanisms, and how these might be conceptualized in relational (network) terms.
 
 
+## Hypothesis
 
-    > How does variablity in gendered network structures affect wages?
+[IOA '23: The reasoning is not very not very well-explained as of yet.]
 
-
-- Tie effect: Having a tie in a workplace have a positive effect on wage
-        - gender modifier: The effect is larger for men than for women
+1. non-managerial tie effect: Having a tie in a workplace have a positive effect on wage
+    - gender modifier: The effect is larger for men than for women
     - Homophilous tie effect: Having a tie of the same gender has a positive effect on wage
         - gender modifier: The effect is larger for men than for women
 
-- Manager tie effect  Having a tie to a current manager has a larger effect than to a non-manager.
-        - gender modifier: The effect is larger for men than for women
+1. Managerial tie effect:  Having a tie to a current manager has a larger effect than to a non-manager.
+    - gender modifier: The effect is larger for men than for women
     - Homophilous manager tie effect: Having a tie of the same gender has a positive effect on wage
         - gender modifier: The effect is larger for men than for women
 
-- Network closure: Having ties that are also connected to each other has an even more positive effect on wages
+1. Network closure: Having ties that are also connected to each other has an even more positive effect on wages
     - gender modifier: The effect is larger for men than for women
 
 

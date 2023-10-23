@@ -2,87 +2,147 @@
 # Analysis
 
 
-so this is an analysis. It is a really good one. 
 
 
 
-```{r}
 
-setwd('/home/emil/Dropbox/arbejde/cbs/phd/presentations/intra-org-inequality-budapest')
+
+
+```{r, echo=FALSE}
+
+
+setwd('/home/emil/Dropbox/arbejde/cbs/phd/articles/intra-org-inequality')
 source('/home/emil/Dropbox/data-science/R/.minimal-Rprofile')
 library(data.table)
 library(purrr)
-library(broom)
 library(dttools)
-library(knitr)
-library(kableExtra)
 library(readxl)
-library(fs)
+library(qs)
+library(broom)
+library(knitr)
 library(formattable)
+library(fs)
+library(kableExtra)
+library(ggplot2)
+# source('r/preprocessing-models.R')
+source('r/setup-dataviz-colors.R')
+mod_all2 = qread('tmp-data/models/mod_all2.qs', nthreads=no_threads)
 
-# dir_ls('input/models')
-
-
-
-# mod_ab0 = read_xlsx('input/models/modeloutput-block-A-B-AB-2.xlsx') |> data.table()
-# mod_ab0 = read_xlsx('input/models/modeloutput-block-AB-etable2.xlsx') |> data.table()
-mod_ab0 = read_xlsx('input/models/modeloutput-block-AB-etable.xlsx') |> data.table()
-setnames(mod_ab0, 1, 'term')
-# colc(mod_ab0)
-# mod_ab0$term
+```
 
 
-thecols_coef_ctrl ='geo_west|alder|disco|heltid|privat|jobexp|n_arbnr'
-# mod_ab0[ term %!ilike% thecols_coef_ctrl, ][, .N, term]
-# mod_ab0[ term %ilike% thecols_coef_ctrl, ][, .N, term]
-mod_ab1 =    mod_ab0[ term %!ilike% thecols_coef_ctrl, ]
-# also remove the one NA at the top (make sure there is only one)
-mod_ab1 = mod_ab1[!is.na(term) & term %!ilike% 'Dependent Var\\.:' ]
- # mod_ab1[is.na(term) | term %ilike% 'Dependent Var\\.:' ]
-
-dic_term = data.table( from=c(
-'femaleTRUE',
-'bin_noman_tie_maleTRUE',
-'i(factor_var=female,var=bin_noman_tie_male,ref=FALSE)',
-'bin_noman_tie_femaleTRUE',
-'i(factor_var=female,var=bin_noman_tie_female,ref=FALSE)',
-'bin_man_tie_maleTRUE',
-'i(factor_var=female,var=bin_man_tie_male,ref=FALSE)',
-'bin_man_tie_femaleTRUE',
-'i(factor_var=female,var=bin_man_tie_female,ref=FALSE)'
-))
-dic_term$to = c (
-    'female',
-    'non-mgnr male tie',
-    'non-mgnr male tie * female',
-    'non-mgnr female tie',
-    'non-mgnr female tie * female',
-    'mgnr male tie',
-    'mgnr male tie * female',
-    'mgnr female tie',
-    'mgnr female tie * female'
-)
-
-mod_ab1[dic_term, term := to, on=c(term='from')]
-setcolorder(mod_ab1, 'term')
-for(xcol in colc(mod_ab1, '', not='term')) set(mod_ab1, i=which(is.na(mod_ab1[[xcol]])), j=xcol, value='')
-mod_ab2 = copy(mod_ab1)
-# change '---' delimiters to less
-for( xcol in colc(mod_ab2))  {
-# no_underscores = rep( '_' , max(nchar( mod_abc [[xcol]] ), na.rm=T ) ) |> paste(collapse='')
-no_underscores = rep( '_' , 15 ) |> paste(collapse='')
-    mod_ab2[get(xcol) %ilike% '_{3,}' , (xcol) := gsub('_{2,}', no_underscores, get(xcol))]
-    mod_ab2[get(xcol) %ilike% '-{3,}' , (xcol) := gsub('-{2,}', no_underscores, get(xcol))][]
-}
+## The simple coworker model
 
 
-# mod_ab2 %>% kable('html') %>% kable_styling(bootstrap_options=qc(striped), position='left', fixed_thead=T)  %>% kable_paper('hover', full_width=TRUE)  
-# mod_ab2 %>% kable('html') %>% kable_styling( position='left', fixed_thead=T)  %>% kable_paper('hover', full_width=TRUE)  
-mod_ab2 %>% kable('html') %>% kable_styling(  fixed_thead=T)   %>% kable_paper('hover', full_width=TRUE)  
+```{r, echo=FALSE}
+plot_noman1 = qread('output/models/plot_noman_data.qs', nthreads=no_threads)
 
+
+female_noman_0 = plot_noman1[grp_koen_ego == 'female' & grp_fe_lab   == 'WS-I6+Year' & grp_term_lab == 'female-noman-0', 
+                             cof1  ]
+female_noman_0=pct(female_noman_0,1)
+
+
+male_noman_0 = plot_noman1[grp_koen_ego == 'male' & grp_fe_lab   == 'WS-I6+Year' & grp_term_lab == 'male-noman-1', 
+                             cof1  ]
+male_noman_0=pct(male_noman_0,1)
 
 
 ```
 
-a model!
+
+
+The simple first hypothesis claims that ties have a an effect on wages, and that the combination of gender and ties works in such a way that a man with ties has the largest effect on wages, while a woman without ties has the lowest wages.
+
+We see that this is indeed confirmed by the model: The within-job coefficient of a woman having no ties is `r female_noman_0 ` less than a man without ties, while a man with ties has a within-job coefficient of `r male_noman_0 ` more than a man without ties, all with very narrow confidence intervals.
+
+
+
+![The coefficients of four models. two models w. different FE on non-manager ties, and the same for manager ties.](output/models/plot_noman.png)
+
+
+
+## The simple Manager model
+
+```{r, echo=FALSE}
+plot_man1 = qread('output/models/plot_man_data.qs', nthreads=no_threads)
+
+
+female_man_0 = plot_man1[grp_koen_ego == 'female' & grp_fe_lab   == 'WS-I6+Year' & grp_term_lab == 'female-man-0', 
+                             cof1  ]
+female_man_0=pct(female_man_0,1)
+
+
+male_man_0 = plot_man1[grp_koen_ego == 'male' & grp_fe_lab   == 'WS-I6+Year' & grp_term_lab == 'male-man-1', 
+                             cof1  ]
+male_man_0=pct(male_man_0,1)
+
+
+```
+
+
+The power version of the first hypothesis claims that manager ties are more valuable than coworker ties, and that the presence of these ties, therefore, should have larger coefficients.  Note that this model does not control for the presence of coworker ties.
+
+
+We see that this is indeed confirmed by the model: The within-job coefficient of a woman having no ties is `r female_man_0 ` less than a man without ties, while a man with ties has a within-job coefficient of `r male_man_0 ` more than a man without ties, all with very narrow confidence intervals.
+
+
+
+
+![The coefficients of four models. two models w. different FE on non-manager ties, and the same for manager ties.](output/models/plot_man.png)
+
+
+
+
+## The combined simple model
+
+```{r, echo=FALSE}
+dat_noman_man1 = qread('output/models/plot_noman_man_data.qs', nthreads=no_threads)
+
+
+# male_noman_0_man_1 = dat_noman_man1[ grp_fe_lab   == 'WS+Year' & grp_term_lab == 'male-noman-0-man-1', cof1  ]
+# male_noman_0_man_1=pct(male_noman_0_man_1,1)
+
+
+dat_noman_man2 = map(set_names(dat_noman_man1$grp_term_lab), \(.x) {
+        # .x = 'female-noman-0-man-0'
+    # x1 = dat_noman_man1[ grp_term_lab == .x, .(grp_term_lab, grp_fe_lab, cof1)]
+    x1 = dat_noman_man1[ grp_term_lab == .x, .(grp_term_lab, grp_fe_lab, cof1)]
+    list( x1[1, cof1],   x1[2, cof1]  )
+} )
+# dat_noman_man2
+
+
+```
+
+test
+
+
+fuck model  ja
+In this model, both coworker and manager ties are included. I have opted for a fully saturated dummy-version with all combinations of of ego-gender and alter-tie types instead of interaction effects, as it eases the interpretation of the coefficients.
+
+The coefficients are ordered according to the hypothesis about the benefits - e.g. wage-gains - associated with each  category. A rough overview of the estimates confirms this, with a female employee with no contacts being the most disadvantageous, and a man with manager and coworker ties being the most advantageous, at least within occupation. There are important nuances to this, which tells us something about the relational power structures at work here.
+
+The first point is that a women with coworker ties with-occ-fe has a slightly negative, but roughly similar, wage as a the reference categoy of being a man with no ties.
+
+The second, and somewhat surprising, point is that a there is no difference between a woman with no ties and a woman with manager ties, with fixed effects on occupation, while there is a difference roughly similar to having a coworker tie, when not accounting for occupation. This tells us that the mechanism of having a manager tie is working directly through occupations, and is virtually indistinguishable from occupational relational power. [#spm-til-lasse: er stadig usikker paa de her tolkninger.]
+
+The third point is that a woman with both coworker and manager ties is roughly equal to a man without ties when not controlling for occupation, and have a small advantage when taking occupation into account.
+
+
+In stark contrast to this, having a coworker tie within the occupation *almost* nullifies the wage difference, while it does not matter at all for the gender wage gap at the worksite as such, e.g. with no controls on occupation.
+
+The fourth point is that for a man with 1 tie, within occupation it makes no difference if that tie is a coworker tie or a manager tie. However when looking at the worksite at large, then having a manager tie is a lot more valuable than a coworker tie - so much so, in fact, that it is the most potent coefficient in the model (`r dat_noman_man2[['male-noman-0-man-1']][[1]]  %>% pct(1) `)  
+
+
+
+
+The model 
+
+
+
+![label fuck here](output/models/plot_noman_man.png)
+
+
+
 

@@ -1,139 +1,154 @@
-# mod_ab0 = read_xlsx('input/models/modeloutput-block-A-B-AB-2.xlsx') |> data.table()
-mod_ab0 = read_xlsx('input/models/modeloutput-block-AB-etable.xlsx') |> data.table()
-thecols_coef_ctrl ='geo_west|alder|disco|heltid|privat|jobexp|n_arbnr'
-# mod_ab0[ term %!ilike% thecols_coef_ctrl, !'statistic'][, .N, term]
-mod_ab1 =    mod_ab0[ term %!ilike% thecols_coef_ctrl, !'statistic']
-setnames(mod_ab1, qc(std.error, estimate), qc(std, coef ))
-thecols = qc(std, coef)
-mod_ab1[, p :=  ''][p.value < .1, p := ' *'] %>%
-    .[p.value < .05, p := ' **'] %>%
-    .[p.value < .01, p := ' ***']
-mod_ab1[, p.value := NULL]
-mod_ab1[, (thecols) := map(100*.SD, round, 1), .SDcols=thecols]
-setorder(mod_ab1, mod)
-setorder(mod_ab1, term)
-
-wc(mod_ab1, 'term', 10)
 
 
-dic_term = data.table( from=c(
-	'bin_degreeTRUE',
-	'i(factor_var = female, var = bin_degree, ref = FALSE)',
-	'bin_gender_tie_homoTRUE',
-	'i(factor_var = female, var = bin_gender_tie_homo, ref = FALSE)',
-	'bin_man_tieTRUE',
-	'i(factor_var = female, var = bin_man_tie, ref = FALSE)',
-	'bin_man_tie_homoTRUE',
-	'i(factor_var = female, var = bin_man_tie_homo, ref = FALSE)',
-	'bin_noman_tieTRUE',
-	'i(factor_var = female, var = bin_noman_tie, ref = FALSE)',
-	'bin_noman_tie_homoTRUE',
-	'i(factor_var = female, var = bin_noman_tie_homo, ref = FALSE)'
-)) 
 
-dic_term$to = c(
-        'tie',
-        'tie * female',
-        'homoph. tie',
-       'homoph. tie * female',
-        'man. tie',
-        'man. tie * female',
-        'homoph. man. tie',
-       'homoph. man. tie * female',
-        'tie',
-        'tie * female',
-        'homoph. tie',
-       'homoph. tie * female'
-)
-
-# dic_term$to = c(
-#         'tie',
-#         'tie * female',
-#         'homoph. tie',
-#        'homoph. tie * female',
-#         'man. tie',
-#         'man. tie * female',
-#         'homoph. man. tie',
-#        'homoph. man. tie * female',
-#         'non-man. tie',
-#         'non-man. tie * female',
-#         'homoph. non-man. tie',
-#        'homoph. non-man. tie * female'
-# )
-
-dic_term$to = c(
-        'tie',
-        'tie * female',
-        'homoph. tie',
-       'homoph. tie * female',
-        'man. tie',
-        'man. tie * female',
-        'homoph. man. tie',
-       'homoph. man. tie * female',
-        'tie',
-        'tie * female',
-        'homoph. tie',
-       'homoph. tie * female'
-)
-
-# change nonman tie to just tie
+#########################################
+# standard stuff #section
+#########################################
 
 
-mod_ab1[dic_term, term2 := to, on=c(term='from')]
-mod_ab1[, term2 := factor(term2, levels=unique(dic_term$to)) ]
-mod_ab1[, coef2 := paste0(coef, p)]
-mod_ab1[, std2 := paste0('(', std, ')')]
-mod_ab1[, mod2 := factor(mod, levels=qc(A, Ah, B, Bh, AB, ABh))]
-
-mod_ab2 = mod_ab1[, .(mod=mod2, term=term2, coef=coef2, std=std2)]
-setorder(mod_ab2, mod) 
-mod_ab3a = dcast(mod_ab2, term  ~ mod, value.var = qc(coef))
-mod_ab3b = dcast(mod_ab2, term  ~ mod, value.var = qc( std))
-mod_ab3a[, flag_std := FALSE]
-mod_ab3b[, flag_std := TRUE]
-
-mod_ab4 = rbind(mod_ab3a, mod_ab3b, use.names=TRUE)
-setorder(mod_ab4, term)
-for(xcol in colc(mod_ab4, '', not='term')) set(mod_ab4, i=which(is.na(mod_ab4[[xcol]])), j=xcol, value='')
-
-mod_ab4[flag_std == TRUE, term := ''][, flag_std := NULL]
-
-
-mod_ab4 %>% kable('html') %>% kable_styling(bootstrap_options=qc(striped), position='left', fixed_thead=T)  %>% kable_paper('hover', full_width=TRUE)  
+# check groups
+colc(mod_all2, 'grp')   %>% write_clip()
+mod_all2[, .N, grp]
+mod_all2[, .N, grp_disco_lvl]
+mod_all2[, .N, grp_fe]
+mod_all2[, .N, grp_fe_lab]
+mod_all2[, .N, grp_fe_type]
+mod_all2[, .N, grp_koen_alter]
+mod_all2[, .N, grp_koen_both]
+mod_all2[, .N, grp_koen_ego]
+mod_all2[, .N, grp_koen_homo]
+mod_all2[, .N, grp_man_alter]
+mod_all2[, .N, grp_mod]
+mod_all2[, .N, grp_no_ties]
 
 
 
 
-# function needed 
 
-
-wc <- function(df1, var='pnr', n=1, from='head', all=FALSE, sample=FALSE) {
-
-		# df1 <- y_pnr
-		# var <- 'pnr'
-		# from <- 'tail'
-		# n <- 1
-  # require(clipr)
-
-	stopifnot('col does not exit' = var %in% colnames(df1))
-
-  if(all==TRUE) n <- nrow(df1)
-	index <- 1:n
-	if(from == 'tail') index <- (nrow(df1)	-n):nrow(df1)	
-		
-
-  if(sample==TRUE) {
-    clipr::write_clip(
-    df1[seq(1,nrow(df1),ceiling((nrow(df1)/n))), get(var)]
-    , col.names=F)
-  } else {
-  	clipr::write_clip(df1[index, get(var)] , col.names=F)
-  } 
-
-
-
-
-}
-
-
-
+#########################################
+# 00-trash #section
+#########################################
+#
+#
+# # give me unique of every group variable 
+# mod_all2[ ]
+#
+#
+#
+#
+# # mod_all2[grp_fe_lab %!ilike% '\\+' & grp_fe_lab %!ilike% '\\/' & !is.na(cof1), ][, .N,  .(grp_fe)]
+#
+# plot_sens0 [, .N, grp_fe_lab]
+# plot_noman_man1 [, .N, grp_fe_lab]
+#
+#
+# mod_all2[, .N,   grp_mod]
+#
+#
+#
+# plot_sens0 [, .N, grp_fe_lab]
+# plot_noman_man1 [, .N, grp_fe_lab]
+#
+# 'WS+Year', 'WS-I6+Year'
+#
+#
+# dtdesc(plot_sens0, 'grp')
+# colc(plot_sens0, 'grp')
+#
+# View(plot_sens0)
+#
+#
+# mod_all2[, .N,   grp_mod]
+#
+#
+# mod_all2$grp_fe_lab  %>% levels()
+# plot_sens0$grp_fe_lab  %>% levels()
+#
+#
+# plot_sens0 = mod_all2[grp_mod %in% qc(noman_man) & !is.na(cof1)]
+# View(plot_sens0[, .(term0, grp_fe, grp_fe_lab)])
+#
+# plot_sens0 = mod_all2[grp_mod %in% qc(noman_man) & !is.na(cof1) & grp_fe_lab %!ilike% '*[1234]*']
+#
+#
+#
+# p_dat_t = data.table(
+#     Gender=c('Female', "Male"),
+#     # Alter=c('Coworker', "Manager"),
+#     Alter=c('Coworker', "Manager"),
+#     x=1:2, y=1:2)
+# p_t = ggplot(p_dat_t, aes(x, y, fill=Gender, shape=Alter, color=Gender)) + geom_point(size=5) +
+# scale_fill_manual(values=c("#436685",  "#BF2F24")) +
+# scale_shape_manual(values=c(22,24))  +
+# scale_color_manual(values=c("#436685",  "#BF2F24")) +
+# labs(shape='', color='', fill='') +
+# theme_void() +
+# theme(legend.direction="horizontal") 
+# # Extract the legend. Returns a gtable & Convert to a ggplot and print
+# leg <- ggpubr::get_legend(p_t)
+# leg = ggpubr::as_ggplot(leg); leg
+#
+# p_whole= p_leg1 + p_noman_man_g_main + leg #& theme(legend.position = "bottom") 
+# p_whole= p_leg1 + p_noman_man_g_main 
+#
+#
+#
+# p_whole + plot_layout(design=
+#   c(
+#     area(l=0,  r=6, t=0, b=1), 
+#     area(l=0, r=50, t=0, b=2)
+# ))
+#   # ), guides='collect')  
+#
+#
+#
+#
+# p1 + inset_element(p2, left = 0.6, bottom = 0.6, right = 1, top = 1)
+#
+#
+#
+#
+#
+# p_noman_man_g_main[, .N, g]
+# colc(plot_noman_man_g1, 'grp')
+# colc(mod_all2, 'grp')
+#
+#
+# # male no ties 
+# 'male-noman-female-0-male-0-man-female-0-male-0',
+#
+# # no manager ties
+#
+# 'male-noman-female-1-male-0-man-female-0-male-0',
+# 'male-noman-female-0-male-1-man-female-0-male-0',
+# 'male-noman-female-1-male-1-man-female-0-male-0',
+#
+#
+# # female manager tie, 
+#
+# 'male-noman-female-1-male-0-man-female-1-male-0',
+# 'male-noman-female-0-male-1-man-female-1-male-0',
+# 'male-noman-female-1-male-1-man-female-1-male-0',
+# 'male-noman-female-0-male-0-man-female-1-male-0',
+#
+# # male manager tie 
+#
+# 'male-noman-female-0-male-0-man-female-0-male-1',
+#
+# 'male-noman-female-1-male-0-man-female-0-male-1',
+#
+# 'male-noman-female-0-male-1-man-female-0-male-1',
+#
+# 'male-noman-female-1-male-1-man-female-0-male-1',
+#
+# 'male-noman-female-0-male-0-man-female-1-male-1',
+#
+# 'male-noman-female-1-male-0-man-female-1-male-1',
+#
+# 'male-noman-female-0-male-1-man-female-1-male-1',
+#
+# # 4 ties
+# 'male-noman-female-1-male-1-man-female-1-male-1'
+#
+#
+#

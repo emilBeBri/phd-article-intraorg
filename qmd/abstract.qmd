@@ -1,5 +1,5 @@
 
-# Abstract ( TLDR; )
+# Abstract
 
 The purpose of this article is to examine how variation in the informal social relations at worksites affect the bargaining power over wages, including the effect of gendered differences in personal networks. 
 
@@ -13,34 +13,34 @@ RIT is a framework for understanding the dynamics of economic inequality at an o
 While RIT has a strong empirically validated claim for the case of intraorganizational group composition as an important part of inequality, the dynamics of these groups conceptualized in network terms and with network metrics is still new territory.  It is argued here that network dynamics is a crucial part of organizational life, and that it helps us understand the relations of power not only between people, but also in the that these relations change by categorical distinctions. 
 
 
-
-# Extended abstract - computational social science edition 
-
-
-The article uses social network analysis on the entire population of Danish workers and worksites, in order to establish how local wage bargaining is affected by informal network structures - and how these structures relate to categorical distinctions such as gender. Using Danish registry data between 2000-2019. The goal is to examine the significance of social network structure on wages, with the ties of the network being external to the worksite hierarchy itself, e.g. informal. 
-
-The ties under examination are: A) ex-collegial ties - workers that have worked together in the last 10 years, B) extended family ties - including half-nieces and nephews, and the family of the spouse of the worker, C) Ties made from studying at the same place at the same year.
-
-These ties are used to construct a network within each worksite in Denmark between 2010-2019. At a node level, network metrics like local transitivity, betweenness and Burts constraint are used. At group level, community structures are detected. At graph level, the transitivity, number of components and isolates are calculated.  
-
-The article argues that these measures are signals of social cohesion and relational strength between workers, and that they matter in terms of bargaining power in wage negotiations. 
-
-The underlying theory used is the relational inequality theory (RIT), coming from the sociological tradition. The theory argues that important mechanisms generating economic inequality are taking place within the basic economic unit of the worksite (defined administratively as geographical locations that employes a number of people - a *firm* can consist of several worksites), and that these operate through categorical distinctions such as gender, ethnicity or educational distinctions. The theory suggests that any categorical distinction can be used to define outgroups and ingroups, and that the surplus value of firms are distributed to its employees based not only on worker performance and skill level, but also on said distinctions. what distinguishes this perspective is the focus on the local variation and group formation within local worksites. The novel contribution of this article, in both the RIT tradition and in a broader scope, is using social networks within worksites to understand group structures and their influence on local wage bargaining, on population-wide networks.
-
-
-
-
-The most obvious competing theory would be human capital theory, that would argue that these distinctions are less important, and that the difference in wage is counfounded by unmeasured productivity characterestics. This is a valid scepticism, and to accommodate it, fixed effect models are used, removing any unmeasured characterestics that are stable over time. 
-
-
-
-
-
-Here, a fixed effects model is used. 
-
-ThreeBy constructing edgelists that contains the worksites that current collegues have worked at together in the past, networks within 
-
-
-
-
-
+<!---->
+<!-- # Extended abstract - computational social science edition  -->
+<!---->
+<!---->
+<!-- The article uses social network analysis on the entire population of Danish workers and worksites, in order to establish how local wage bargaining is affected by informal network structures - and how these structures relate to categorical distinctions such as gender. Using Danish registry data between 2000-2019. The goal is to examine the significance of social network structure on wages, with the ties of the network being external to the worksite hierarchy itself, e.g. informal.  -->
+<!---->
+<!-- The ties under examination are: A) ex-collegial ties - workers that have worked together in the last 10 years, B) extended family ties - including half-nieces and nephews, and the family of the spouse of the worker, C) Ties made from studying at the same place at the same year. -->
+<!---->
+<!-- These ties are used to construct a network within each worksite in Denmark between 2010-2019. At a node level, network metrics like local transitivity, betweenness and Burts constraint are used. At group level, community structures are detected. At graph level, the transitivity, number of components and isolates are calculated.   -->
+<!---->
+<!-- The article argues that these measures are signals of social cohesion and relational strength between workers, and that they matter in terms of bargaining power in wage negotiations.  -->
+<!---->
+<!-- The underlying theory used is the relational inequality theory (RIT), coming from the sociological tradition. The theory argues that important mechanisms generating economic inequality are taking place within the basic economic unit of the worksite (defined administratively as geographical locations that employes a number of people - a *firm* can consist of several worksites), and that these operate through categorical distinctions such as gender, ethnicity or educational distinctions. The theory suggests that any categorical distinction can be used to define outgroups and ingroups, and that the surplus value of firms are distributed to its employees based not only on worker performance and skill level, but also on said distinctions. what distinguishes this perspective is the focus on the local variation and group formation within local worksites. The novel contribution of this article, in both the RIT tradition and in a broader scope, is using social networks within worksites to understand group structures and their influence on local wage bargaining, on population-wide networks. -->
+<!---->
+<!---->
+<!---->
+<!---->
+<!-- The most obvious competing theory would be human capital theory, that would argue that these distinctions are less important, and that the difference in wage is counfounded by unmeasured productivity characterestics. This is a valid scepticism, and to accommodate it, fixed effect models are used, removing any unmeasured characterestics that are stable over time.  -->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!-- Here, a fixed effects model is used.  -->
+<!---->
+<!-- ThreeBy constructing edgelists that contains the worksites that current collegues have worked at together in the past, networks within  -->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->

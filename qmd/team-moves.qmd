@@ -36,75 +36,77 @@ Within the internal labour markets, \~ 90.000 people moved from one worksite to 
 That the number of people moving together from one worksite to another is higher - even a lot higher - than on the external markets is to be expected. 
 
 
-[the numbers have been rounded with large margins, and therefore do not add up. The order of magnitudes is the important information here.]{.aside}
+<!-- [the numbers have been rounded with large margins, and therefore do not add up. The order of magnitudes is the important information here.]{.aside} -->
 
-```{mermaid}
-flowchart TD;
-classDef default fill:#4D7092,stroke:black,color:white,stroke-width:0.5px;
-classDef notimportant fill:grey,stroke:black,color:white,stroke-width:0.5px;
+Note for the pdf version: there should be a flowchart here, but it is strangely formatted. See the html version for the flowchart.
 
-pop000(["job in a single year<br>2.900.000"])
-pop00a(["job in both years<br>2.630.000"])
-pop00b(["outside the labour market<br>in one of the years <br>270.000 "])
-pop0(["jobmovers<br>575.000"])
-pop0b(["same job<br>2.0.55.000"])
-
-team1(["team<br>moves<br>165.000"])
-indi1(["individual<br>moves<br>415.000"])
-
-
-indi2_int(["internal<br>market<br>39.000"])
-indi2_ext(["external<br>market<br>375.000"])
-
-team2_int(["internal<br>market<br>90.000"])
-team2_ext(["external<br>market<br>75.000"])
-
-
-team2_ext_wi_sector(["within<br>sector<br>30.000"])
-team2_int_wi_sector(["within<br>sector<br>20.000"])
-team2_ext_wo_sector(["without<br>sector<br>45.000"])
-team2_int_wo_sector(["without<br>sector<br>70.000"])
-
-
-indi2_ext_wi_sector(["within<br>sector<br>55.000"])
-indi2_ext_wo_sector(["without<br>sector<br>320.000"])
-indi2_int_wi_sector(["within<br>sector<br>25.000"])
-indi2_int_wo_sector(["without<br>sector<br>15.000"])
-
-
-class pop00b notimportant;
-class pop0b notimportant;
-
-
-pop000 --> pop00a
-pop000 --> pop00b
-pop00a --> pop0
-
-pop00a --> pop0b
-
-pop0 --> team1
-pop0 --> indi1
-
-
-team1 --> team2_int
-team1 --> team2_ext
-
-
-indi1 --> indi2_int
-indi1 --> indi2_ext
-
-team2_int --> team2_int_wi_sector
-team2_int --> team2_int_wo_sector
-team2_ext --> team2_ext_wi_sector
-team2_ext --> team2_ext_wo_sector
-
-
-indi2_int --> indi2_int_wi_sector
-indi2_int --> indi2_int_wo_sector
-indi2_ext --> indi2_ext_wi_sector
-indi2_ext --> indi2_ext_wo_sector
-
-```
+<!-- ```{mermaid} -->
+<!-- flowchart TD; -->
+<!-- classDef default fill:#4D7092,stroke:black,color:white,stroke-width:0.5px; -->
+<!-- classDef notimportant fill:grey,stroke:black,color:white,stroke-width:0.5px; -->
+<!---->
+<!-- pop000(["job in a single year<br>2.900.000"]) -->
+<!-- pop00a(["job in both years<br>2.630.000"]) -->
+<!-- pop00b(["outside the labour market<br>in one of the years <br>270.000 "]) -->
+<!-- pop0(["jobmovers<br>575.000"]) -->
+<!-- pop0b(["same job<br>2.0.55.000"]) -->
+<!---->
+<!-- team1(["team<br>moves<br>165.000"]) -->
+<!-- indi1(["individual<br>moves<br>415.000"]) -->
+<!---->
+<!---->
+<!-- indi2_int(["internal<br>market<br>39.000"]) -->
+<!-- indi2_ext(["external<br>market<br>375.000"]) -->
+<!---->
+<!-- team2_int(["internal<br>market<br>90.000"]) -->
+<!-- team2_ext(["external<br>market<br>75.000"]) -->
+<!---->
+<!---->
+<!-- team2_ext_wi_sector(["within<br>sector<br>30.000"]) -->
+<!-- team2_int_wi_sector(["within<br>sector<br>20.000"]) -->
+<!-- team2_ext_wo_sector(["without<br>sector<br>45.000"]) -->
+<!-- team2_int_wo_sector(["without<br>sector<br>70.000"]) -->
+<!---->
+<!---->
+<!-- indi2_ext_wi_sector(["within<br>sector<br>55.000"]) -->
+<!-- indi2_ext_wo_sector(["without<br>sector<br>320.000"]) -->
+<!-- indi2_int_wi_sector(["within<br>sector<br>25.000"]) -->
+<!-- indi2_int_wo_sector(["without<br>sector<br>15.000"]) -->
+<!---->
+<!---->
+<!-- class pop00b notimportant; -->
+<!-- class pop0b notimportant; -->
+<!---->
+<!---->
+<!-- pop000 --> pop00a -->
+<!-- pop000 --> pop00b -->
+<!-- pop00a --> pop0 -->
+<!---->
+<!-- pop00a --> pop0b -->
+<!---->
+<!-- pop0 --> team1 -->
+<!-- pop0 --> indi1 -->
+<!---->
+<!---->
+<!-- team1 --> team2_int -->
+<!-- team1 --> team2_ext -->
+<!---->
+<!---->
+<!-- indi1 --> indi2_int -->
+<!-- indi1 --> indi2_ext -->
+<!---->
+<!-- team2_int --> team2_int_wi_sector -->
+<!-- team2_int --> team2_int_wo_sector -->
+<!-- team2_ext --> team2_ext_wi_sector -->
+<!-- team2_ext --> team2_ext_wo_sector -->
+<!---->
+<!---->
+<!-- indi2_int --> indi2_int_wi_sector -->
+<!-- indi2_int --> indi2_int_wo_sector -->
+<!-- indi2_ext --> indi2_ext_wi_sector -->
+<!-- indi2_ext --> indi2_ext_wo_sector -->
+<!---->
+<!-- ``` -->
 
 
 

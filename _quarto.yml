@@ -24,23 +24,21 @@ book:
   # url: https://some-website.org/rflow
 
 
-
-
   # google-analytics: "G-......"
 
 
   chapters:
     - index.qmd
-    - part: Outline
-      chapters: 
+    # - part: Outline
+    #   chapters: 
         # - qmd/abstract.qmd
         # - qmd/research_questions.qmd
         # - qmd/introduction.qmd
-        - qmd/registry-data.qmd
+        # - qmd/registry-data.qmd
           # - qmd/draft-01-notes.qmd
-    # - part: Analysis
-      # chapters: 
-    #     - qmd/descriptive-stats.qmd
+    - part: Analysis
+      chapters: 
+        - qmd/descriptive-stats.qmd
         # - qmd/analysis.qmd
     # - part: Ending
     #   chapters: 
@@ -51,11 +49,8 @@ book:
     #   - qmd/defining-the-population.qmd
     #   - qmd/worksite-descriptives.qmd
     #   - qmd/team-moves.qmd
-      # - qmd/testing-grounds.qmd
-    #   - qmd/references.qmd
-
-
-
+    #   # - qmd/testing-grounds.qmd
+      # - qmd/references.qmd
 
 
 
@@ -90,7 +85,7 @@ format:
   pdf: default
   html:
     # theme: cosmo
-    number-depth: 3
+    number-depth: 2
     cap-location: margin
     reference-location: margin
     citation-location: margin
@@ -98,6 +93,9 @@ format:
     code-tools: true
     code-block-bg: "#f1f3f5"
     code-block-border-left: "#31BAE9"
+
+
+prefer-html: true
 
 comments:
   hypothesis:
